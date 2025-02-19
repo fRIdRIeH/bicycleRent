@@ -10,6 +10,24 @@
     <Compile Update="Forms\Client\ClientListForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Deposit\DepositAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Deposit\DepositListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Filial\FilialAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Filial\FilialListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\InventoryType\InventoryTypeAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\InventoryType\InventoryTypeListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Inventory\InventoryAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -20,6 +38,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Rent\RentListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\User\UserAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\User\UserListForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

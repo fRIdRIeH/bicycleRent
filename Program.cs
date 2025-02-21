@@ -1,17 +1,33 @@
+using MySql.Data.MySqlClient;
+
 namespace bicycleRent
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            const string server = "localhost";
+            const string database = "bicycleRentQFW";
+            const string user = "root";
+            const string password = "";
+            const string port = "3306";
+
+            string connectionString = $"Server={server};Database={database};User={user};Password={password};Port={port};";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString)) 
+            {
+                try
+                {
+                    connection.Open();
+                    ApplicationConfiguration.Initialize();
+                    Application.Run(new MainForm(connection));
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show("Произошла ошибка! Ошибка: " + ex.Message);
+                }
+            }
         }
     }
 }

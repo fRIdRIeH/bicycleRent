@@ -96,4 +96,3 @@ C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-w
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.pdb
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.genruntimeconfig.cache
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\ref\bicycleRent.dll
-C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Generic.ForAllListForm.resources

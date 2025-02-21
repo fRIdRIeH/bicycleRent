@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using bicycleRent.Repositories;
 
 namespace bicycleRent.Forms.Inventory
 {
     public partial class InventoryListForm : Form
     {
-        public InventoryListForm()
+        private readonly InventoryRepository _inventoryRepository;
+        public InventoryListForm(InventoryRepository inventoryRepository)
         {
             InitializeComponent();
+            _inventoryRepository = inventoryRepository;
         }
     }
 }

@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvRentsList = new DataGridView();
+            dgvRents = new DataGridView();
             label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvRentsList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRents).BeginInit();
             SuspendLayout();
             // 
-            // dgvRentsList
+            // dgvRents
             // 
-            dgvRentsList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRentsList.Location = new Point(16, 57);
-            dgvRentsList.Margin = new Padding(7, 8, 7, 8);
-            dgvRentsList.Name = "dgvRentsList";
-            dgvRentsList.Size = new Size(1552, 787);
-            dgvRentsList.TabIndex = 0;
+            dgvRents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRents.Location = new Point(16, 57);
+            dgvRents.Margin = new Padding(7, 8, 7, 8);
+            dgvRents.Name = "dgvRents";
+            dgvRents.Size = new Size(1552, 787);
+            dgvRents.TabIndex = 0;
             // 
             // label1
             // 
@@ -58,21 +58,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
             Controls.Add(label1);
-            Controls.Add(dgvRentsList);
+            Controls.Add(dgvRents);
             Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             Margin = new Padding(7, 8, 7, 8);
             MaximizeBox = false;
             Name = "RentListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Аренды";
-            ((System.ComponentModel.ISupportInitialize)dgvRentsList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRents).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvRentsList;
+        private DataGridView dgvRents;
         private Label label1;
     }
 }

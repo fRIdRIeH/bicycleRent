@@ -3,32 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\clientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\clientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\depositrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\depositrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\filialrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\filialrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\inventoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\inventoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\inventorytyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\inventorytyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\rentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\rentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,97 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\UserRepository.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "Repositories\\UserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T07:26:13.709Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\RentRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\RentRepository.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\RentRepository.cs",
-              "RelativeToolTip": "Repositories\\RentRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T07:26:13.227Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "InventoryTypeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\InventoryTypeRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\InventoryTypeRepository.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\InventoryTypeRepository.cs",
-              "RelativeToolTip": "Repositories\\InventoryTypeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T07:26:12.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InventoryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\InventoryRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\InventoryRepository.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\InventoryRepository.cs",
-              "RelativeToolTip": "Repositories\\InventoryRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T07:26:12.418Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FilialRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\FilialRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\FilialRepository.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\FilialRepository.cs",
-              "RelativeToolTip": "Repositories\\FilialRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T07:26:12.016Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DepositRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\DepositRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\DepositRepository.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\DepositRepository.cs",
-              "RelativeToolTip": "Repositories\\DepositRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T07:26:11.529Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ClientRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\ClientRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\ClientRepository.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\ClientRepository.cs",
-              "RelativeToolTip": "Repositories\\ClientRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\MainForm.cs",
+              "RelativeDocumentMoniker": "MainForm.cs",
+              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\MainForm.cs",
+              "RelativeToolTip": "MainForm.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowDEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T07:26:11.002Z",
+              "WhenOpened": "2025-02-21T07:33:45.935Z",
               "EditorCaption": ""
             }
           ]

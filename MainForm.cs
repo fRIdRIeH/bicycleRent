@@ -3,14 +3,27 @@ using bicycleRent.Forms.Client;
 using bicycleRent.Forms.Generic;
 using bicycleRent.Forms.Inventory;
 using bicycleRent.Forms.Rent;
+using bicycleRent.Repositories;
 
 namespace bicycleRent
 {
     public partial class MainForm : Form
     {
+        //ClientRepository _clientRepository;
+        //DepositRepository _depositRepository;
+        //FilialRepository _filialRepository;
+        //InventoryRepository _inventoryRepository;
+        //InventoryTypeRepository _inventoryTypeRepository;
+        //RentRepository _rentRepository;
+        //UserRepository _userRepository;
+
+
+        //НЕОБХОДИМО ПЕРЕДАТЬ КОННЕКШН ИЗ PROGRAM.CS В ЭТУ ФОРМУ, ЧТОБЫ РЕПЫ УЖЕ ОТСЮДА ОТПРАВЛЯТЬ В ФОРМЫ
         public MainForm()
         {
             InitializeComponent();
+
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -29,22 +42,16 @@ namespace bicycleRent
 
         private void GoToRentsListBtn_Click(object sender, EventArgs e)
         {
-            //для аренд передаем стороку rents и репозиторий для аренд
-            ForAllListForm forAllListForm = new ForAllListForm("rents");
-            forAllListForm.ShowDialog();
+            
         }
 
         private void GoToClientsListBtn_Click(object sender, EventArgs e)
         {
-            //для клиентов передаем стороку clietns и репозиторий для клиентов
-            ForAllListForm forAllListForm = new ForAllListForm("clients");
-            forAllListForm.ShowDialog();
+            
         }
         private void GoToInventoryListBtn_Click(object sender, EventArgs e)
         {
-            //для инвентаря передаем стороку inventory и репозиторий для инвентаря
-            ForAllListForm forAllListForm = new ForAllListForm("inventory");
-            forAllListForm.ShowDialog();
+            
         }
 
         private void GoToAdminPanelBtn_Click(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace bicycleRent.Forms.Filial
         public FilialAddForm()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
     }
 }

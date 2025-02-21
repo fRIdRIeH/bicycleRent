@@ -15,6 +15,7 @@ namespace bicycleRent.Forms.InventoryType
         public InventoryTypeAddForm()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace bicycleRent.Forms.User
         public UserAddForm()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
     }
 }

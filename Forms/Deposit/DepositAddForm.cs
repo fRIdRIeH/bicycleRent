@@ -15,6 +15,7 @@ namespace bicycleRent.Forms.Deposit
         public DepositAddForm()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
     }
 }

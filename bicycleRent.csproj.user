@@ -4,6 +4,9 @@
     <Compile Update="Forms\Admin\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Generic\ForAllListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -16,9 +19,6 @@
     <Compile Update="Forms\Deposit\DepositAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Deposit\DepositListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\Filial\FilialAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -28,13 +28,7 @@
     <Compile Update="Forms\InventoryType\InventoryTypeAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\InventoryType\InventoryTypeListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\Inventory\InventoryAddForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Inventory\InventoryListForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Rent\RentAddForm.cs">
@@ -44,9 +38,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\User\UserAddForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\User\UserListForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

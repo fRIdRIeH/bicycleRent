@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace bicycleRent.Forms.InventoryType
+namespace bicycleRent.Forms.Generic
 {
-    public partial class InventoryTypeListForm : Form
+    public partial class ForAllListForm : Form
     {
-        public InventoryTypeListForm()
+        public ForAllListForm()
         {
             InitializeComponent();
         }

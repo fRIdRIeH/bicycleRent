@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace bicycleRent.Repositories
 {
-    internal class UserRepository
+    public class UserRepository
     {
+        private readonly MySqlConnection _Connection;
+
+        public UserRepository(MySqlConnection connection)
+        {
+            _Connection = connection;
+        }
     }
 }

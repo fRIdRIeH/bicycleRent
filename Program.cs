@@ -1,3 +1,4 @@
+using bicycleRent.Forms.Login;
 using MySql.Data.MySqlClient;
 
 namespace bicycleRent
@@ -8,7 +9,7 @@ namespace bicycleRent
         static void Main()
         {
             const string server = "localhost";
-            const string database = "bicycleRentQFW";
+            const string database = "bicycleRentFQW";
             const string user = "root";
             const string password = "";
             const string port = "3306";
@@ -21,7 +22,7 @@ namespace bicycleRent
                 {
                     connection.Open();
                     ApplicationConfiguration.Initialize();
-                    Application.Run(new MainForm(connection));
+                    Application.Run(new LoginForm(connection));
                 }
                 catch (Exception ex) 
                 {

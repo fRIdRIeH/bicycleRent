@@ -1,22 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\",
+  "WorkspaceRootPath": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\fridrieh\\desktop\\labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0438\u0441\u0440\u043F\u043E\\bicyclerent\\forms\\login\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\login\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\fridrieh\\desktop\\labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0438\u0441\u0440\u043F\u043E\\bicyclerent\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\fridrieh\\desktop\\labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0438\u0441\u0440\u043F\u043E\\bicyclerent\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\forms\\inventory\\inventorylistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\inventory\\inventorylistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\forms\\inventory\\inventorylistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\inventory\\inventorylistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\fridrieh\\desktop\\labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0438\u0441\u0440\u043F\u043E\\bicyclerent\\forms\\login\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\login\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,17 +30,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAAwDoAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T14:12:50.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\Forms\\Login\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Forms\\Login\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\Forms\\Login\\LoginForm.cs",
+              "RelativeToolTip": "Forms\\Login\\LoginForm.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAmwD0AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T13:28:39.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
+              "DocumentMoniker": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\Forms\\Login\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Forms\\Login\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\Forms\\Login\\LoginForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
+              "RelativeToolTip": "Forms\\Login\\LoginForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T13:00:24.73Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Program.cs",
+              "ToolTip": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAANAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-21T08:25:28.279Z",
               "EditorCaption": ""
@@ -44,37 +90,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "InventoryListForm.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Inventory\\InventoryListForm.cs",
-              "RelativeDocumentMoniker": "Forms\\Inventory\\InventoryListForm.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Inventory\\InventoryListForm.cs",
-              "RelativeToolTip": "Forms\\Inventory\\InventoryListForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T08:24:56.956Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InventoryListForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Inventory\\InventoryListForm.cs",
-              "RelativeDocumentMoniker": "Forms\\Inventory\\InventoryListForm.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Inventory\\InventoryListForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Forms\\Inventory\\InventoryListForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T08:24:54.461Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\MainForm.cs",
+              "ToolTip": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 \u043A\u0443\u0440\u0441\\\u0441# \u0418\u0421\u0420\u041F\u041E\\bicycleRent\\MainForm.cs",
               "RelativeToolTip": "MainForm.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAgwBkAAAAmAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-21T07:33:45.935Z",
               "EditorCaption": ""

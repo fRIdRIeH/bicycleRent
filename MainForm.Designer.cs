@@ -35,6 +35,7 @@
             GoToAdminPanelBtn = new Button();
             dgvMainForm = new DataGridView();
             label1 = new Label();
+            labelForUserSNP = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvMainForm).BeginInit();
             SuspendLayout();
             // 
@@ -110,11 +111,21 @@
             label1.TabIndex = 8;
             label1.Text = "Текущие и недавние аренды :";
             // 
+            // labelForUserSNP
+            // 
+            labelForUserSNP.AutoSize = true;
+            labelForUserSNP.Location = new Point(296, 18);
+            labelForUserSNP.Name = "labelForUserSNP";
+            labelForUserSNP.Size = new Size(96, 37);
+            labelForUserSNP.TabIndex = 9;
+            labelForUserSNP.Text = "label2";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(16F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(labelForUserSNP);
             Controls.Add(label1);
             Controls.Add(dgvMainForm);
             Controls.Add(GoToAdminPanelBtn);
@@ -142,5 +153,6 @@
         private Button GoToAdminPanelBtn;
         private DataGridView dgvMainForm;
         private Label label1;
+        private Label labelForUserSNP;
     }
 }

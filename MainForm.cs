@@ -32,6 +32,8 @@ namespace bicycleRent
             this.TopMost = true;
             this.WindowState = FormWindowState.Maximized;
             //this.FormBorderStyle = FormBorderStyle.None;
+
+            labelForUserSNP.Text = $"Удачной смены, {_User.Name}!";
         }
 
         private void GoToAddRentBtn_Click(object sender, EventArgs e)

@@ -41,13 +41,10 @@ C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\n
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.genruntimeconfig.cache
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\ref\bicycleRent.dll
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Deposit.DepositAddForm.resources
-C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Deposit.DepositListForm.resources
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Filial.FilialAddForm.resources
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Filial.FilialListForm.resources
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.InventoryType.InventoryTypeAddForm.resources
-C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.InventoryType.InventoryTypeListForm.resources
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.User.UserAddForm.resources
-C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.User.UserListForm.resources
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Admin.AdminForm.resources
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\bin\Debug\net8.0-windows\bicycleRent.exe
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\bin\Debug\net8.0-windows\bicycleRent.deps.json
@@ -96,3 +93,4 @@ C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-w
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.pdb
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.genruntimeconfig.cache
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\ref\bicycleRent.dll
+C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Login.LoginForm.resources

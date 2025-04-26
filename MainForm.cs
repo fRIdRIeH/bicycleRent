@@ -3,6 +3,7 @@ using bicycleRent.Forms.Client;
 using bicycleRent.Forms.Inventory;
 using bicycleRent.Forms.Rent;
 using bicycleRent.Repositories;
+using bicycleRent.Models;
 using MySql.Data.MySqlClient;
 
 namespace bicycleRent
@@ -17,13 +18,13 @@ namespace bicycleRent
         //RentRepository _rentRepository;
         //UserRepository _userRepository;
 
-
-        //менаундхлн оепедюрэ йнммейьм хг PROGRAM.CS б щрс тнплс, врнаш пеош сфе нрячдю нропюбкърэ б тнплш
         private readonly MySqlConnection _Connection;
-        public MainForm(MySqlConnection _connection)
+        private readonly User _User;
+        public MainForm(MySqlConnection _connection, User foundedUser)
         {
             InitializeComponent();
             _Connection = _connection;
+            _User = foundedUser;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -31,6 +32,8 @@ namespace bicycleRent
             this.TopMost = true;
             this.WindowState = FormWindowState.Maximized;
             //this.FormBorderStyle = FormBorderStyle.None;
+
+            labelForUserSNP.Text = $"сДЮВМНИ ЯЛЕМШ, {_User.Name}!";
         }
 
         private void GoToAddRentBtn_Click(object sender, EventArgs e)

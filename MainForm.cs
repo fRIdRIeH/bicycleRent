@@ -5,6 +5,7 @@ using bicycleRent.Forms.Rent;
 using bicycleRent.Repositories;
 using bicycleRent.Models;
 using MySql.Data.MySqlClient;
+using System.Data.Common;
 
 namespace bicycleRent
 {
@@ -15,16 +16,17 @@ namespace bicycleRent
         //FilialRepository _filialRepository;
         //InventoryRepository _inventoryRepository;
         //InventoryTypeRepository _inventoryTypeRepository;
-        //RentRepository _rentRepository;
+        //private readonly RentRepository _rentRepository;
         //UserRepository _userRepository;
 
-        private readonly MySqlConnection _Connection;
+        private readonly MySqlConnection _connection;
         private readonly User _User;
-        public MainForm(MySqlConnection _connection, User foundedUser)
+        public MainForm(MySqlConnection connection, User foundedUser)
         {
             InitializeComponent();
-            _Connection = _connection;
+            _connection = connection;
             _User = foundedUser;
+            LoadData();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -45,20 +47,20 @@ namespace bicycleRent
 
         private void GoToRentsListBtn_Click(object sender, EventArgs e)
         {
-            RentRepository _rentRepository = new(_Connection);
+            RentRepository _rentRepository = new(_connection);
             RentListForm rentListForm = new RentListForm(_rentRepository);
             rentListForm.ShowDialog();
         }
 
         private void GoToClientsListBtn_Click(object sender, EventArgs e)
         {
-            ClientRepository _clientRepository = new(_Connection);
+            ClientRepository _clientRepository = new(_connection);
             ClientListForm clientListForm = new ClientListForm(_clientRepository);
             clientListForm.ShowDialog();
         }
         private void GoToInventoryListBtn_Click(object sender, EventArgs e)
         {
-            InventoryRepository _inventoryRepository = new(_Connection);
+            InventoryRepository _inventoryRepository = new(_connection);
             InventoryListForm inventoryListForm = new InventoryListForm(_inventoryRepository);
             inventoryListForm.ShowDialog();
         }
@@ -67,6 +69,74 @@ namespace bicycleRent
         {
             AdminForm adminForm = new AdminForm();
             adminForm.ShowDialog();
+        }
+
+        private void AddRentCard(Rent rent)
+        {
+            Panel rentPanel = new Panel()
+            {
+                BorderStyle = BorderStyle.FixedSingle,
+                Size = new Size(1200, 100),
+                Margin = new Padding(10),
+                BackColor = Color.Red,
+            };
+
+            //Для id аренды
+            Label lblRentId = new Label() 
+            {
+            
+            };
+            //Для id филиала
+            Label lblFiflialId = new Label() 
+            {
+            
+            };
+            //Для фамилии клиента
+            Label lblClientId = new Label()
+            {
+
+            };
+            //Для инвентаря
+            Label lblInventoryId = new Label()
+            {
+
+            };
+            //Для времени начала
+            Label lblTimeStart = new Label()
+            {
+
+            };
+            //Для времени конца
+            Label lblTimeEnd = new Label()
+            {
+
+            };
+            //Для суммы за аренду
+            Label lblTotal = new Label()
+            {
+
+            };
+            //Для фамилии И.О. сотрудника
+            Label lblUserId = new Label()
+            {
+
+            };
+            //Для залога
+            Label lblDepositId = new Label() 
+            {
+            
+            };
+        }
+
+        private void LoadData()
+        {
+            RentRepository _rentRepository = new RentRepository(_connection);
+            var rentsData = _rentRepository.GetAll();
+
+            foreach(var oneRent in rentsData)
+            {
+                AddRentCard(oneRent);
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using bicycleRent.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using bicycleRent.Repositories;
 
 namespace bicycleRent.Forms.Login
 {

@@ -23,7 +23,26 @@ namespace bicycleRent.Repositories
         public List<Rent> GetAll()
         {
             List<Rent> rents = new List<Rent>();
-            string query = "SELECT * FROM Rent";
+            string query = "SELECT " +
+                "Rent.Rent_Id, " +
+                "Filial.Filial_Name, " +
+                "Client.Client_Surname, " +
+                "Inventory.Inventory_Name, " +
+                "Rent.Time_Start, " +
+                "Rent.Time_End, " +
+                "Rent.Total, " +
+                "Rent.Status, " +
+                "Users.User_Surname, " +
+                "Deposit.Deposit_Name " +
+                "FROM Rent " +
+                "INNER JOIN Filial ON Rent.Filial_Id = Filial.Filial_Id " +
+                "INNER JOIN Client ON Rent.Client_Id = Client.Client_Id " +
+                "INNER JOIN Inventory ON Rent.Inventory_Id = Inventory.Inventory_Id " +
+                "INNER JOIN Users ON Rent.User_Id = Users.User_Id " +
+                "INNER JOIN Deposit ON Rent.Deposit_Id = Deposit.Deposit_Id " +
+                "WHERE (DATE(Rent.Time_Start) = CURDATE() OR DATE(Rent.Time_End) = CURDATE())" +
+                "ORDER BY Rent.Rent_Id DESC;";
+                
 
             using (MySqlCommand cmd = new MySqlCommand(query, _connection))
             {
@@ -34,14 +53,15 @@ namespace bicycleRent.Repositories
                         Rent rent = new Rent() 
                         {
                             RentId = reader.GetInt32("Rent_Id"),
-                            FilialId = reader.GetInt32("Filial_Id"),
-                            ClientId = reader.GetInt32("Client_Id"),
-                            InventoryId = reader.GetInt32("Inventory_Id"),
+                            FilialName = reader.GetString("Filial_Name"),
+                            ClientSurname = reader.GetString("Client_Surname"),
+                            InventoryName = reader.GetString("Inventory_Name"),
                             TimeStart = reader.GetDateTime("Time_Start"),
                             TimeEnd = reader.GetDateTime("Time_End"),
                             Total = reader.GetInt32("Total"),
-                            UserId = reader.GetInt32("User_Id"),
-                            DepositId = reader.GetInt32("Deposit_Id"),
+                            Status = reader.GetString("Status"),
+                            UserSurname = reader.GetString("User_Surname"),
+                            DepositName = reader.GetString("Deposit_Name"),
                         };
                         rents.Add(rent);
                     }

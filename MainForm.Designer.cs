@@ -33,10 +33,10 @@
             GoToAddRentBtn = new Button();
             GoToInventoryListBtn = new Button();
             GoToAdminPanelBtn = new Button();
-            dgvMainForm = new DataGridView();
             label1 = new Label();
             labelForUserSNP = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvMainForm).BeginInit();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            btnRefresh = new Button();
             SuspendLayout();
             // 
             // GoToRentsListBtn
@@ -94,14 +94,6 @@
             GoToAdminPanelBtn.UseVisualStyleBackColor = true;
             GoToAdminPanelBtn.Click += GoToAdminPanelBtn_Click;
             // 
-            // dgvMainForm
-            // 
-            dgvMainForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMainForm.Location = new Point(296, 116);
-            dgvMainForm.Name = "dgvMainForm";
-            dgvMainForm.Size = new Size(1315, 901);
-            dgvMainForm.TabIndex = 7;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -120,14 +112,32 @@
             labelForUserSNP.TabIndex = 9;
             labelForUserSNP.Text = "label2";
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(296, 116);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(1340, 913);
+            flowLayoutPanel1.TabIndex = 10;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(1475, 71);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(161, 39);
+            btnRefresh.TabIndex = 11;
+            btnRefresh.Text = "Обновить";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(16F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(btnRefresh);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(labelForUserSNP);
             Controls.Add(label1);
-            Controls.Add(dgvMainForm);
             Controls.Add(GoToAdminPanelBtn);
             Controls.Add(GoToInventoryListBtn);
             Controls.Add(GoToAddRentBtn);
@@ -139,7 +149,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Учет аренд предприятия";
             Load += MainForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvMainForm).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -151,8 +160,9 @@
         private Button GoToAddRentBtn;
         private Button GoToInventoryListBtn;
         private Button GoToAdminPanelBtn;
-        private DataGridView dgvMainForm;
         private Label label1;
         private Label labelForUserSNP;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnRefresh;
     }
 }

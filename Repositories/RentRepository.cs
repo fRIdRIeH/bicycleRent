@@ -32,13 +32,13 @@ namespace bicycleRent.Repositories
                 "Rent.Time_End, " +
                 "Rent.Total, " +
                 "Rent.Status, " +
-                "Users.User_Surname, " +
+                "User.User_Surname, " +
                 "Deposit.Deposit_Name " +
                 "FROM Rent " +
                 "INNER JOIN Filial ON Rent.Filial_Id = Filial.Filial_Id " +
                 "INNER JOIN Client ON Rent.Client_Id = Client.Client_Id " +
                 "INNER JOIN Inventory ON Rent.Inventory_Id = Inventory.Inventory_Id " +
-                "INNER JOIN Users ON Rent.User_Id = Users.User_Id " +
+                "INNER JOIN User ON Rent.User_Id = User.User_Id " +
                 "INNER JOIN Deposit ON Rent.Deposit_Id = Deposit.Deposit_Id " +
                 "WHERE (DATE(Rent.Time_Start) = CURDATE() OR DATE(Rent.Time_End) = CURDATE())" +
                 "ORDER BY Rent.Rent_Id DESC;";

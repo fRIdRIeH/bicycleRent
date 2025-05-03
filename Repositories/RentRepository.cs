@@ -5,9 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using bicycleRent.Models;
 using Google.Protobuf.WellKnownTypes;
-using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
 
 namespace bicycleRent.Repositories
 {
@@ -27,20 +25,20 @@ namespace bicycleRent.Repositories
                 "Rent.Rent_Id, " +
                 "Filial.Filial_Name, " +
                 "Client.Client_Surname, " +
-                "Inventory.Inventory_Name, " +
+                "Client.Client_Telephone, " +
                 "Rent.Time_Start, " +
                 "Rent.Time_End, " +
                 "Rent.Total, " +
                 "Rent.Status, " +
-                "Users.User_Surname, " +
-                "Deposit.Deposit_Name " +
+                "User.User_Surname, " +
+                "Deposit.Deposit_Name, " +
+                "Rent.Created_At " +
                 "FROM Rent " +
                 "INNER JOIN Filial ON Rent.Filial_Id = Filial.Filial_Id " +
                 "INNER JOIN Client ON Rent.Client_Id = Client.Client_Id " +
-                "INNER JOIN Inventory ON Rent.Inventory_Id = Inventory.Inventory_Id " +
-                "INNER JOIN Users ON Rent.User_Id = Users.User_Id " +
+                "INNER JOIN User ON Rent.User_Id = User.User_Id " +
                 "INNER JOIN Deposit ON Rent.Deposit_Id = Deposit.Deposit_Id " +
-                "WHERE (DATE(Rent.Time_Start) = CURDATE() OR DATE(Rent.Time_End) = CURDATE())" +
+                "WHERE Rent.Created_At > NOW() - INTERVAL 7 DAY " +
                 "ORDER BY Rent.Rent_Id DESC;";
                 
 
@@ -55,13 +53,14 @@ namespace bicycleRent.Repositories
                             RentId = reader.GetInt32("Rent_Id"),
                             FilialName = reader.GetString("Filial_Name"),
                             ClientSurname = reader.GetString("Client_Surname"),
-                            InventoryName = reader.GetString("Inventory_Name"),
+                            ClientTelehone = reader.GetString("Client_Telephone"),
                             TimeStart = reader.GetDateTime("Time_Start"),
                             TimeEnd = reader.GetDateTime("Time_End"),
                             Total = reader.GetInt32("Total"),
                             Status = reader.GetString("Status"),
                             UserSurname = reader.GetString("User_Surname"),
                             DepositName = reader.GetString("Deposit_Name"),
+                            CreatedAt = reader.GetDateTime("Created_At"),
                         };
                         rents.Add(rent);
                     }

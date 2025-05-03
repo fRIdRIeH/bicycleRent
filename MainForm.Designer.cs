@@ -41,10 +41,11 @@
             // 
             // GoToRentsListBtn
             // 
+            GoToRentsListBtn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             GoToRentsListBtn.Location = new Point(17, 116);
             GoToRentsListBtn.Margin = new Padding(4);
             GoToRentsListBtn.Name = "GoToRentsListBtn";
-            GoToRentsListBtn.Size = new Size(250, 90);
+            GoToRentsListBtn.Size = new Size(250, 40);
             GoToRentsListBtn.TabIndex = 0;
             GoToRentsListBtn.Text = "Список всех аренд";
             GoToRentsListBtn.UseVisualStyleBackColor = true;
@@ -52,10 +53,11 @@
             // 
             // GoToClientsListBtn
             // 
-            GoToClientsListBtn.Location = new Point(17, 214);
+            GoToClientsListBtn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            GoToClientsListBtn.Location = new Point(17, 164);
             GoToClientsListBtn.Margin = new Padding(4);
             GoToClientsListBtn.Name = "GoToClientsListBtn";
-            GoToClientsListBtn.Size = new Size(250, 90);
+            GoToClientsListBtn.Size = new Size(250, 40);
             GoToClientsListBtn.TabIndex = 3;
             GoToClientsListBtn.Text = "Список всех клиентов";
             GoToClientsListBtn.UseVisualStyleBackColor = true;
@@ -75,10 +77,11 @@
             // 
             // GoToInventoryListBtn
             // 
-            GoToInventoryListBtn.Location = new Point(17, 312);
+            GoToInventoryListBtn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            GoToInventoryListBtn.Location = new Point(17, 212);
             GoToInventoryListBtn.Margin = new Padding(4);
             GoToInventoryListBtn.Name = "GoToInventoryListBtn";
-            GoToInventoryListBtn.Size = new Size(250, 90);
+            GoToInventoryListBtn.Size = new Size(250, 40);
             GoToInventoryListBtn.TabIndex = 5;
             GoToInventoryListBtn.Text = "Список всего инвентаря";
             GoToInventoryListBtn.UseVisualStyleBackColor = true;

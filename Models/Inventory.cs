@@ -10,7 +10,8 @@ namespace bicycleRent.Models
     {
         public int InventoryId { get; set; }
         public string InventoryName { get; set; }
-        public int InventoryType_Id { get; set; }
+        public int InventoryTypeId { get; set; }
+        public string InventoryTypeName { get; set; }
         public int InventoryNumber { get; set; }
         public int InventoryRentsCount { get; set; }
         public decimal InventoryTotal { get; set; }
@@ -21,10 +22,18 @@ namespace bicycleRent.Models
         {
             InventoryId = inventoryId;
             InventoryName = inventoryName;
-            InventoryType_Id = inventoryType_Id;
+            InventoryTypeId = inventoryType_Id;
             InventoryNumber = inventoryNumber;
             InventoryRentsCount = inventoryRentsCount;
             InventoryTotal = inventoryTotal;
+        }
+
+        //Для отображения в списках аренд
+        public Inventory(string inventoryName, string inventoryTypeName, int inventoryNumber)
+        {
+            InventoryName = inventoryName;
+            InventoryTypeName = inventoryTypeName;
+            InventoryNumber = inventoryNumber;
         }
     }
 }

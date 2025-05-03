@@ -32,10 +32,44 @@ namespace bicycleRent.Repositories
                         {
                             InventoryId = reader.GetInt32("Inventory_Id"),
                             InventoryName = reader.GetString("Inventory_Name"),
-                            InventoryType_Id = reader.GetInt32("Inventory_Type_Id"),
+                            InventoryTypeId = reader.GetInt32("Inventory_Type_Id"),
                             InventoryNumber = reader.GetInt32("Inventory_Number"),
                             InventoryRentsCount = reader.GetInt32("Inventory_Rents_Count"),
                             InventoryTotal = reader.GetDecimal("Inventory_Total")
+                        };
+                        list.Add(inventory);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Inventory> GetInventoryForRent(int RentId) 
+        {
+            List<Inventory> list = new List<Inventory>();
+
+            string query = "SELECT " +
+                "i.Inventory_Name," +
+                "it.Inventory_Type_Name," +
+                "i.Inventory_Number " +
+                "FROM Inventory i " +
+                "JOIN Rent_has_Inventory rhi ON i.Inventory_Id = rhi.Inventory_Inventory_Id " +
+                "JOIN Inventory_Type it ON i.Inventory_Type_Id = it.Inventory_Type_Id " +
+                "WHERE rhi.Rent_Rent_Id = @RentId;";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection)) 
+            {
+                cmd.Parameters.AddWithValue("@RentId", RentId);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        Inventory inventory = new Inventory()
+                        {
+                            InventoryName = reader.GetString("Inventory_Name"),
+                            InventoryTypeName = reader.GetString("Inventory_Type_Name"),
+                            InventoryNumber = reader.GetInt32("Inventory_Number")
                         };
                         list.Add(inventory);
                     }

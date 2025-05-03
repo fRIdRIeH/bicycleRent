@@ -36,7 +36,7 @@ namespace bicycleRent.Forms.Login
             if (AuthenticateUser(login, password))
             {
                 //Уведомление об успешной авторизации
-                MessageBox.Show("Авторизация успешна!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Авторизация успешна!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 //Получение данных пользователя
                 Models.User user = GetUser(login, password);

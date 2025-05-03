@@ -89,6 +89,7 @@
             // 
             // dgvClients
             // 
+            dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClients.Location = new Point(12, 37);
             dgvClients.Name = "dgvClients";
@@ -97,6 +98,7 @@
             // 
             // dgvInventory
             // 
+            dgvInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInventory.Location = new Point(12, 238);
             dgvInventory.Name = "dgvInventory";

@@ -48,7 +48,7 @@ namespace bicycleRent
         private void GoToAddRentBtn_Click(object sender, EventArgs e)
         {
             RentRepository _rentRepository = new RentRepository(_connection);
-            RentAddForm rentAddForm = new RentAddForm(_rentRepository, _user);
+            RentAddForm rentAddForm = new RentAddForm(_rentRepository, _user, _connection);
             rentAddForm.ShowDialog();
         }
 
@@ -85,12 +85,12 @@ namespace bicycleRent
                 BorderStyle = BorderStyle.FixedSingle,
                 Size = new Size(1330, 120),
                 Margin = new Padding(10),
-                BackColor = Color.LightGray,
+                BackColor = Color.LightGray
             };
 
             if (rent.Status == "В процессе")
             {
-                rentPanel.BackColor = Color.Green;
+                rentPanel.BackColor = Color.LightGreen;
             }
             if (rent.Status == "Завершена")
             {
@@ -98,11 +98,11 @@ namespace bicycleRent
             }
             if (rent.Status == "Отменена")
             {
-                rentPanel.BackColor = Color.Yellow;
+                rentPanel.BackColor = Color.GreenYellow;
             }
             if (rent.Status == "В процессе" && rent.TimeEnd < DateTime.Now)
             {
-                rentPanel.BackColor = Color.Red;
+                rentPanel.BackColor = Color.DarkRed;
                 rent.Status = "Просрок!";
             }
 

@@ -7,6 +7,9 @@
     <Compile Update="Forms\Inventory\InventoryListForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Inventory\InventorySelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

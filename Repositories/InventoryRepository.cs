@@ -49,6 +49,7 @@ namespace bicycleRent.Repositories
             List<Inventory> list = new List<Inventory>();
 
             string query = "SELECT " +
+                "i.Inventory_Id, " +
                 "i.Inventory_Name," +
                 "it.Inventory_Type_Name," +
                 "i.Inventory_Number " +
@@ -67,6 +68,7 @@ namespace bicycleRent.Repositories
                     {
                         Inventory inventory = new Inventory()
                         {
+                            InventoryId = reader.GetInt32("Inventory_Id"),
                             InventoryName = reader.GetString("Inventory_Name"),
                             InventoryTypeName = reader.GetString("Inventory_Type_Name"),
                             InventoryNumber = reader.GetInt32("Inventory_Number")
@@ -76,6 +78,84 @@ namespace bicycleRent.Repositories
                 }
             }
             return list;
+        }
+
+        public List<Inventory> GetAllInventory()
+        {
+            List<Inventory> list = new List<Inventory>();
+
+            string query = "SELECT " +
+                "i.Inventory_Id, " +
+                "i.Inventory_Name, " +
+                "it.Inventory_Type_Name, " +
+                "i.Inventory_Number, " +
+                "i.Status, " +
+                "f.Filial_Name " +
+                "FROM Inventory i " +
+                "JOIN Inventory_Type it ON i.Inventory_Type_Id = it.Inventory_Type_Id " +
+                "JOIN Filial f ON i.Filial_Id = f.Filial_Id";
+
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection))
+            {
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Inventory inventory = new Inventory()
+                        {
+                            InventoryId = reader.GetInt32("Inventory_Id"),
+                            InventoryName = reader.GetString("Inventory_Name"),
+                            InventoryTypeName = reader.GetString("Inventory_Type_Name"),
+                            InventoryNumber = reader.GetInt32("Inventory_Number"),
+                            Status = reader.GetString("Status"),
+                            FilialName = reader.GetString("Filial_Name")
+                        };
+                        list.Add(inventory);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public Inventory? GetInventory(int id)
+        {
+            string query = "SELECT " +
+                "i.Inventory_Id, " +
+                "i.Inventory_Name, " +
+                "it.Inventory_Type_Name, " +
+                "i.Inventory_Number, " +
+                "i.Status, " +
+                "f.Filial_Name " +
+                "FROM Inventory i " +
+                "JOIN Inventory_Type it ON i.Inventory_Type_Id = it.Inventory_Type_Id " +
+                "JOIN Filial f ON i.Filial_Id = f.Filial_Id " +
+                "WHERE i.Inventory_Id = @InventoryId;";
+
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection))
+            {
+                cmd.Parameters.AddWithValue("@InventoryId", id);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if(reader.Read())
+                    {
+                        Inventory inventory = new Inventory()
+                        {
+                            InventoryId = reader.GetInt32("Inventory_Id"),
+                            InventoryName = reader.GetString("Inventory_Name"),
+                            InventoryTypeName = reader.GetString("Inventory_Type_Name"),
+                            InventoryNumber = reader.GetInt32("Inventory_Number"),
+                            Status = reader.GetString("Status"),
+                            FilialName = reader.GetString("Filial_Name")
+                        };
+                        return inventory;
+                    }
+                }
+            }
+            return null;
         }
     }
 }

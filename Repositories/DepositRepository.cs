@@ -15,5 +15,28 @@ namespace bicycleRent.Repositories
         {
             _Connection = _connection;
         }
+
+        public List<Models.Deposit> GetAll() 
+        {
+            List<Models.Deposit> deposits = new List<Models.Deposit>();
+            string query = "SELECT * FROM Deposit";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection)) 
+            {
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Models.Deposit deposit = new Models.Deposit() 
+                        {
+                            Id = reader.GetInt32("Deposit_Id"),
+                            Name = reader.GetString("Deposit_Name")
+                        };
+                        deposits.Add(deposit);
+                    }
+                }
+            }
+            return deposits;
+        }
     }
 }

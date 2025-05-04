@@ -92,8 +92,6 @@ namespace bicycleRent
                 Tag = rent.RentId,
             };
 
-            rentPanel.Click += new EventHandler(rentPanel_Click);
-
             if (rent.Status == "В процессе")
             {
                 rentPanel.BackColor = Color.LightGreen;
@@ -398,17 +396,6 @@ namespace bicycleRent
         {
             flowLayoutPanel1.Controls.Clear();
             LoadData();
-        }
-
-        void rentPanel_Click(Object sender, EventArgs e) 
-        {
-            Panel clickedPanel = sender as Panel;
-
-            if (clickedPanel != null && clickedPanel.Tag is int id) 
-            {
-                MessageBox.Show($"Нажата панель аренды с id = {id}");
-                clickedPanel.BackColor = Color.Aquamarine;
-            }
         }
     }
 }

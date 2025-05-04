@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace bicycleRent.Models
 {
-    internal class Deposit
+    public class Deposit
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public Deposit() { }
+
+        public Deposit(int id, string name) 
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

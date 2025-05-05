@@ -47,6 +47,7 @@
             btnChooseInventory = new Button();
             cbClients = new ComboBox();
             btnCount = new Button();
+            btnCreateRent = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -217,19 +218,30 @@
             // 
             // btnCount
             // 
-            btnCount.Location = new Point(1354, 708);
+            btnCount.Location = new Point(1354, 731);
             btnCount.Name = "btnCount";
             btnCount.Size = new Size(218, 56);
             btnCount.TabIndex = 17;
-            btnCount.Text = "button1";
+            btnCount.Text = "Подсчет";
             btnCount.UseVisualStyleBackColor = true;
             btnCount.Click += btnCount_Click;
+            // 
+            // btnCreateRent
+            // 
+            btnCreateRent.Location = new Point(1354, 793);
+            btnCreateRent.Name = "btnCreateRent";
+            btnCreateRent.Size = new Size(218, 56);
+            btnCreateRent.TabIndex = 18;
+            btnCreateRent.Text = "Создать аренду";
+            btnCreateRent.UseVisualStyleBackColor = true;
+            btnCreateRent.Click += btnCreateRent_Click;
             // 
             // RentAddForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(btnCreateRent);
             Controls.Add(btnCount);
             Controls.Add(cbClients);
             Controls.Add(btnChooseInventory);
@@ -277,5 +289,6 @@
         private Label lblForPrice;
         private Label lblForTimePeriod;
         private Button btnCount;
+        private Button btnCreateRent;
     }
 }

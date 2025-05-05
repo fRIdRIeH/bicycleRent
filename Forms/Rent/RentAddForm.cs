@@ -11,8 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using bicycleRent.Forms.Inventory;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using MySqlX.XDevAPI;
+using Google.Protobuf.WellKnownTypes;
 
 namespace bicycleRent.Forms.Rent
 {
@@ -21,6 +20,12 @@ namespace bicycleRent.Forms.Rent
         private readonly RentRepository _rentRepository;
         private readonly Models.User _user;
         private readonly MySqlConnection _connection;
+        Models.Client selectedClient;
+        List<int> inventoryIds = new List<int>();
+        TimeSpan duration;
+        decimal total = 0;
+        int clientId = 0;
+
         public RentAddForm(RentRepository rentRepository, Models.User user, MySqlConnection connection)
         {
             InitializeComponent();
@@ -28,6 +33,8 @@ namespace bicycleRent.Forms.Rent
             this._rentRepository = rentRepository;
             this._user = user;
             this._connection = connection;
+
+            btnCreateRent.Enabled = false;
 
             LoadData();
         }
@@ -130,6 +137,27 @@ namespace bicycleRent.Forms.Rent
             cbPrice.DisplayMember = "TimeName";    // Показываемое имя (например, "Свыше часа")
             cbPrice.ValueMember = "Price";         // Значение, которое будем использовать в расчётах
 
+            //Кнопка на удаление инвентаря из списка выбранных
+            Button btnRemove = new Button()
+            {
+                Text = "❌",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                ForeColor = Color.DarkRed,
+                Cursor = Cursors.Hand,
+                Size = new Size(30, 30),
+                Location = new Point(1180, 10), 
+            };
+
+            // Подписка на событие нажатия
+            btnRemove.Click += (sender, e) =>
+            {
+                flpSelectedInventory.Controls.Remove(inventoryPanel);
+                // Дополнительно: если у тебя есть список с selectedInventoryIds — удаляй оттуда
+                inventoryIds.Remove(inventory.InventoryId);
+
+                Count();
+            };
+
             // Добавляем ярлыки в панель
             inventoryPanel.Controls.Add(lblInventoryName);
             inventoryPanel.Controls.Add(lblFilial);
@@ -140,6 +168,8 @@ namespace bicycleRent.Forms.Rent
             // Добавляем ярлык и данные для выбора тарифа
             inventoryPanel.Controls.Add(lblPrice);
             inventoryPanel.Controls.Add(cbPrice);
+            // Добавляем кнопку в панель
+            inventoryPanel.Controls.Add(btnRemove);
 
             flpSelectedInventory.Controls.Add(inventoryPanel);
         }
@@ -183,6 +213,7 @@ namespace bicycleRent.Forms.Rent
         private void ShowSelectedInventories(List<int> selectedIds)
         {
             InventoryRepository _inventoryRepository = new InventoryRepository(_connection);
+            inventoryIds = selectedIds;
             foreach (int id in selectedIds)
             {
                 var inv = _inventoryRepository.GetInventory(id);
@@ -194,11 +225,19 @@ namespace bicycleRent.Forms.Rent
         private void cbClients_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show($"{cbClients.SelectedValue}");
+
+            ClientRepository _clientRepository = new ClientRepository(_connection);
+
+            selectedClient = cbClients.SelectedItem as Models.Client;
+
+            lblForClient.Text = $"{selectedClient.Surname} {selectedClient.Name[0]}. {selectedClient.Patronymic[0]}.";
+
+            clientId = selectedClient.Id;
         }
 
         private void btnCount_Click(object sender, EventArgs e)
         {
-            decimal total = 0;
+            total = 0;
             int totalMinutes = (int)(dtpEnd.Value - dtpStart.Value).TotalMinutes;
 
             //MessageBox.Show(totalMinutes.ToString());
@@ -215,9 +254,103 @@ namespace bicycleRent.Forms.Rent
                 }
             }
 
+            //Запись подсчитанной суммы за аренду
             lblForPrice.Text = $"{total} ₽";
 
-            lblForClient.Text = $"fsdfsdfsd";
+            //Считаем и записываем время
+            TimeSpan duration = dtpEnd.Value - dtpStart.Value;
+            lblForTimePeriod.Text = $"{(int)duration.TotalMinutes} минут";
+
+            btnCreateRent.Enabled = true;
+        }
+
+        public void Count()
+        {
+            total = 0;
+            int totalMinutes = (int)(dtpEnd.Value - dtpStart.Value).TotalMinutes;
+
+            //MessageBox.Show(totalMinutes.ToString());
+
+            foreach (Panel inventoryPanel in flpSelectedInventory.Controls)
+            {
+                var cbPrice = inventoryPanel.Controls.OfType<ComboBox>().FirstOrDefault(cb => cb.Name == "cbPrice");
+                if (cbPrice?.SelectedItem is InventoryPrice selectedPrice)
+                {
+                    if (selectedPrice.TimeName.ToLower().Contains("свыше часа"))
+                        total += selectedPrice.Price * totalMinutes;
+                    else
+                        total += selectedPrice.Price;
+                }
+            }
+
+            //Запись подсчитанной суммы за аренду
+            lblForPrice.Text = $"{total} ₽";
+
+            //Считаем и записываем время
+            duration = dtpEnd.Value - dtpStart.Value;
+            lblForTimePeriod.Text = $"{(int)duration.TotalMinutes} минут";
+
+        }
+
+        private void btnCreateRent_Click(object sender, EventArgs e)
+        {
+            string status = "";
+            if(dtpStart.Value > DateTime.Now)
+            {
+                status = "Забронирована";
+            }
+            if(dtpStart.Value <= DateTime.Now)
+            {
+                status = "В процессе";
+            }
+
+            FilialRepository _filialRepository = new FilialRepository(_connection);
+           
+
+            int filialId = _filialRepository.GetFilialFromInventory(inventoryIds[0]);
+
+            //Подсчет времени аренды в минутах
+            int totalMinutes = (int)(dtpEnd.Value - dtpStart.Value).TotalMinutes;
+
+            //Проверка правильности заполнения 
+            if (totalMinutes == 0) { MessageBox.Show("Введено некорректное время."); return; }
+            if (total <= 0) { MessageBox.Show("Указана некорректная сумма."); return; }
+            if (inventoryIds.Count == 0) { MessageBox.Show("Не выбран ни один инвентарь."); return; }
+            if (dtpEnd.Value == dtpStart.Value) { MessageBox.Show("Время начала и время конца аренды совпадают"); return; }
+            if (clientId == 0) { MessageBox.Show("Не выбран клиент."); return; }
+            if (filialId == 0) { MessageBox.Show("Филиал не выбран."); return; }
+            if (cbDeposit.SelectedValue == null) { MessageBox.Show("Залог не выбран."); return; }
+
+            try
+            {
+                Models.Rent rent = new Models.Rent()
+                {
+                    FilialId = filialId,
+                    ClientId = clientId,
+                    TimeStart = dtpStart.Value,
+                    TimeEnd = dtpEnd.Value,
+                    Total = total,
+                    Status = status,
+                    UserId = _user.Id,
+                    DepositId = (int)cbDeposit.SelectedValue,   
+                };
+
+                _rentRepository.Add(rent);
+                int rentId = _rentRepository.GetRentId(rent);
+
+                foreach (var inventory in inventoryIds)
+                {
+                    _rentRepository.AddRentHasInventory(rentId, inventory);
+                }
+
+                MessageBox.Show("Аренда добавлена!");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+                return;
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace bicycleRent.Models
         public string ClientTelehone { get; set; }
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }
-        public int Total { get; set; }
+        public decimal Total { get; set; }
         public string Status { get; set; }
         public int UserId { get; set; }
         public string UserSurname { get; set; }

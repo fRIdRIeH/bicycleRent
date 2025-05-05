@@ -15,5 +15,24 @@ namespace bicycleRent.Repositories
         {
             _Connection = _connection;
         }
+
+        public int GetFilialFromInventory(int inventoryId)
+        {
+            string query = "SELECT Filial_Id FROM Inventory WHERE Inventory.Inventory_Id = @inventoryId";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection)) 
+            {
+                cmd.Parameters.AddWithValue("@inventoryId", inventoryId);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt32(0);
+                    }
+                }
+            }
+            return 0;
+        }
     }
 }

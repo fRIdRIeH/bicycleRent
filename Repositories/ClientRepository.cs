@@ -46,6 +46,32 @@ namespace bicycleRent.Repositories
             return null;
         }
 
+        public Client? Get(int id)
+        {
+            string query = "SELECT Client_Id, Client_Surname, Client_Name, Client_Patronymic FROM Client WHERE Client_Id = @Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Client client = new Client()
+                        {
+                            Id = reader.GetInt32("Client_Id"),
+                            Surname = reader.GetString("Client_Surname"),
+                            Name = reader.GetString("Client_Name"),
+                            Patronymic = reader.GetString("Client_Patronymic")
+                        };
+                        return client;
+                    }
+                }
+            }
+            return null;
+        }
+
         public List<Client> GetAll()
         {
             List<Client> clients = new List<Client>();

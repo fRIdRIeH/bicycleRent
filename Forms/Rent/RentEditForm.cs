@@ -1,7 +1,4 @@
-﻿using bicycleRent.Repositories;
-using MySql.Data.MySqlClient;
-using bicycleRent.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using bicycleRent.Forms.Inventory;
-using Google.Protobuf.WellKnownTypes;
+using bicycleRent.Repositories;
+using MySql.Data.MySqlClient;
 
 namespace bicycleRent.Forms.Rent
 {
-    public partial class RentAddForm : Form
+    public partial class RentEditForm : Form
     {
         private readonly RentRepository _rentRepository;
         private readonly Models.User _user;
@@ -27,8 +25,10 @@ namespace bicycleRent.Forms.Rent
         int clientId = 0;
         int _idFromMainForm;
         string _key;
+        private List<int> _selectedInventoryIds = new();
+        private Dictionary<int, int> _selectedPrices = new(); // key = InventoryId, value = InventoryPriceId
 
-        public RentAddForm(RentRepository rentRepository, Models.User user, MySqlConnection connection, int idFormMain, string key)
+        public RentEditForm(RentRepository rentRepository, Models.User user, MySqlConnection connection, int idFormMain, string key)
         {
             InitializeComponent();
             this.TopMost = true;
@@ -50,7 +50,7 @@ namespace bicycleRent.Forms.Rent
             dtpEnd.CustomFormat = "dd.MM.yyyy HH:mm:ss";
         }
 
-        private void AddInventoryCard(Models.Inventory inventory)
+        private void AddInventoryCard(Models.Inventory inventory, int selectedPriceId)
         {
             Panel inventoryPanel = new Panel()
             {
@@ -141,6 +141,16 @@ namespace bicycleRent.Forms.Rent
             cbPrice.DisplayMember = "TimeName";         // Показываемое имя (например, "Свыше часа")
             cbPrice.ValueMember = "InventoryPriceId";   // Id, по которому мы будем тянуть цену для расчета
 
+            //foreach (var price in prices)
+            //    MessageBox.Show($"InventoryPriceId: {price.InventoryPriceId} — {price.TimeName}");
+
+            //оно должно подставлять выбранный ранее тариф, но оно этого не делает
+            cbPrice.SelectedValue = selectedPriceId;
+
+            //bool found = prices.Any(p => p.InventoryPriceId == selectedPriceId);
+            //MessageBox.Show($"Найдено: {found}");
+
+
             //Кнопка на удаление инвентаря из списка выбранных
             Button btnRemove = new Button()
             {
@@ -149,7 +159,7 @@ namespace bicycleRent.Forms.Rent
                 ForeColor = Color.DarkRed,
                 Cursor = Cursors.Hand,
                 Size = new Size(30, 30),
-                Location = new Point(1180, 10), 
+                Location = new Point(1180, 10),
             };
 
             // Подписка на событие нажатия
@@ -204,13 +214,14 @@ namespace bicycleRent.Forms.Rent
             cbDeposit.ValueMember = "Id";
 
             //Заполнение ячеек на форме из аренды
-            if(_key == "editRent")
+            if (_key == "editRent")
             {
                 //Заполнение списка инвентарей
                 Models.Rent rent = _rentRepository.Get(_idFromMainForm);
 
                 InventoryRepository _inventoryRepository = new InventoryRepository(_connection);
                 var inventoryList = _inventoryRepository.GetInventoryIdsForRent(rent.RentId);
+                _selectedPrices = _rentRepository.GetSelectedPricesByRentId(rent.RentId);
 
                 ShowSelectedInventories(inventoryList);
 
@@ -222,6 +233,7 @@ namespace bicycleRent.Forms.Rent
                 //Заполнение времени
                 dtpStart.Value = rent.TimeStart;
                 dtpEnd.Value = rent.TimeEnd;
+
 
                 //Подсчеты
                 Count();
@@ -242,11 +254,29 @@ namespace bicycleRent.Forms.Rent
         {
             InventoryRepository _inventoryRepository = new InventoryRepository(_connection);
             inventoryIds = selectedIds;
+
+            //foreach (int id in selectedIds)
+            //{
+            //    var inv = _inventoryRepository.GetInventory(id);
+
+            //    AddInventoryCard(inv);
+            //}
+
             foreach (int id in selectedIds)
             {
-                var inv = _inventoryRepository.GetInventory(id);
+                if (!_selectedInventoryIds.Contains(id))
+                    _selectedInventoryIds.Add(id); // добавляем только новые
 
-                AddInventoryCard(inv);
+                var inv = _inventoryRepository.GetInventory(id);
+                if (_selectedPrices.TryGetValue(inv.InventoryId, out int selectedPriceId))
+                {
+                    //MessageBox.Show($"{inv.InventoryId} = {selectedPriceId}");
+                    AddInventoryCard(inv, selectedPriceId);
+                }
+                else
+                {
+                    AddInventoryCard(inv, 0); // для новых
+                }
             }
         }
 
@@ -338,17 +368,17 @@ namespace bicycleRent.Forms.Rent
         private void btnCreateRent_Click(object sender, EventArgs e)
         {
             string status = "";
-            if(dtpStart.Value > DateTime.Now)
+            if (dtpStart.Value > DateTime.Now)
             {
                 status = "Забронирована";
             }
-            if(dtpStart.Value <= DateTime.Now)
+            if (dtpStart.Value <= DateTime.Now)
             {
                 status = "В процессе";
             }
 
             FilialRepository _filialRepository = new FilialRepository(_connection);
-           
+
 
             int filialId = _filialRepository.GetFilialFromInventory(inventoryIds[0]);
 
@@ -375,7 +405,7 @@ namespace bicycleRent.Forms.Rent
                     Total = total,
                     Status = status,
                     UserId = _user.Id,
-                    DepositId = (int)cbDeposit.SelectedValue,   
+                    DepositId = (int)cbDeposit.SelectedValue,
                 };
 
                 _rentRepository.Add(rent);

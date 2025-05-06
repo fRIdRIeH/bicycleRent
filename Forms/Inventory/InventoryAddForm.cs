@@ -17,5 +17,11 @@ namespace bicycleRent.Forms.Inventory
             InitializeComponent();
             this.TopMost = true;
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            //СУММАРНАЯ ДЛИНА NAME + TYPE НЕ ДОЛЖНА БЫТЬ больше 35!
+
+        }
     }
 }

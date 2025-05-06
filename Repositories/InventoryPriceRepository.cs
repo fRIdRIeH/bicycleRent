@@ -50,5 +50,38 @@ namespace bicycleRent.Repositories
             }
             return list;
         }
+
+        public InventoryPrice? Get(int inventoryPriceId) 
+        {
+            string query = "SELECT " +
+            "ip.Inventory_Price_Id, " +
+            "ip.Inventory_Id, " +
+            "t.Time_Label, " +
+            "p.Amount " +
+            "FROM Inventory_Price ip " +
+            "JOIN Time t ON ip.Time_Id = t.Time_Id " +
+            "JOIN Price p ON ip.Price_Id = p.Price_Id " +
+            "WHERE ip.Inventory_Price_Id = @InventoryPriceId;";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@InventoryPriceId", inventoryPriceId);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Models.InventoryPrice inventoryPrice = new Models.InventoryPrice()
+                        {
+                            InventoryPriceId = reader.GetInt32("Inventory_Price_Id"),
+                            Price = reader.GetDecimal("Amount"),
+                            TimeName = reader.GetString("Time_Label")
+                        };
+                        return inventoryPrice;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

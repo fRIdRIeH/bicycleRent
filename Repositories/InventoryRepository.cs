@@ -80,6 +80,26 @@ namespace bicycleRent.Repositories
             return list;
         }
 
+        public List<int> GetInventoryIdsForRent(int RentId)
+        {
+            string query = "SELECT Inventory_Inventory_Id FROM Rent_Has_Inventory WHERE Rent_Rent_Id = @RentId";
+            List<int> list = new List<int>();
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection))
+            {
+                cmd.Parameters.AddWithValue("@RentId", RentId);
+
+                using(MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(reader.GetInt32("Inventory_Inventory_Id"));
+                    }
+                }
+                return list;
+            }
+        }
+
         public List<Inventory> GetAllInventory()
         {
             List<Inventory> list = new List<Inventory>();

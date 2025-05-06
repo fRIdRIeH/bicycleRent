@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using bicycleRent.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using bicycleRent.Repositories;
+using System.Xml.Linq;
 
 namespace bicycleRent.Forms.Login
 {
@@ -100,17 +101,19 @@ namespace bicycleRent.Forms.Login
                 {
                     if (reader.Read())
                     {
-                        Models.User worker = new Models.User(
-                            reader.GetInt32("User_Id"),
-                            reader.GetString("User_Surname"),
-                            reader.GetString("User_Name"),
-                            reader.GetString("User_Patronymic"),
-                            reader.GetString("User_Telephone"),
-                            reader.GetString("User_Address"),
-                            reader.GetString("User_Role"),
-                            reader.GetString("User_Login"),
-                            reader.GetString("User_Password")
-                        );
+                        Models.User worker = new Models.User()
+                        {
+                            Id = reader.GetInt32("User_Id"),
+                            Surname = reader.GetString("User_Surname"),
+                            Name = reader.GetString("User_Name"),
+                            Patronymic = reader.GetString("User_Patronymic"),
+                            Telephone = reader.GetString("User_Telephone"),
+                            Address = reader.GetString("User_Address"),
+                            Role = reader.GetString("User_Role"),
+                            Login = reader.GetString("User_Login"),
+                            Password = reader.GetString("User_Password")
+                        };
+
                         return worker; 
                     }
                     else

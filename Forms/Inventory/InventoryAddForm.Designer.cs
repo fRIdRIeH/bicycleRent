@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "InventoryAddForm";
+            btnAdd = new Button();
+            SuspendLayout();
+            // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(423, 285);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(75, 23);
+            btnAdd.TabIndex = 0;
+            btnAdd.Text = "button1";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // InventoryAddForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(btnAdd);
+            Name = "InventoryAddForm";
+            Text = "InventoryAddForm";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnAdd;
     }
 }

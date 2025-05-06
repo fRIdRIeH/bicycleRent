@@ -1,4 +1,4 @@
-using bicycleRent.Forms.Admin;
+п»їusing bicycleRent.Forms.Admin;
 using bicycleRent.Forms.Client;
 using bicycleRent.Forms.Inventory;
 using bicycleRent.Forms.Rent;
@@ -6,6 +6,7 @@ using bicycleRent.Repositories;
 using bicycleRent.Models;
 using MySql.Data.MySqlClient;
 using System.Data.Common;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace bicycleRent
 {
@@ -35,10 +36,10 @@ namespace bicycleRent
             //this.WindowState = FormWindowState.Maximized;
             //this.FormBorderStyle = FormBorderStyle.None;
 
-            labelForUserSNP.Text = $"Удачной смены, {_user.Name}! Сегодня {DateOnly.FromDateTime(DateTime.Now)}";
+            labelForUserSNP.Text = $"РЈРґР°С‡РЅРѕР№ СЃРјРµРЅС‹, {_user.Name}! РЎРµРіРѕРґРЅСЏ {DateOnly.FromDateTime(DateTime.Now)}";
 
-            //Проверка на роль админа, для отображения кнопки админ-панели
-            if(_user.Role != "Администратор")
+            //РџСЂРѕРІРµСЂРєР° РЅР° СЂРѕР»СЊ Р°РґРјРёРЅР°, РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєРЅРѕРїРєРё Р°РґРјРёРЅ-РїР°РЅРµР»Рё
+            if(_user.Role != "РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ")
             {
                 GoToAdminPanelBtn.Visible = false;
             }
@@ -48,7 +49,7 @@ namespace bicycleRent
         private void GoToAddRentBtn_Click(object sender, EventArgs e)
         {
             RentRepository _rentRepository = new RentRepository(_connection);
-            RentAddForm rentAddForm = new RentAddForm(_rentRepository, _user, _connection);
+            RentAddForm rentAddForm = new RentAddForm(_rentRepository, _user, _connection, 0, "addRent");
             rentAddForm.ShowDialog();
         }
 
@@ -80,7 +81,7 @@ namespace bicycleRent
 
         private void AddRentCard(Rent rent)
         {
-            //Обьявление переменной для длины панели rentPanel
+            //РћР±СЊСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ РґР»СЏ РґР»РёРЅС‹ РїР°РЅРµР»Рё rentPanel
             int panelLenght = 120;
 
             Panel rentPanel = new Panel()
@@ -92,28 +93,28 @@ namespace bicycleRent
                 Tag = rent.RentId,
             };
 
-            if (rent.Status == "В процессе")
+            if (rent.Status == "Р’ РїСЂРѕС†РµСЃСЃРµ")
             {
                 rentPanel.BackColor = Color.LightGreen;
             }
-            if (rent.Status == "Закрыта")
+            if (rent.Status == "Р—Р°РєСЂС‹С‚Р°")
             {
                 rentPanel.BackColor = Color.LightGray;
             }
-            if (rent.Status == "Отменена")
+            if (rent.Status == "РћС‚РјРµРЅРµРЅР°")
             {
                 rentPanel.BackColor = Color.GreenYellow;
             }
-            if (rent.Status == "В процессе" && rent.TimeEnd < DateTime.Now)
+            if (rent.Status == "Р’ РїСЂРѕС†РµСЃСЃРµ" && rent.TimeEnd < DateTime.Now)
             {
                 //#FF6347FF
                 rentPanel.BackColor = Color.IndianRed;
-                rent.Status = "Просрок!";
+                rent.Status = "РџСЂРѕСЃСЂРѕРє!";
             }
 
-            //Ярлыки
+            //РЇСЂР»С‹РєРё
 
-            //Для id аренды
+            //Р”Р»СЏ id Р°СЂРµРЅРґС‹
             Label lblRentId = new Label()
             {
                 Text = "#",
@@ -121,83 +122,76 @@ namespace bicycleRent
                 Location = new Point(10, 10),
                 AutoSize = true
             };
-            //Для id филиала
+            //Р”Р»СЏ id С„РёР»РёР°Р»Р°
             Label lblFiflialId = new Label()
             {
-                Text = "Филиал:",
+                Text = "Р¤РёР»РёР°Р»:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 Location = new Point(50, 10),
                 AutoSize = true
             };
-            //Для фамилии клиента
+            //Р”Р»СЏ С„Р°РјРёР»РёРё РєР»РёРµРЅС‚Р°
             Label lblClientId = new Label()
             {
-                Text = "Клиент:",
+                Text = "РљР»РёРµРЅС‚:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 Location = new Point(210, 10),
                 AutoSize = true
             };
-            //Для инвентаря
+            //Р”Р»СЏ РёРЅРІРµРЅС‚Р°СЂСЏ
             Label lblInventoryId = new Label()
             {
-                Text = "Инвентарь:",
+                Text = "РРЅРІРµРЅС‚Р°СЂСЊ:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 Location = new Point(350, 10),
                 AutoSize = true
             };
-            //Для периода аренды
+            //Р”Р»СЏ РїРµСЂРёРѕРґР° Р°СЂРµРЅРґС‹
             Label lblTimeStart = new Label()
             {
-                Text = "Период:",
+                Text = "РџРµСЂРёРѕРґ:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(500, 10),
+                Location = new Point(600, 10),
                 AutoSize = true
             };
-            //Для суммы за аренду
+            //Р”Р»СЏ СЃСѓРјРјС‹ Р·Р° Р°СЂРµРЅРґСѓ
             Label lblTotal = new Label()
             {
-                Text = "К оплате:",
+                Text = "Рљ РѕРїР»Р°С‚Рµ:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(670, 10),
+                Location = new Point(770, 10),
                 AutoSize = true
             };
-            //Для статуса
+            //Р”Р»СЏ СЃС‚Р°С‚СѓСЃР°
             Label lblStatus = new Label()
             {
-                Text = "Статус:",
+                Text = "РЎС‚Р°С‚СѓСЃ:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(800, 10),
+                Location = new Point(900, 10),
                 AutoSize = true
             };
-            //Для фамилии И.О. сотрудника
+            //Р”Р»СЏ С„Р°РјРёР»РёРё Р.Рћ. СЃРѕС‚СЂСѓРґРЅРёРєР°
             Label lblUserId = new Label()
             {
-                Text = "Сотрудник:",
+                Text = "РЎРѕС‚СЂСѓРґРЅРёРє:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(920, 10),
+                Location = new Point(1020, 10),
                 AutoSize = true
             };
-            //Для залога
+            //Р”Р»СЏ Р·Р°Р»РѕРіР°
             Label lblDepositId = new Label()
             {
-                Text = "Залог:",
-                Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(1050, 10),
-                AutoSize = true
-            };
-            Label lblCreatedAtId = new Label()
-            {
-                Text = "Создано:",
+                Text = "Р—Р°Р»РѕРі:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
                 Location = new Point(1150, 10),
                 AutoSize = true
             };
-
+            
             //
-            //      Данные под ярлыками
+            //      Р”Р°РЅРЅС‹Рµ РїРѕРґ СЏСЂР»С‹РєР°РјРё
             //
 
-            //Для id аренды
+            //Р”Р»СЏ id Р°СЂРµРЅРґС‹
             Label lblRentData = new Label()
             {
                 Text = $"{rent.RentId}",
@@ -205,7 +199,7 @@ namespace bicycleRent
                 Location = new Point(10, 50),
                 AutoSize = true
             };
-            //Для id филиала
+            //Р”Р»СЏ id С„РёР»РёР°Р»Р°
             Label lblFiflialData = new Label()
             {
                 Text = $"{rent.FilialName}",
@@ -213,7 +207,7 @@ namespace bicycleRent
                 Location = new Point(50, 50),
                 AutoSize = true
             };
-            //Для фамилии клиента
+            //Р”Р»СЏ С„Р°РјРёР»РёРё РєР»РёРµРЅС‚Р°
             Label lblClientData = new Label()
             {
                 Text = $"{rent.ClientSurname}",
@@ -221,103 +215,124 @@ namespace bicycleRent
                 Location = new Point(210, 50),
                 AutoSize = true
             };
-            //Для телефона клиента
+            //Р”Р»СЏ С‚РµР»РµС„РѕРЅР° РєР»РёРµРЅС‚Р°
             Label lblClientTelephoneData = new Label()
             {
-                Text = $"т. {rent.ClientTelehone}",
+                Text = $"С‚. {rent.ClientTelehone}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 Location = new Point(210, 70),
                 AutoSize = true
             };
-            //Для времени начала
+            //Р”Р»СЏ РІСЂРµРјРµРЅРё РЅР°С‡Р°Р»Р°
             Label lblTimeStartData = new Label()
             {
                 Text = $"{rent.TimeStart}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(500, 50),
+                Location = new Point(600, 50),
                 AutoSize = true
             };
-            //Для времени конца
+            //Р”Р»СЏ РІСЂРµРјРµРЅРё РєРѕРЅС†Р°
             Label lblTimeEndData = new Label()
             {
                 Text = $"{rent.TimeEnd}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(500, 70),
+                Location = new Point(600, 70),
                 AutoSize = true
             };
-            //Для суммы за аренду
+            //Р”Р»СЏ СЃСѓРјРјС‹ Р·Р° Р°СЂРµРЅРґСѓ
             Label lblTotalData = new Label()
             {
                 Text = $"{rent.Total}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(670, 50),
+                Location = new Point(770, 50),
                 AutoSize = true
             };
-            //Для статуса
+            //Р”Р»СЏ СЃС‚Р°С‚СѓСЃР°
             Label lblStatusData = new Label()
             {
                 Text = $"{rent.Status}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(800, 50),
+                Location = new Point(900, 50),
                 AutoSize = true
             };
-            //Для фамилии И.О. сотрудника
+            //Р”Р»СЏ С„Р°РјРёР»РёРё Р.Рћ. СЃРѕС‚СЂСѓРґРЅРёРєР°
             Label lblUserData = new Label()
             {
                 Text = $"{rent.UserSurname}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(920, 50),
+                Location = new Point(1020, 50),
                 AutoSize = true
             };
-            //Для залога
+            //Р”Р»СЏ Р·Р°Р»РѕРіР°
             Label lblDepositData = new Label()
             {
                 Text = $"{rent.DepositName}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(1050, 50),
-                AutoSize = true
-            };
-            Label lblCreatedAtData = new Label()
-            {
-                Text = $"{rent.CreatedAt}",
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 Location = new Point(1150, 50),
                 AutoSize = true
             };
+            
 
             //
-            // Кнопки управления
+            // РљРЅРѕРїРєРё СѓРїСЂР°РІР»РµРЅРёСЏ
             //
 
-            //обьявление переменной для Y положения кнопок
+            //РѕР±СЊСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ РґР»СЏ Y РїРѕР»РѕР¶РµРЅРёСЏ РєРЅРѕРїРєРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
             int btnPosY = 85;
 
             Button btnEdit = new Button
             {
-                Text = "Редактировать",
+                Text = "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
                 Location = new Point(10, btnPosY),
                 AutoSize = true,
+                BackColor = Color.LightGray,
+                Tag = rentPanel
+            };
+
+            Button btnDelete = new Button()
+            {
+                Text = "вќЊ",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                ForeColor = Color.DarkRed,
+                Cursor = Cursors.Hand,
+                Size = new Size(35, 35),
+                Location = new Point(1290, 3),
                 BackColor = Color.LightGray
             };
 
-            Button btnDelete = new Button
+            //РџСЂРёРІСЏР·РєР° СЃРѕР±С‹С‚РёСЏ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєРё btnEdit Рё btnDelete
+            btnEdit.Click += BtnEdit_Click;
+            btnDelete.Click += BtnDelete_Click;
+
+
+            int lblCreatedAtPosY = 95;
+
+            Label lblCreatedAtId = new Label()
             {
-                Text = "Удалить",
+                Text = "РЎРѕР·РґР°РЅРѕ:",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(1237, btnPosY),
-                AutoSize = true,
-                BackColor = Color.LightGray
+                Location = new Point(1080, lblCreatedAtPosY),
+                AutoSize = true
+            };
+
+            Label lblCreatedAtData = new Label()
+            {
+                Text = $"{rent.CreatedAt}",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(1170, lblCreatedAtPosY),
+                AutoSize = true
             };
 
             //
-            // Момент с выводом инвентаря, который принадлежит к определенной аренде
+            // РњРѕРјРµРЅС‚ СЃ РІС‹РІРѕРґРѕРј РёРЅРІРµРЅС‚Р°СЂСЏ, РєРѕС‚РѕСЂС‹Р№ РїСЂРёРЅР°РґР»РµР¶РёС‚ Рє РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ Р°СЂРµРЅРґРµ
             //
 
             InventoryRepository _inventoryRepository = new InventoryRepository(_connection);
             var inventoryList = _inventoryRepository.GetInventoryForRent(rent.RentId);
 
-            //Обьявление переменной для Y положения наименований инвентаря
+            //РћР±СЊСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ РґР»СЏ Y РїРѕР»РѕР¶РµРЅРёСЏ РЅР°РёРјРµРЅРѕРІР°РЅРёР№ РёРЅРІРµРЅС‚Р°СЂСЏ
             int InventoriesPosY = 50;
 
             foreach (var inventory in inventoryList)
@@ -329,23 +344,27 @@ namespace bicycleRent
                     Location = new Point(350, InventoriesPosY),
                     AutoSize = true
                 };
-                //Добавление 20 пикселей к Y положению инвентаря, чтобы каждая единица друг на друга не накладывалась
+                //Р”РѕР±Р°РІР»РµРЅРёРµ 20 РїРёРєСЃРµР»РµР№ Рє Y РїРѕР»РѕР¶РµРЅРёСЋ РёРЅРІРµРЅС‚Р°СЂСЏ, С‡С‚РѕР±С‹ РєР°Р¶РґР°СЏ РµРґРёРЅРёС†Р° РґСЂСѓРі РЅР° РґСЂСѓРіР° РЅРµ РЅР°РєР»Р°РґС‹РІР°Р»Р°СЃСЊ
                 InventoriesPosY += 20;
 
-                //Добавление 20 пикселей к длине панели rentPanel, чтобы входящий в нее инвентарь не вылезал из границ
+                //Р”РѕР±Р°РІР»РµРЅРёРµ 20 РїРёРєСЃРµР»РµР№ Рє РґР»РёРЅРµ РїР°РЅРµР»Рё rentPanel, С‡С‚РѕР±С‹ РІС…РѕРґСЏС‰РёР№ РІ РЅРµРµ РёРЅРІРµРЅС‚Р°СЂСЊ РЅРµ РІС‹Р»РµР·Р°Р» РёР· РіСЂР°РЅРёС†
                 panelLenght += 20;
                 rentPanel.Size = new Size(1330, panelLenght);
 
-                //Добавление 20 пикселей к Y положению кнопок, чтобы они держались края панели rentPanel
+                //Р”РѕР±Р°РІР»РµРЅРёРµ 20 РїРёРєСЃРµР»РµР№ Рє Y РїРѕР»РѕР¶РµРЅРёСЋ РєРЅРѕРїРѕРє, С‡С‚РѕР±С‹ РѕРЅРё РґРµСЂР¶Р°Р»РёСЃСЊ РєСЂР°СЏ РїР°РЅРµР»Рё rentPanel
                 btnPosY += 20;
                 btnEdit.Location = new Point(10, btnPosY);
-                btnDelete.Location = new Point(1237, btnPosY);
 
-                //Добавление наименование инвентаря в панель rentPanel
+                //Р”РѕР±Р°РІР»РµРЅРёРµ 20 РїРёРєСЃРµР»РµР№ Рє Y РїРѕР»РѕР¶РµРЅРёСЋ РѕС‚РѕР±СЂР°Р¶Р°РµРЅРёСЏ РґР°С‚С‹ СЃРѕР·РґР°РЅРёСЏ, С‡С‚РѕР±С‹ РѕРЅРё РґРµСЂР¶Р°Р»РёСЃСЊ РєСЂР°СЏ РїР°РЅРµР»Рё rentPanel
+                lblCreatedAtPosY += 20;
+                lblCreatedAtId.Location = new Point(1080, lblCreatedAtPosY);
+                lblCreatedAtData.Location = new Point(1170, lblCreatedAtPosY);
+
+                //Р”РѕР±Р°РІР»РµРЅРёРµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РёРЅРІРµРЅС‚Р°СЂСЏ РІ РїР°РЅРµР»СЊ rentPanel
                 rentPanel.Controls.Add(lblInventoryData);
             }
 
-            //добавление в панель ярлыков
+            //РґРѕР±Р°РІР»РµРЅРёРµ РІ РїР°РЅРµР»СЊ СЏСЂР»С‹РєРѕРІ
             rentPanel.Controls.Add(lblRentId);
             rentPanel.Controls.Add(lblFiflialId);
             rentPanel.Controls.Add(lblClientId);
@@ -357,7 +376,7 @@ namespace bicycleRent
             rentPanel.Controls.Add(lblDepositId);
             rentPanel.Controls.Add(lblCreatedAtId);
 
-            //добавление в панель данных о аренде
+            //РґРѕР±Р°РІР»РµРЅРёРµ РІ РїР°РЅРµР»СЊ РґР°РЅРЅС‹С… Рѕ Р°СЂРµРЅРґРµ
             rentPanel.Controls.Add(lblRentData);
             rentPanel.Controls.Add(lblFiflialData);
             rentPanel.Controls.Add(lblClientData);
@@ -370,10 +389,10 @@ namespace bicycleRent
             rentPanel.Controls.Add(lblCreatedAtData);
             rentPanel.Controls.Add(lblClientTelephoneData);
 
-            //добавление в панель кнопок управления
+            //РґРѕР±Р°РІР»РµРЅРёРµ РІ РїР°РЅРµР»СЊ РєРЅРѕРїРѕРє СѓРїСЂР°РІР»РµРЅРёСЏ
             rentPanel.Controls.Add(btnEdit);
 
-            if(_user.Role == "Администратор")
+            if(_user.Role == "РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ")
             {
                 rentPanel.Controls.Add(btnDelete);
             }
@@ -396,6 +415,26 @@ namespace bicycleRent
         {
             flowLayoutPanel1.Controls.Clear();
             LoadData();
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            if(sender is Button btn && btn.Tag is Panel rentPanel && rentPanel.Tag is int rId)
+            {
+                MessageBox.Show($"РћС‚РєСЂС‹РІР°РµРј Р°СЂРµРЅРґСѓ СЃ ID = {rId}");
+
+                RentRepository _rentRepository = new RentRepository(_connection);
+                RentEditForm rentEditForm = new RentEditForm(_rentRepository, _user, _connection, rId, "editRent");
+                rentEditForm.ShowDialog();
+            }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is Panel rentPanel && rentPanel.Tag is int rId)
+            {
+                //
+            }
         }
     }
 }

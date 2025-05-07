@@ -148,7 +148,7 @@ namespace bicycleRent.Forms.Rent
             cbPrice.SelectedValue = selectedPriceId;
 
             //bool found = prices.Any(p => p.InventoryPriceId == selectedPriceId);
-            //MessageBox.Show($"Найдено: {found}");
+            //MessageBox.Show($"Найдено: {found} ТарифId: {selectedPriceId}");
 
 
             //Кнопка на удаление инвентаря из списка выбранных
@@ -182,6 +182,9 @@ namespace bicycleRent.Forms.Rent
             // Добавляем ярлык и данные для выбора тарифа
             inventoryPanel.Controls.Add(lblPrice);
             inventoryPanel.Controls.Add(cbPrice);
+
+            cbPrice.SelectedValue = selectedPriceId;
+
             // Добавляем кнопку в панель
             inventoryPanel.Controls.Add(btnRemove);
 
@@ -224,6 +227,7 @@ namespace bicycleRent.Forms.Rent
                 _selectedPrices = _rentRepository.GetSelectedPricesByRentId(rent.RentId);
 
                 ShowSelectedInventories(inventoryList);
+                
 
                 //Заполнение клиента
                 var client = _clientRepository.Get(rent.ClientId);
@@ -278,6 +282,8 @@ namespace bicycleRent.Forms.Rent
                     AddInventoryCard(inv, 0); // для новых
                 }
             }
+
+            
         }
 
         private void cbClients_SelectedIndexChanged(object sender, EventArgs e)
@@ -439,5 +445,34 @@ namespace bicycleRent.Forms.Rent
                 return;
             }
         }
+
+        private void ApplySelectedPrices()
+        {
+            foreach (Panel inventoryPanel in flpSelectedInventory.Controls)
+            {
+                if (inventoryPanel.Tag is int inventoryId &&
+                    _selectedPrices.TryGetValue(inventoryId, out int selectedPriceId))
+                {
+                    var cbPrice = inventoryPanel.Controls
+                        .OfType<ComboBox>()
+                        .FirstOrDefault(cb => cb.Name == "cbPrice");
+
+                    if (cbPrice != null)
+                    {
+                        cbPrice.BeginInvoke((MethodInvoker)(() =>
+                        {
+                            cbPrice.SelectedValue = selectedPriceId;
+                        }));
+                    }
+                }
+            }
+        }
+
+        private void RentEditForm_Shown(object sender, EventArgs e)
+        {
+            ApplySelectedPrices();
+        }
+
+
     }
 }

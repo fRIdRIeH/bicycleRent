@@ -260,6 +260,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "RentEditForm";
             Load += RentAddForm_Load;
+            Shown += RentEditForm_Shown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

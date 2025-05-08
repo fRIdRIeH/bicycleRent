@@ -97,10 +97,6 @@ namespace bicycleRent
             {
                 rentPanel.BackColor = Color.LightGreen;
             }
-            if (rent.Status == "Закрыта")
-            {
-                rentPanel.BackColor = Color.LightGray;
-            }
             if (rent.Status == "Отменена")
             {
                 rentPanel.BackColor = Color.GreenYellow;
@@ -362,6 +358,12 @@ namespace bicycleRent
 
                 //Добавление наименование инвентаря в панель rentPanel
                 rentPanel.Controls.Add(lblInventoryData);
+            }
+
+            if (rent.Status == "Закрыта" && _user.Role != "Администратор")
+            {
+                rentPanel.BackColor = Color.LightGray;
+                btnEdit.Enabled = false;
             }
 
             //добавление в панель ярлыков

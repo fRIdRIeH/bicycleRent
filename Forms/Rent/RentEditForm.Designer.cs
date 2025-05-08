@@ -57,6 +57,8 @@
             label10 = new Label();
             cbPaymentType = new ComboBox();
             label8 = new Label();
+            btnResumeRent = new Button();
+            lblResume = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -336,11 +338,33 @@
             label8.TabIndex = 36;
             label8.Text = "Сумма:";
             // 
+            // btnResumeRent
+            // 
+            btnResumeRent.BackColor = Color.Aquamarine;
+            btnResumeRent.Location = new Point(12, 793);
+            btnResumeRent.Name = "btnResumeRent";
+            btnResumeRent.Size = new Size(200, 56);
+            btnResumeRent.TabIndex = 36;
+            btnResumeRent.Text = "Возобновить";
+            btnResumeRent.UseVisualStyleBackColor = false;
+            btnResumeRent.Click += btnResumeRent_Click;
+            // 
+            // lblResume
+            // 
+            lblResume.AutoSize = true;
+            lblResume.Location = new Point(12, 762);
+            lblResume.Name = "lblResume";
+            lblResume.Size = new Size(249, 25);
+            lblResume.TabIndex = 37;
+            lblResume.Text = "Случайно закрыли аренду?";
+            // 
             // RentEditForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1684, 861);
+            Controls.Add(lblResume);
+            Controls.Add(btnResumeRent);
             Controls.Add(groupBox3);
             Controls.Add(btnCloseRent);
             Controls.Add(groupBox2);
@@ -406,5 +430,7 @@
         private ComboBox cbPaymentType;
         private Label label8;
         private NumericUpDown numPaymentAmount;
+        private Button btnResumeRent;
+        private Label lblResume;
     }
 }

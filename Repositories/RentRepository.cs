@@ -280,5 +280,22 @@ namespace bicycleRent.Repositories
                 return false;
             }
         }
+
+        public bool ChangeRentStatus(int rentId, string status) 
+        {
+            string query = "UPDATE Rent SET Status = @Status WHERE Rent_Id = @Rent_Id";
+
+            using(MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@Rent_Id", rentId);
+                cmd.Parameters.AddWithValue("@Status", status);
+
+                int rowsUpdated = cmd.ExecuteNonQuery();
+
+                if(rowsUpdated > 0)
+                    return true;
+                return false;
+            }
+        }
     }
 }

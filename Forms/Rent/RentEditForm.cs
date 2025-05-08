@@ -229,11 +229,13 @@ namespace bicycleRent.Forms.Rent
             cbPaymentType.Items.Add("Нал.");
             cbPaymentType.Items.Add("Безнал.");
 
+            Models.Rent rent = _rentRepository.Get(_rentIdFromMainForm);
+
             //Заполнение ячеек на форме из аренды
             if (_key == "editRent")
             {
                 //Заполнение списка инвентарей
-                Models.Rent rent = _rentRepository.Get(_rentIdFromMainForm);
+
 
                 InventoryRepository _inventoryRepository = new InventoryRepository(_connection);
                 var inventoryList = _inventoryRepository.GetInventoryIdsForRent(rent.RentId);
@@ -263,6 +265,19 @@ namespace bicycleRent.Forms.Rent
             foreach (var payment in payments)
             {
                 AddPaymentCard(payment);
+            }
+
+            //Добавляем возможность возобновить аренду, если закрыта по ошибке или прямем кнопки
+
+            if (rent.Status == "Закрыта")
+            {
+                lblResume.Visible = true;
+                btnResumeRent.Visible = true;
+            }
+            else
+            {
+                lblResume.Visible = false;
+                btnResumeRent.Visible = false;
             }
         }
 
@@ -705,7 +720,18 @@ namespace bicycleRent.Forms.Rent
         //закрытие аренды с сохранением и подсчетом
         private void btnCloseRent_Click(object sender, EventArgs e)
         {
+            _rentRepository.ChangeRentStatus(_rentIdFromMainForm, "Закрыта");
 
+            MessageBox.Show("Аренда закрыта.");
+            this.Close();
+        }
+
+        private void btnResumeRent_Click(object sender, EventArgs e)
+        {
+            _rentRepository.ChangeRentStatus(_rentIdFromMainForm, "В процессе");
+
+            MessageBox.Show("Аренда возобновлена.");
+            this.Close();
         }
     }
 }

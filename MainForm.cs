@@ -39,7 +39,7 @@ namespace bicycleRent
             labelForUserSNP.Text = $"Удачной смены, {_user.Name}! Сегодня {DateOnly.FromDateTime(DateTime.Now)}";
 
             //Проверка на роль админа, для отображения кнопки админ-панели
-            if(_user.Role != "Администратор")
+            if (_user.Role != "Администратор")
             {
                 GoToAdminPanelBtn.Visible = false;
             }
@@ -186,7 +186,7 @@ namespace bicycleRent
                 Location = new Point(1150, 10),
                 AutoSize = true
             };
-            
+
             //
             //      Данные под ярлыками
             //
@@ -271,7 +271,7 @@ namespace bicycleRent
                 Location = new Point(1150, 50),
                 AutoSize = true
             };
-            
+
 
             //
             // Кнопки управления
@@ -392,7 +392,7 @@ namespace bicycleRent
             //добавление в панель кнопок управления
             rentPanel.Controls.Add(btnEdit);
 
-            if(_user.Role == "Администратор")
+            if (_user.Role == "Администратор")
             {
                 rentPanel.Controls.Add(btnDelete);
             }
@@ -419,7 +419,7 @@ namespace bicycleRent
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if(sender is Button btn && btn.Tag is Panel rentPanel && rentPanel.Tag is int rId)
+            if (sender is Button btn && btn.Tag is Panel rentPanel && rentPanel.Tag is int rId)
             {
                 MessageBox.Show($"Открываем аренду с ID = {rId}");
 
@@ -435,6 +435,11 @@ namespace bicycleRent
             {
                 //
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

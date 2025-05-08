@@ -37,6 +37,7 @@
             labelForUserSNP = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnRefresh = new Button();
+            btnClose = new Button();
             SuspendLayout();
             // 
             // GoToRentsListBtn
@@ -134,11 +135,24 @@
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += btnRefresh_Click;
             // 
+            // btnClose
+            // 
+            btnClose.BackColor = Color.IndianRed;
+            btnClose.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnClose.Location = new Point(1656, 985);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(236, 44);
+            btnClose.TabIndex = 12;
+            btnClose.Text = "Закончить смену";
+            btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(16F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
+            Controls.Add(btnClose);
             Controls.Add(btnRefresh);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(labelForUserSNP);
@@ -169,5 +183,6 @@
         private Label labelForUserSNP;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button btnRefresh;
+        private Button btnClose;
     }
 }

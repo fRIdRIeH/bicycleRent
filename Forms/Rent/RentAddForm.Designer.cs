@@ -48,7 +48,10 @@
             cbClients = new ComboBox();
             btnCount = new Button();
             btnCreateRent = new Button();
+            groupBox2 = new GroupBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -130,7 +133,7 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Location = new Point(1278, 16);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(307, 484);
+            groupBox1.Size = new Size(310, 121);
             groupBox1.TabIndex = 13;
             groupBox1.TabStop = false;
             groupBox1.Text = "Информация о аренде:";
@@ -236,11 +239,29 @@
             btnCreateRent.UseVisualStyleBackColor = true;
             btnCreateRent.Click += btnCreateRent_Click;
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(flowLayoutPanel1);
+            groupBox2.Location = new Point(1278, 143);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(310, 298);
+            groupBox2.TabIndex = 34;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Оплата:";
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(6, 32);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(298, 260);
+            flowLayoutPanel1.TabIndex = 0;
+            // 
             // RentAddForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(groupBox2);
             Controls.Add(btnCreateRent);
             Controls.Add(btnCount);
             Controls.Add(cbClients);
@@ -263,6 +284,7 @@
             Load += RentAddForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -290,5 +312,7 @@
         private Label lblForTimePeriod;
         private Button btnCount;
         private Button btnCreateRent;
+        private GroupBox groupBox2;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

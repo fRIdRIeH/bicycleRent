@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnCreateRent = new Button();
+            btnEditRent = new Button();
             btnCount = new Button();
             cbClients = new ComboBox();
             btnChooseInventory = new Button();
@@ -48,24 +48,36 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            groupBox2 = new GroupBox();
+            flpPayments = new FlowLayoutPanel();
+            btnCloseRent = new Button();
+            groupBox3 = new GroupBox();
+            numPaymentAmount = new NumericUpDown();
+            btnAddPayment = new Button();
+            label10 = new Label();
+            cbPaymentType = new ComboBox();
+            label8 = new Label();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numPaymentAmount).BeginInit();
             SuspendLayout();
             // 
-            // btnCreateRent
+            // btnEditRent
             // 
-            btnCreateRent.Location = new Point(1348, 792);
-            btnCreateRent.Name = "btnCreateRent";
-            btnCreateRent.Size = new Size(218, 56);
-            btnCreateRent.TabIndex = 32;
-            btnCreateRent.Text = "Создать аренду";
-            btnCreateRent.UseVisualStyleBackColor = true;
-            btnCreateRent.Click += btnCreateRent_Click_1;
+            btnEditRent.Location = new Point(1472, 793);
+            btnEditRent.Name = "btnEditRent";
+            btnEditRent.Size = new Size(200, 56);
+            btnEditRent.TabIndex = 32;
+            btnEditRent.Text = "Обновить";
+            btnEditRent.UseVisualStyleBackColor = true;
+            btnEditRent.Click += btnCreateRent_Click_1;
             // 
             // btnCount
             // 
-            btnCount.Location = new Point(1348, 730);
+            btnCount.Location = new Point(1472, 731);
             btnCount.Name = "btnCount";
-            btnCount.Size = new Size(218, 56);
+            btnCount.Size = new Size(200, 56);
             btnCount.TabIndex = 31;
             btnCount.Text = "Подсчет";
             btnCount.UseVisualStyleBackColor = true;
@@ -93,6 +105,8 @@
             // flpSelectedInventory
             // 
             flpSelectedInventory.AutoScroll = true;
+            flpSelectedInventory.AutoSize = true;
+            flpSelectedInventory.FlowDirection = FlowDirection.TopDown;
             flpSelectedInventory.Location = new Point(6, 107);
             flpSelectedInventory.Name = "flpSelectedInventory";
             flpSelectedInventory.Size = new Size(1260, 333);
@@ -108,7 +122,7 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Location = new Point(1272, 15);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(307, 484);
+            groupBox1.Size = new Size(400, 121);
             groupBox1.TabIndex = 27;
             groupBox1.TabStop = false;
             groupBox1.Text = "Информация о аренде:";
@@ -236,12 +250,101 @@
             label1.TabIndex = 19;
             label1.Text = "Клиент:";
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(flpPayments);
+            groupBox2.Location = new Point(1272, 142);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(400, 298);
+            groupBox2.TabIndex = 33;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Оплата:";
+            // 
+            // flpPayments
+            // 
+            flpPayments.AutoScroll = true;
+            flpPayments.Location = new Point(6, 32);
+            flpPayments.Name = "flpPayments";
+            flpPayments.Size = new Size(388, 260);
+            flpPayments.TabIndex = 0;
+            // 
+            // btnCloseRent
+            // 
+            btnCloseRent.Location = new Point(1266, 793);
+            btnCloseRent.Name = "btnCloseRent";
+            btnCloseRent.Size = new Size(200, 56);
+            btnCloseRent.TabIndex = 34;
+            btnCloseRent.Text = "Закрыть аренду";
+            btnCloseRent.UseVisualStyleBackColor = true;
+            btnCloseRent.Click += btnCloseRent_Click;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(numPaymentAmount);
+            groupBox3.Controls.Add(btnAddPayment);
+            groupBox3.Controls.Add(label10);
+            groupBox3.Controls.Add(cbPaymentType);
+            groupBox3.Controls.Add(label8);
+            groupBox3.Location = new Point(1272, 446);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(400, 109);
+            groupBox3.TabIndex = 35;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Внести оплату:";
+            // 
+            // numPaymentAmount
+            // 
+            numPaymentAmount.Location = new Point(76, 27);
+            numPaymentAmount.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numPaymentAmount.Name = "numPaymentAmount";
+            numPaymentAmount.Size = new Size(111, 33);
+            numPaymentAmount.TabIndex = 40;
+            // 
+            // btnAddPayment
+            // 
+            btnAddPayment.Location = new Point(8, 65);
+            btnAddPayment.Name = "btnAddPayment";
+            btnAddPayment.Size = new Size(382, 38);
+            btnAddPayment.TabIndex = 39;
+            btnAddPayment.Text = "Добавить оплату";
+            btnAddPayment.UseVisualStyleBackColor = true;
+            btnAddPayment.Click += btnAddPayment_Click;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(190, 29);
+            label10.Name = "label10";
+            label10.Size = new Size(48, 25);
+            label10.TabIndex = 38;
+            label10.Text = "Тип:";
+            // 
+            // cbPaymentType
+            // 
+            cbPaymentType.FormattingEnabled = true;
+            cbPaymentType.Location = new Point(244, 25);
+            cbPaymentType.Name = "cbPaymentType";
+            cbPaymentType.Size = new Size(146, 33);
+            cbPaymentType.TabIndex = 36;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(6, 29);
+            label8.Name = "label8";
+            label8.Size = new Size(73, 25);
+            label8.TabIndex = 36;
+            label8.Text = "Сумма:";
+            // 
             // RentEditForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1584, 861);
-            Controls.Add(btnCreateRent);
+            ClientSize = new Size(1684, 861);
+            Controls.Add(groupBox3);
+            Controls.Add(btnCloseRent);
+            Controls.Add(groupBox2);
+            Controls.Add(btnEditRent);
             Controls.Add(btnCount);
             Controls.Add(cbClients);
             Controls.Add(btnChooseInventory);
@@ -264,13 +367,17 @@
             Shown += RentEditForm_Shown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numPaymentAmount).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button btnCreateRent;
+        private Button btnEditRent;
         private Button btnCount;
         private ComboBox cbClients;
         private Button btnChooseInventory;
@@ -290,5 +397,14 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private GroupBox groupBox2;
+        private FlowLayoutPanel flpPayments;
+        private Button btnCloseRent;
+        private GroupBox groupBox3;
+        private Button btnAddPayment;
+        private Label label10;
+        private ComboBox cbPaymentType;
+        private Label label8;
+        private NumericUpDown numPaymentAmount;
     }
 }

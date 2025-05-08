@@ -7,8 +7,6 @@ using bicycleRent.Models;
 using Google.Protobuf.WellKnownTypes;
 using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace bicycleRent.Repositories
 {
@@ -226,7 +224,7 @@ namespace bicycleRent.Repositories
                 "Total = @Total, " +
                 "Status = @Status, " +
                 "User_Id = @UserId, " +
-                "DepositId = @Deposit " +
+                "Deposit_Id = @Deposit " +
                 "WHERE Rent_Id = @RentID";
 
             using (MySqlCommand cmd = new MySqlCommand(query, _connection))
@@ -243,6 +241,41 @@ namespace bicycleRent.Repositories
                 int rowsUpdated = cmd.ExecuteNonQuery();
 
                 if (rowsUpdated > 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public bool DeleteRentHasClient(int rentId, int inventoryId)
+        {
+            string query = "DELETE FROM Rent_Has_Inventory WHERE Rent_Rent_Id = @rentId AND Inventory_Inventory_Id = @inventoryId";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@rentId", rentId);
+                cmd.Parameters.AddWithValue("@inventoryId", inventoryId);
+
+                int rowsDeleted = cmd.ExecuteNonQuery();
+
+                if(rowsDeleted > 0) 
+                    return true;
+                return false;
+            }
+        }
+
+        public bool UpdateRеntHasClient(int rentId, int inventoryId, int priceId) 
+        {
+            string query = "UPDATE Rent_Has_Inventory SET Selected_Price_Id = @Selected_Price_Id WHERE Rent_Rent_Id = @rentId AND Inventory_Inventory_Id = @inventoryId";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@Selected_Price_Id", priceId);
+                cmd.Parameters.AddWithValue("@rentId", rentId);
+                cmd.Parameters.AddWithValue("@inventoryId", inventoryId);
+
+                int rowsUpdated = cmd.ExecuteNonQuery();
+
+                if( rowsUpdated > 0)
                     return true;
                 return false;
             }

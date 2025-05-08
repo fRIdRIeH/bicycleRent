@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 06 2025 г., 22:31
+-- Время создания: Май 08 2025 г., 23:52
 -- Версия сервера: 10.8.4-MariaDB
 -- Версия PHP: 7.2.34
 
@@ -193,6 +193,30 @@ INSERT INTO `Inventory_Type` (`Inventory_Type_Id`, `Inventory_Type_Name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `Payment`
+--
+
+CREATE TABLE `Payment` (
+  `Payment_Id` int(11) NOT NULL,
+  `Payment_Amount` decimal(10,2) NOT NULL,
+  `Type` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Rent_Id` int(11) NOT NULL,
+  `Created_At` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `Payment`
+--
+
+INSERT INTO `Payment` (`Payment_Id`, `Payment_Amount`, `Type`, `Rent_Id`, `Created_At`) VALUES
+(7, '300.00', 'Нал.', 34, '2025-05-08 23:36:00'),
+(8, '300.00', 'Нал.', 34, '2025-05-08 23:36:01'),
+(9, '300.00', 'Безнал.', 34, '2025-05-08 23:36:03'),
+(10, '180.00', 'Безнал.', 34, '2025-05-08 23:36:07');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `Price`
 --
 
@@ -236,9 +260,7 @@ CREATE TABLE `Rent` (
 --
 
 INSERT INTO `Rent` (`Rent_Id`, `Filial_Id`, `Client_Id`, `Time_Start`, `Time_End`, `Total`, `Status`, `User_Id`, `Deposit_Id`, `Created_At`) VALUES
-(26, 1, 1, '2025-05-06 22:08:29', '2025-05-06 23:08:29', 360, 'В процессе', 1, 1, '2025-05-06 21:09:11'),
-(27, 1, 1, '2025-05-06 22:21:26', '2025-05-06 23:21:26', 300, 'В процессе', 1, 1, '2025-05-06 21:21:36'),
-(28, 1, 1, '2025-05-06 22:57:35', '2025-05-06 23:57:35', 300, 'В процессе', 1, 1, '2025-05-06 21:57:49');
+(34, 1, 1, '2025-05-09 00:00:00', '2025-05-09 03:00:00', 1080, 'В процессе', 1, 1, '2025-05-08 20:21:19');
 
 -- --------------------------------------------------------
 
@@ -247,6 +269,7 @@ INSERT INTO `Rent` (`Rent_Id`, `Filial_Id`, `Client_Id`, `Time_Start`, `Time_End
 --
 
 CREATE TABLE `Rent_has_Inventory` (
+  `Id` int(11) NOT NULL,
   `Rent_Rent_Id` int(11) NOT NULL,
   `Inventory_Inventory_Id` int(11) NOT NULL,
   `Selected_Price_Id` int(11) NOT NULL
@@ -256,10 +279,8 @@ CREATE TABLE `Rent_has_Inventory` (
 -- Дамп данных таблицы `Rent_has_Inventory`
 --
 
-INSERT INTO `Rent_has_Inventory` (`Rent_Rent_Id`, `Inventory_Inventory_Id`, `Selected_Price_Id`) VALUES
-(26, 4, 18),
-(27, 4, 17),
-(28, 7, 32);
+INSERT INTO `Rent_has_Inventory` (`Id`, `Rent_Rent_Id`, `Inventory_Inventory_Id`, `Selected_Price_Id`) VALUES
+(11, 34, 7, 33);
 
 -- --------------------------------------------------------
 
@@ -355,6 +376,13 @@ ALTER TABLE `Inventory_Type`
   ADD PRIMARY KEY (`Inventory_Type_Id`);
 
 --
+-- Индексы таблицы `Payment`
+--
+ALTER TABLE `Payment`
+  ADD PRIMARY KEY (`Payment_Id`),
+  ADD KEY `Rent_Id` (`Rent_Id`);
+
+--
 -- Индексы таблицы `Price`
 --
 ALTER TABLE `Price`
@@ -374,7 +402,7 @@ ALTER TABLE `Rent`
 -- Индексы таблицы `Rent_has_Inventory`
 --
 ALTER TABLE `Rent_has_Inventory`
-  ADD PRIMARY KEY (`Rent_Rent_Id`,`Inventory_Inventory_Id`),
+  ADD PRIMARY KEY (`Id`),
   ADD KEY `fk_Rent_has_Inventory_Inventory1_idx` (`Inventory_Inventory_Id`),
   ADD KEY `fk_Rent_has_Inventory_Rent1_idx` (`Rent_Rent_Id`);
 
@@ -431,6 +459,12 @@ ALTER TABLE `Inventory_Type`
   MODIFY `Inventory_Type_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT для таблицы `Payment`
+--
+ALTER TABLE `Payment`
+  MODIFY `Payment_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT для таблицы `Price`
 --
 ALTER TABLE `Price`
@@ -440,7 +474,13 @@ ALTER TABLE `Price`
 -- AUTO_INCREMENT для таблицы `Rent`
 --
 ALTER TABLE `Rent`
-  MODIFY `Rent_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Rent_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT для таблицы `Rent_has_Inventory`
+--
+ALTER TABLE `Rent_has_Inventory`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `Time`
@@ -472,6 +512,12 @@ ALTER TABLE `Inventory_Price`
   ADD CONSTRAINT `fk_Inventory_Price_Inventory1` FOREIGN KEY (`Inventory_Id`) REFERENCES `Inventory` (`Inventory_Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `inventory_price_ibfk_2` FOREIGN KEY (`Price_Id`) REFERENCES `Price` (`Price_Id`),
   ADD CONSTRAINT `inventory_price_ibfk_3` FOREIGN KEY (`Time_Id`) REFERENCES `Time` (`Time_Id`);
+
+--
+-- Ограничения внешнего ключа таблицы `Payment`
+--
+ALTER TABLE `Payment`
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`Rent_Id`) REFERENCES `Rent` (`Rent_Id`);
 
 --
 -- Ограничения внешнего ключа таблицы `Rent`

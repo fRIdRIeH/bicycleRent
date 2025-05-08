@@ -59,6 +59,7 @@
             btnCreateRent.TabIndex = 32;
             btnCreateRent.Text = "Создать аренду";
             btnCreateRent.UseVisualStyleBackColor = true;
+            btnCreateRent.Click += btnCreateRent_Click_1;
             // 
             // btnCount
             // 

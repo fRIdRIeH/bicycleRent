@@ -118,9 +118,10 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.BackColor = SystemColors.ControlDarkDark;
             flowLayoutPanel1.Location = new Point(296, 116);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1373, 913);
+            flowLayoutPanel1.Size = new Size(1354, 913);
             flowLayoutPanel1.TabIndex = 10;
             // 
             // btnRefresh

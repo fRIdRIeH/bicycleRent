@@ -203,29 +203,7 @@ namespace bicycleRent.Forms.Rent
             cbDeposit.DisplayMember = "Name";
             cbDeposit.ValueMember = "Id";
 
-            //Заполнение ячеек на форме из аренды
-            if(_key == "editRent")
-            {
-                //Заполнение списка инвентарей
-                Models.Rent rent = _rentRepository.Get(_idFromMainForm);
 
-                InventoryRepository _inventoryRepository = new InventoryRepository(_connection);
-                var inventoryList = _inventoryRepository.GetInventoryIdsForRent(rent.RentId);
-
-                ShowSelectedInventories(inventoryList);
-
-                //Заполнение клиента
-                var client = _clientRepository.Get(rent.ClientId);
-
-                cbClients.SelectedValue = client.Id;
-
-                //Заполнение времени
-                dtpStart.Value = rent.TimeStart;
-                dtpEnd.Value = rent.TimeEnd;
-
-                //Подсчеты
-                Count();
-            }
         }
 
         private void btnChooseInventory_Click(object sender, EventArgs e)

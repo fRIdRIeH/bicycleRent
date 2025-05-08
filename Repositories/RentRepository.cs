@@ -217,5 +217,35 @@ namespace bicycleRent.Repositories
             return dict;
         }
 
+        public bool Update(Rent rent)
+        {
+            string query = "UPDATE Rent SET " +
+                "Client_Id = @ClientId, " +
+                "Time_Start = @TimeStart, " +
+                "Time_End = @TimeEnd, " +
+                "Total = @Total, " +
+                "Status = @Status, " +
+                "User_Id = @UserId, " +
+                "DepositId = @Deposit " +
+                "WHERE Rent_Id = @RentID";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@RentID", rent.RentId);
+                cmd.Parameters.AddWithValue("@ClientId", rent.ClientId);
+                cmd.Parameters.AddWithValue("@TimeStart", rent.TimeStart);
+                cmd.Parameters.AddWithValue("@TimeEnd", rent.TimeEnd);
+                cmd.Parameters.AddWithValue("@Total", rent.Total);
+                cmd.Parameters.AddWithValue("@Status", rent.Status);
+                cmd.Parameters.AddWithValue("@UserId", rent.UserId);
+                cmd.Parameters.AddWithValue("@Deposit", rent.DepositId);
+
+                int rowsUpdated = cmd.ExecuteNonQuery();
+
+                if (rowsUpdated > 0)
+                    return true;
+                return false;
+            }
+        }
     }
 }

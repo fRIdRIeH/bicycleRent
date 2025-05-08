@@ -41,6 +41,8 @@ namespace bicycleRent.Forms.Rent
             btnCreateRent.Enabled = false;
 
             LoadData();
+
+            Count();
         }
 
         private void RentAddForm_Load(object sender, EventArgs e)
@@ -227,7 +229,7 @@ namespace bicycleRent.Forms.Rent
                 _selectedPrices = _rentRepository.GetSelectedPricesByRentId(rent.RentId);
 
                 ShowSelectedInventories(inventoryList);
-                
+
 
                 //Заполнение клиента
                 var client = _clientRepository.Get(rent.ClientId);
@@ -283,7 +285,7 @@ namespace bicycleRent.Forms.Rent
                 }
             }
 
-            
+
         }
 
         private void cbClients_SelectedIndexChanged(object sender, EventArgs e)
@@ -345,6 +347,8 @@ namespace bicycleRent.Forms.Rent
             total = 0;
             int totalMinutes = (int)(dtpEnd.Value - dtpStart.Value).TotalMinutes;
 
+            //MessageBox.Show($"totalMinutes: {totalMinutes}");
+
             InventoryPriceRepository _inventoryPriceRepository = new InventoryPriceRepository(_connection);
 
             foreach (Panel inventoryPanel in flpSelectedInventory.Controls)
@@ -355,20 +359,27 @@ namespace bicycleRent.Forms.Rent
                     var selectedPrice = _inventoryPriceRepository.Get(inventoryPriceId);
                     if (selectedPrice != null)
                     {
+                        //MessageBox.Show($"{selectedPrice.Price}");
                         if (selectedPrice.TimeName.ToLower().Contains("свыше часа"))
+                        {
                             total += selectedPrice.Price * totalMinutes;
+                        }
                         else
+                        {
                             total += selectedPrice.Price;
+                        }
                     }
                 }
             }
+            //MessageBox.Show($"Total: {total}");
 
             lblForPrice.Text = $"{total} ₽";
 
             // Подсчёт времени
             TimeSpan duration = dtpEnd.Value - dtpStart.Value;
-            lblForTimePeriod.Text = $"{(int)duration.TotalMinutes} минут";
+            lblForTimePeriod.Text = $"{totalMinutes} минут";
 
+            btnCreateRent.Enabled = true;
         }
 
         private void btnCreateRent_Click(object sender, EventArgs e)
@@ -471,8 +482,14 @@ namespace bicycleRent.Forms.Rent
         private void RentEditForm_Shown(object sender, EventArgs e)
         {
             ApplySelectedPrices();
+            Count();
         }
 
+        private void btnCreateRent_Click_1(object sender, EventArgs e)
+        {
+            //апдейтим данные самой аренды
 
+
+        }
     }
 }

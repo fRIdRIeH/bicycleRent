@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wladw\\OneDrive\\Документы\\GitHub\\bicycleRent\\bicycleRent.csproj": {}
+    "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 курс\\с# ИСРПО\\bicycleRent\\bicycleRent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wladw\\OneDrive\\Документы\\GitHub\\bicycleRent\\bicycleRent.csproj": {
+    "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 курс\\с# ИСРПО\\bicycleRent\\bicycleRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wladw\\OneDrive\\Документы\\GitHub\\bicycleRent\\bicycleRent.csproj",
+        "projectUniqueName": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 курс\\с# ИСРПО\\bicycleRent\\bicycleRent.csproj",
         "projectName": "bicycleRent",
-        "projectPath": "C:\\Users\\wladw\\OneDrive\\Документы\\GitHub\\bicycleRent\\bicycleRent.csproj",
-        "packagesPath": "C:\\Users\\wladw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wladw\\OneDrive\\Документы\\GitHub\\bicycleRent\\obj\\",
+        "projectPath": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 курс\\с# ИСРПО\\bicycleRent\\bicycleRent.csproj",
+        "packagesPath": "C:\\Users\\fRIdRIeH\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fRIdRIeH\\Desktop\\Labs\\4 курс\\с# ИСРПО\\bicycleRent\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\wladw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fRIdRIeH\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -74,7 +74,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

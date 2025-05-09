@@ -56,7 +56,7 @@ namespace bicycleRent
         private void GoToRentsListBtn_Click(object sender, EventArgs e)
         {
             RentRepository _rentRepository = new(_connection);
-            RentListForm rentListForm = new RentListForm(_rentRepository);
+            RentListForm rentListForm = new RentListForm(_rentRepository, _user, _connection);
             rentListForm.ShowDialog();
         }
 
@@ -100,6 +100,10 @@ namespace bicycleRent
             if (rent.Status == "Отменена")
             {
                 rentPanel.BackColor = Color.GreenYellow;
+            }
+            if(rent.Status == "Забронирована")
+            {
+                rentPanel.BackColor = Color.Aquamarine;
             }
             if (rent.Status == "В процессе" && rent.TimeEnd < DateTime.Now)
             {
@@ -171,7 +175,7 @@ namespace bicycleRent
             {
                 Text = "Сотрудник:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(1020, 10),
+                Location = new Point(1050, 10),
                 AutoSize = true
             };
             //Для залога
@@ -179,7 +183,7 @@ namespace bicycleRent
             {
                 Text = "Залог:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(1150, 10),
+                Location = new Point(1200, 10),
                 AutoSize = true
             };
 
@@ -256,7 +260,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.UserSurname}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(1020, 50),
+                Location = new Point(1050, 50),
                 AutoSize = true
             };
             //Для залога
@@ -264,7 +268,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.DepositName}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(1150, 50),
+                Location = new Point(1200, 50),
                 AutoSize = true
             };
 
@@ -295,7 +299,8 @@ namespace bicycleRent
                 Cursor = Cursors.Hand,
                 Size = new Size(35, 35),
                 Location = new Point(1290, 3),
-                BackColor = Color.LightGray
+                BackColor = Color.LightGray,
+                Tag = rentPanel
             };
 
             //Привязка события нажатия на кнопки btnEdit и btnDelete
@@ -404,8 +409,10 @@ namespace bicycleRent
 
         private void LoadData()
         {
+            flowLayoutPanel1.Controls.Clear();
+
             RentRepository _rentRepository = new RentRepository(_connection);
-            var rentsData = _rentRepository.GetAll();
+            var rentsData = _rentRepository.GetAllBy7days();
 
             foreach (var oneRent in rentsData)
             {
@@ -423,7 +430,7 @@ namespace bicycleRent
         {
             if (sender is Button btn && btn.Tag is Panel rentPanel && rentPanel.Tag is int rId)
             {
-                MessageBox.Show($"Открываем аренду с ID = {rId}");
+                //MessageBox.Show($"Открываем аренду с ID = {rId}");
 
                 RentRepository _rentRepository = new RentRepository(_connection);
                 RentEditForm rentEditForm = new RentEditForm(_rentRepository, _user, _connection, rId, "editRent");
@@ -433,10 +440,30 @@ namespace bicycleRent
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (sender is Button btn && btn.Tag is Panel rentPanel && rentPanel.Tag is int rId)
+            try
             {
-                //
+                if (sender is Button btn && btn.Tag is Panel rentPanel && rentPanel.Tag is int rId)
+                {
+                    RentRepository _rentRepository = new RentRepository(_connection);
+
+                    //удаляем связанные аренды
+                    _rentRepository.DeleteAllRentHasInventory(rId);
+
+                    //удаляем оплаты
+                    PaymentRepository _paymentRepository = new PaymentRepository(_connection);
+                    _paymentRepository.DeleteAllPaymentsForRent(rId);
+
+                    //удаляем саму аренду
+                    _rentRepository.DeleteRent(rId);
+
+                }
             }
+            catch(Exception ex) 
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+
+            LoadData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

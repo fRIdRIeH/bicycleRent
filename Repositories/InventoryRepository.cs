@@ -12,9 +12,9 @@ namespace bicycleRent.Repositories
     {
         private readonly MySqlConnection _Connection;
 
-        public InventoryRepository(MySqlConnection _connection)
+        public InventoryRepository(MySqlConnection connection)
         {
-            _Connection = _connection;
+            _Connection = connection;
         }
 
         public List<Inventory> GetAll()
@@ -178,5 +178,21 @@ namespace bicycleRent.Repositories
             return null;
         }
 
+        public bool ChangeInventoryStatus(int inventoryId, string status)
+        {
+            string query = "UPDATE Inventory SET Status = @Status WHERE Inventory_Id = @Inventory_Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection))
+            {
+                cmd.Parameters.AddWithValue("@Status", status);
+                cmd.Parameters.AddWithValue("@Inventory_Id", inventoryId);
+
+                int rowsUpdated = cmd.ExecuteNonQuery();
+
+                if (rowsUpdated > 0)
+                    return true;
+                return false;
+            }
+        }
     }
 }

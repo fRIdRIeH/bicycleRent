@@ -36,23 +36,26 @@ namespace bicycleRent.Forms.Inventory
         {
             Panel inventoryPanel = sender as Panel;
 
-            var lastColor = Color.Empty;
+            var lastColor = Color.LightGray;
 
-            if (inventoryPanel != null && inventoryPanel.Tag is int id && inventoryPanel.BackColor != Color.Aquamarine)
+            if (inventoryPanel != null && inventoryPanel.Tag is int id)
             {
                 //MessageBox.Show($"Нажата панель аренды с id = {id}");
 
-                lastColor = inventoryPanel.BackColor;
-
-                inventoryPanel.BackColor = Color.Aquamarine;
-
-                if (selectedInventoryIds.Contains(id))
+                if(inventoryPanel.BackColor != Color.IndianRed)
                 {
-                    selectedInventoryIds.Remove(id);
-                }
-                else
-                {
-                    selectedInventoryIds.Add(id);
+                    inventoryPanel.BackColor = Color.Aquamarine;
+
+                    if (selectedInventoryIds.Contains(id))
+                    {
+                        selectedInventoryIds.Remove(id);
+                        MessageBox.Show($"Удалена аренда с = {id}");
+                        inventoryPanel.BackColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        selectedInventoryIds.Add(id);
+                    }
                 }
             }
             else

@@ -51,6 +51,22 @@ namespace bicycleRent.Repositories
             }
         }
 
+        public bool DeleteAllPaymentsForRent(int rentId)
+        {
+            string query = "DELETE FROM Payment WHERE Rent_Id = @Rent_Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@Rent_Id", rentId);
+
+                int rowsDeleted = cmd.ExecuteNonQuery();
+
+                if (rowsDeleted > 0)
+                    return true;
+                return false;
+            }
+        }
+
         public List<Payment> GetAllForRent(int rentId) 
         {
             List<Payment> payments = new List<Payment>();

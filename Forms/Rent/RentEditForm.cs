@@ -279,6 +279,10 @@ namespace bicycleRent.Forms.Rent
                 lblResume.Visible = false;
                 btnResumeRent.Visible = false;
             }
+
+            flpSelectedInventory.FlowDirection = FlowDirection.TopDown;
+            flpSelectedInventory.WrapContents = false;
+            flpSelectedInventory.AutoScroll = true;
         }
 
         private void btnChooseInventory_Click(object sender, EventArgs e)
@@ -550,8 +554,7 @@ namespace bicycleRent.Forms.Rent
 
             FilialRepository _filialRepository = new FilialRepository(_connection);
 
-
-            int filialId = _filialRepository.GetFilialFromInventory(inventoryIds[0]);
+            int filialId = _filialRepository.GetFilialFromInventory(inventoryIds.Last());
 
             //Подсчет времени аренды в минутах
             int totalMinutes = (int)(dtpEnd.Value - dtpStart.Value).TotalMinutes;
@@ -591,7 +594,7 @@ namespace bicycleRent.Forms.Rent
                 //Удаление старых привязанных единиц инвентаря
                 foreach (var id in idToRemove)
                 {
-                    _rentRepository.DeleteRentHasClient(_rentIdFromMainForm, id);
+                    _rentRepository.DeleteRentHasInventory(_rentIdFromMainForm, id);
                 }
 
                 //Добавление новых единиц инвентаря
@@ -630,7 +633,7 @@ namespace bicycleRent.Forms.Rent
                     if (currentPriceId != originalPriceId)
                     {
                         // Цена изменилась, обновляем в базе
-                        _rentRepository.UpdateRеntHasClient(_rentIdFromMainForm, inventoryId, currentPriceId);
+                        _rentRepository.UpdateRеntHasInventory(_rentIdFromMainForm, inventoryId, currentPriceId);
                     }
                 }
 

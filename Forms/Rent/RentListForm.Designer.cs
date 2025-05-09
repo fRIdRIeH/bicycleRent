@@ -28,19 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvRents = new DataGridView();
             label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvRents).BeginInit();
+            flpRents = new FlowLayoutPanel();
             SuspendLayout();
-            // 
-            // dgvRents
-            // 
-            dgvRents.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRents.Location = new Point(16, 57);
-            dgvRents.Margin = new Padding(7, 8, 7, 8);
-            dgvRents.Name = "dgvRents";
-            dgvRents.Size = new Size(1552, 787);
-            dgvRents.TabIndex = 0;
             // 
             // label1
             // 
@@ -52,27 +42,34 @@
             label1.TabIndex = 1;
             label1.Text = "Список всех аренд";
             // 
+            // flpRents
+            // 
+            flpRents.AutoScroll = true;
+            flpRents.FlowDirection = FlowDirection.TopDown;
+            flpRents.Location = new Point(16, 52);
+            flpRents.Name = "flpRents";
+            flpRents.Size = new Size(1556, 797);
+            flpRents.TabIndex = 2;
+            // 
             // RentListForm
             // 
             AutoScaleDimensions = new SizeF(17F, 40F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(flpRents);
             Controls.Add(label1);
-            Controls.Add(dgvRents);
             Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             Margin = new Padding(7, 8, 7, 8);
             MaximizeBox = false;
             Name = "RentListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Аренды";
-            ((System.ComponentModel.ISupportInitialize)dgvRents).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dgvRents;
         private Label label1;
+        private FlowLayoutPanel flpRents;
     }
 }

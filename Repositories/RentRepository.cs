@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using bicycleRent.Models;
@@ -19,7 +20,7 @@ namespace bicycleRent.Repositories
             _connection = connection;
         }
 
-        public List<Rent> GetAll()
+        public List<Rent> GetAllBy7days()
         {
             List<Rent> rents = new List<Rent>();
             string query = "SELECT " +
@@ -50,6 +51,56 @@ namespace bicycleRent.Repositories
                     while (reader.Read())
                     {
                         Rent rent = new Rent() 
+                        {
+                            RentId = reader.GetInt32("Rent_Id"),
+                            FilialName = reader.GetString("Filial_Name"),
+                            ClientSurname = reader.GetString("Client_Surname"),
+                            ClientTelehone = reader.GetString("Client_Telephone"),
+                            TimeStart = reader.GetDateTime("Time_Start"),
+                            TimeEnd = reader.GetDateTime("Time_End"),
+                            Total = reader.GetInt32("Total"),
+                            Status = reader.GetString("Status"),
+                            UserSurname = reader.GetString("User_Surname"),
+                            DepositName = reader.GetString("Deposit_Name"),
+                            CreatedAt = reader.GetDateTime("Created_At"),
+                        };
+                        rents.Add(rent);
+                    }
+                }
+            }
+            return rents;
+        }
+
+        public List<Rent> GetAll()
+        {
+            List<Rent> rents = new List<Rent>();
+            string query = "SELECT " +
+                "Rent.Rent_Id, " +
+                "Filial.Filial_Name, " +
+                "Client.Client_Surname, " +
+                "Client.Client_Telephone, " +
+                "Rent.Time_Start, " +
+                "Rent.Time_End, " +
+                "Rent.Total, " +
+                "Rent.Status, " +
+                "User.User_Surname, " +
+                "Deposit.Deposit_Name, " +
+                "Rent.Created_At " +
+                "FROM Rent " +
+                "INNER JOIN Filial ON Rent.Filial_Id = Filial.Filial_Id " +
+                "INNER JOIN Client ON Rent.Client_Id = Client.Client_Id " +
+                "INNER JOIN User ON Rent.User_Id = User.User_Id " +
+                "INNER JOIN Deposit ON Rent.Deposit_Id = Deposit.Deposit_Id " +
+                "ORDER BY Rent.Rent_Id DESC;";
+
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Rent rent = new Rent()
                         {
                             RentId = reader.GetInt32("Rent_Id"),
                             FilialName = reader.GetString("Filial_Name"),
@@ -246,7 +297,7 @@ namespace bicycleRent.Repositories
             }
         }
 
-        public bool DeleteRentHasClient(int rentId, int inventoryId)
+        public bool DeleteRentHasInventory(int rentId, int inventoryId)
         {
             string query = "DELETE FROM Rent_Has_Inventory WHERE Rent_Rent_Id = @rentId AND Inventory_Inventory_Id = @inventoryId";
 
@@ -263,7 +314,7 @@ namespace bicycleRent.Repositories
             }
         }
 
-        public bool UpdateRеntHasClient(int rentId, int inventoryId, int priceId) 
+        public bool UpdateRеntHasInventory(int rentId, int inventoryId, int priceId) 
         {
             string query = "UPDATE Rent_Has_Inventory SET Selected_Price_Id = @Selected_Price_Id WHERE Rent_Rent_Id = @rentId AND Inventory_Inventory_Id = @inventoryId";
 
@@ -293,6 +344,38 @@ namespace bicycleRent.Repositories
                 int rowsUpdated = cmd.ExecuteNonQuery();
 
                 if(rowsUpdated > 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public bool DeleteRent(int rentId) 
+        {
+            string query = "DELETE FROM Rent WHERE Rent_Id = @Rent_Id";
+
+            using(MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@Rent_Id", rentId);
+
+                int rowsDeleted = cmd.ExecuteNonQuery();
+
+                if(rowsDeleted > 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public bool DeleteAllRentHasInventory(int rentId)
+        {
+            string query = "DELETE FROM Rent_Has_Inventory WHERE Rent_Rent_Id = @rentId";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@rentId", rentId);
+
+                int rowsDeleted = cmd.ExecuteNonQuery();
+
+                if (rowsDeleted > 0)
                     return true;
                 return false;
             }

@@ -315,18 +315,22 @@ namespace bicycleRent.Forms.Rent
 
         private void btnCreateRent_Click(object sender, EventArgs e)
         {
-            string status = "";
+            string rentStatus = "";
+            string inventoryStatus = "";
             if(dtpStart.Value > DateTime.Now)
             {
-                status = "Забронирована";
+                rentStatus = "Забронирована";
+                inventoryStatus = "Забронирован";
             }
             if(dtpStart.Value <= DateTime.Now)
             {
-                status = "В процессе";
+                rentStatus = "В процессе";
+                inventoryStatus = "В аренде";
             }
 
+            //Инициализация необходимых репозиториев
             FilialRepository _filialRepository = new FilialRepository(_connection);
-           
+            InventoryRepository _inventoryRepository = new InventoryRepository(_connection);
 
             int filialId = _filialRepository.GetFilialFromInventory(inventoryIds[0]);
 
@@ -351,13 +355,17 @@ namespace bicycleRent.Forms.Rent
                     TimeStart = dtpStart.Value,
                     TimeEnd = dtpEnd.Value,
                     Total = total,
-                    Status = status,
+                    Status = rentStatus,
                     UserId = _user.Id,
                     DepositId = (int)cbDeposit.SelectedValue,   
                 };
 
                 _rentRepository.Add(rent);
                 int rentId = _rentRepository.GetRentId(rent);
+
+                //
+                // Создание в бд записей инвентарей связанных с арендой
+                //
 
                 foreach (Panel inventoryPanel in flpSelectedInventory.Controls)
                 {
@@ -375,7 +383,11 @@ namespace bicycleRent.Forms.Rent
 
                     int priceId = (int)cbPrice.SelectedValue;
 
+                    //Добавляем записть в Rent_Has_Inventory
                     _rentRepository.AddRentHasInventory(rentId, inventoryId, priceId);
+
+                    //Обновляем статус инвентаря связанного с арендой
+                    _inventoryRepository.ChangeInventoryStatus(inventoryId, inventoryStatus);
                 }
 
                 MessageBox.Show("Аренда добавлена!");

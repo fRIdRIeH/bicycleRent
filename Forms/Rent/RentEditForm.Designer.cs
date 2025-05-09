@@ -107,7 +107,6 @@
             // flpSelectedInventory
             // 
             flpSelectedInventory.AutoScroll = true;
-            flpSelectedInventory.AutoSize = true;
             flpSelectedInventory.FlowDirection = FlowDirection.TopDown;
             flpSelectedInventory.Location = new Point(6, 107);
             flpSelectedInventory.Name = "flpSelectedInventory";
@@ -186,7 +185,7 @@
             // cbDeposit
             // 
             cbDeposit.FormattingEnabled = true;
-            cbDeposit.Location = new Point(845, 474);
+            cbDeposit.Location = new Point(845, 477);
             cbDeposit.Name = "cbDeposit";
             cbDeposit.Size = new Size(421, 33);
             cbDeposit.TabIndex = 26;
@@ -194,7 +193,7 @@
             // dtpStart
             // 
             dtpStart.Format = DateTimePickerFormat.Custom;
-            dtpStart.Location = new Point(6, 471);
+            dtpStart.Location = new Point(6, 474);
             dtpStart.Name = "dtpStart";
             dtpStart.Size = new Size(485, 33);
             dtpStart.TabIndex = 24;
@@ -202,7 +201,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(1202, 443);
+            label5.Location = new Point(1202, 446);
             label5.Name = "label5";
             label5.Size = new Size(64, 25);
             label5.TabIndex = 23;
@@ -211,7 +210,7 @@
             // dtpEnd
             // 
             dtpEnd.Format = DateTimePickerFormat.Custom;
-            dtpEnd.Location = new Point(6, 535);
+            dtpEnd.Location = new Point(6, 538);
             dtpEnd.Name = "dtpEnd";
             dtpEnd.Size = new Size(485, 33);
             dtpEnd.TabIndex = 25;
@@ -219,7 +218,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 507);
+            label4.Location = new Point(6, 510);
             label4.Name = "label4";
             label4.Size = new Size(128, 25);
             label4.TabIndex = 22;
@@ -228,7 +227,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(6, 443);
+            label3.Location = new Point(6, 446);
             label3.Name = "label3";
             label3.Size = new Size(138, 25);
             label3.TabIndex = 21;

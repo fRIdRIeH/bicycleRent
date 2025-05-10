@@ -12,6 +12,7 @@ using bicycleRent.Models;
 using bicycleRent.Repositories;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using ZstdSharp.Unsafe;
 
 namespace bicycleRent.Forms.Rent
 {
@@ -32,6 +33,7 @@ namespace bicycleRent.Forms.Rent
         private Dictionary<int, int> _selectedPrices = new(); // key = InventoryId, value = InventoryPriceId
         private readonly PaymentRepository _paymentRepository;
         List<Models.Client> clients;
+        Models.Rent recievedRent;
 
         public RentEditForm(RentRepository rentRepository, Models.User user, MySqlConnection connection, int idFormMain, string key)
         {
@@ -46,6 +48,8 @@ namespace bicycleRent.Forms.Rent
             _paymentRepository = new PaymentRepository(connection);
 
             btnEditRent.Enabled = false;
+
+            recievedRent = _rentRepository.Get(_rentIdFromMainForm);
 
             LoadData();
         }
@@ -155,6 +159,12 @@ namespace bicycleRent.Forms.Rent
 
             //оно должно подставлять выбранный ранее тариф, но оно этого не делает
             cbPrice.SelectedValue = selectedPriceId;
+
+            //Блокируем возможность изменять тарифы при закрытой аренде
+            if(recievedRent.Status == "Закрыта")
+            {
+                cbPrice.Enabled = false;
+            }
 
             //bool found = prices.Any(p => p.InventoryPriceId == selectedPriceId);
             //MessageBox.Show($"Найдено: {found} ТарифId: {selectedPriceId}");
@@ -753,7 +763,50 @@ namespace bicycleRent.Forms.Rent
         //закрытие аренды с сохранением и подсчетом
         private void btnCloseRent_Click(object sender, EventArgs e)
         {
+            //Меняем статус аренды на "закрыта"
             _rentRepository.ChangeRentStatus(_rentIdFromMainForm, "Закрыта");
+
+            //Меняем статусы привязанных инвентарей на "Свободен"
+            InventoryRepository inventoryRepository = new InventoryRepository(_connection);
+            var inventoryIds = inventoryRepository.GetInventoryIdsForRent(_rentIdFromMainForm);
+
+            foreach (var inventoryId in inventoryIds)
+            {
+                inventoryRepository.ChangeInventoryStatus(inventoryId, "Свободен");
+            }
+
+            total = 0;
+            int totalMinutes = (int)(dtpEnd.Value - dtpStart.Value).TotalMinutes;
+
+            InventoryPriceRepository _inventoryPriceRepository = new InventoryPriceRepository(_connection);
+
+            foreach (Panel inventoryPanel in flpSelectedInventory.Controls)
+            {
+                var cbPrice = inventoryPanel.Controls
+                    .OfType<ComboBox>()
+                    .FirstOrDefault(cb => cb.Name == "cbPrice");
+
+                if (cbPrice?.SelectedValue is int inventoryPriceId &&
+                    inventoryPanel.Tag is int inventoryId)
+                {
+                    var selectedPrice = _inventoryPriceRepository.Get(inventoryPriceId);
+
+                    if (selectedPrice != null)
+                    {
+                        int priceTotal;
+
+                        if (selectedPrice.TimeName.ToLower().Contains("свыше часа"))
+                            priceTotal = (int)(selectedPrice.Price * totalMinutes);
+                        else
+                            priceTotal = (int)selectedPrice.Price;
+
+                        inventoryRepository.ChangeRentsCountAndTotal(inventoryId, priceTotal, 1);
+
+                        total += priceTotal;
+                    }
+                }
+            }
+
 
             MessageBox.Show("Аренда закрыта.");
             this.Close();
@@ -761,7 +814,50 @@ namespace bicycleRent.Forms.Rent
 
         private void btnResumeRent_Click(object sender, EventArgs e)
         {
+            //Меняем статус аренды на "В процессе
             _rentRepository.ChangeRentStatus(_rentIdFromMainForm, "В процессе");
+
+            //Меняем статусы привязанных инвентарей на "В аренде
+            InventoryRepository inventoryRepository = new InventoryRepository(_connection);
+            var inventoryIds = inventoryRepository.GetInventoryIdsForRent(_rentIdFromMainForm);
+
+            foreach (var inventoryId in inventoryIds)
+            {
+                inventoryRepository.ChangeInventoryStatus(inventoryId, "В аренде");
+            }
+
+            //Уменьшаем Inventory_Rents_Count и Inventory_Total на теже значения, на которые прибавили 
+            total = 0;
+            int totalMinutes = (int)(dtpEnd.Value - dtpStart.Value).TotalMinutes;
+
+            InventoryPriceRepository _inventoryPriceRepository = new InventoryPriceRepository(_connection);
+
+            foreach (Panel inventoryPanel in flpSelectedInventory.Controls)
+            {
+                var cbPrice = inventoryPanel.Controls
+                    .OfType<ComboBox>()
+                    .FirstOrDefault(cb => cb.Name == "cbPrice");
+
+                if (cbPrice?.SelectedValue is int inventoryPriceId &&
+                    inventoryPanel.Tag is int inventoryId)
+                {
+                    var selectedPrice = _inventoryPriceRepository.Get(inventoryPriceId);
+
+                    if (selectedPrice != null)
+                    {
+                        int priceTotal;
+
+                        if (selectedPrice.TimeName.ToLower().Contains("свыше часа"))
+                            priceTotal = (int)(selectedPrice.Price * totalMinutes);
+                        else
+                            priceTotal = (int)selectedPrice.Price;
+
+                        inventoryRepository.ChangeRentsCountAndTotal(inventoryId, -priceTotal, -1);
+
+                        total += priceTotal;
+                    }
+                }
+            }
 
             MessageBox.Show("Аренда возобновлена.");
             this.Close();

@@ -64,10 +64,10 @@ namespace bicycleRent.Forms.Client
             if (txtAddress.Text == "") { MessageBox.Show("Поле 'Адрес' не должно быть пустым!"); return; }
             if (txtFeatures.Text == "") { MessageBox.Show("Поле 'Особые черты' не должно быть пустым!"); return; }
 
-            if (txtSurname.Text.Length >= 15) { MessageBox.Show("Длина поля 'Фамилия' не должна превышать 15 символов!"); return; }
-            if (txtName.Text.Length >= 15) { MessageBox.Show("Длина поля 'Имя' не должна превышать 15 символов!"); return; }
-            if (txtPatronymic.Text.Length >= 15) { MessageBox.Show("Длина поля 'Отчество' не должна превышать 15 символов!"); return; }
-            if (txtTelephone.Text.Length >= 15) { MessageBox.Show("Длина поля 'Телефон' не должна превышать 15 символов!"); return; }
+            if (txtSurname.Text.Length >= 17) { MessageBox.Show("Длина поля 'Фамилия' не должна превышать 17 символов!"); return; }
+            if (txtName.Text.Length >= 17) { MessageBox.Show("Длина поля 'Имя' не должна превышать 17 символов!"); return; }
+            if (txtPatronymic.Text.Length >= 17) { MessageBox.Show("Длина поля 'Отчество' не должна превышать 17 символов!"); return; }
+            if (txtTelephone.Text.Length >= 17) { MessageBox.Show("Длина поля 'Телефон' не должна превышать 17 символов!"); return; }
 
             try
             {

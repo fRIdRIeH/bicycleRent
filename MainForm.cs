@@ -75,7 +75,7 @@ namespace bicycleRent
 
         private void GoToAdminPanelBtn_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm();
+            AdminForm adminForm = new AdminForm(_connection);
             adminForm.ShowDialog();
         }
 

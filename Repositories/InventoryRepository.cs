@@ -194,5 +194,28 @@ namespace bicycleRent.Repositories
                 return false;
             }
         }
+
+
+        //Функия для прибавки Inventory_Rents_Count и Inventory_Total
+        public bool ChangeRentsCountAndTotal(int inventoryId, int total, int count) 
+        {
+            string query = "UPDATE Inventory SET " +
+                "Inventory_Rents_Count = Inventory_Rents_Count + @count, " +
+                "Inventory_Total = Inventory_Total + @total " +
+                "WHERE Inventory_Id = @Inventory_Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection))
+            {
+                cmd.Parameters.AddWithValue("@count", count);
+                cmd.Parameters.AddWithValue("@total", total);
+                cmd.Parameters.AddWithValue("@Inventory_Id", inventoryId);
+
+                int rows = cmd.ExecuteNonQuery();
+
+                if(rows > 0) 
+                    return true;
+                return false;
+            }
+        }
     }
 }

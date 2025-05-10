@@ -36,18 +36,19 @@
             ShowMeInventoryBtn = new Button();
             ShowMeClientsBtn = new Button();
             ShowMeRentForTodayBtn = new Button();
-            dgvAdminForm = new DataGridView();
             ShowMeFilialsBtn = new Button();
             ShowMeWorkersBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvAdminForm).BeginInit();
+            btnAddPrice = new Button();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // GoToInventoryAddFormBtn
             // 
-            GoToInventoryAddFormBtn.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            GoToInventoryAddFormBtn.Location = new Point(12, 12);
+            GoToInventoryAddFormBtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            GoToInventoryAddFormBtn.Location = new Point(6, 50);
             GoToInventoryAddFormBtn.Name = "GoToInventoryAddFormBtn";
-            GoToInventoryAddFormBtn.Size = new Size(220, 90);
+            GoToInventoryAddFormBtn.Size = new Size(270, 40);
             GoToInventoryAddFormBtn.TabIndex = 0;
             GoToInventoryAddFormBtn.Text = "Добавить инвентарь";
             GoToInventoryAddFormBtn.UseVisualStyleBackColor = true;
@@ -55,9 +56,10 @@
             // 
             // GoToUserAddFormBtn
             // 
-            GoToUserAddFormBtn.Location = new Point(12, 108);
+            GoToUserAddFormBtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            GoToUserAddFormBtn.Location = new Point(6, 96);
             GoToUserAddFormBtn.Name = "GoToUserAddFormBtn";
-            GoToUserAddFormBtn.Size = new Size(220, 90);
+            GoToUserAddFormBtn.Size = new Size(270, 40);
             GoToUserAddFormBtn.TabIndex = 1;
             GoToUserAddFormBtn.Text = "Добавить работника";
             GoToUserAddFormBtn.UseVisualStyleBackColor = true;
@@ -65,9 +67,10 @@
             // 
             // GoToDepositAddFormAdd
             // 
-            GoToDepositAddFormAdd.Location = new Point(12, 204);
+            GoToDepositAddFormAdd.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            GoToDepositAddFormAdd.Location = new Point(6, 146);
             GoToDepositAddFormAdd.Name = "GoToDepositAddFormAdd";
-            GoToDepositAddFormAdd.Size = new Size(220, 90);
+            GoToDepositAddFormAdd.Size = new Size(270, 40);
             GoToDepositAddFormAdd.TabIndex = 2;
             GoToDepositAddFormAdd.Text = "Добавить депозит";
             GoToDepositAddFormAdd.UseVisualStyleBackColor = true;
@@ -75,9 +78,10 @@
             // 
             // GoToInventoryTypeAddFormBtn
             // 
-            GoToInventoryTypeAddFormBtn.Location = new Point(12, 300);
+            GoToInventoryTypeAddFormBtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            GoToInventoryTypeAddFormBtn.Location = new Point(6, 192);
             GoToInventoryTypeAddFormBtn.Name = "GoToInventoryTypeAddFormBtn";
-            GoToInventoryTypeAddFormBtn.Size = new Size(220, 90);
+            GoToInventoryTypeAddFormBtn.Size = new Size(270, 40);
             GoToInventoryTypeAddFormBtn.TabIndex = 3;
             GoToInventoryTypeAddFormBtn.Text = "Добавить тип инвентаря";
             GoToInventoryTypeAddFormBtn.UseVisualStyleBackColor = true;
@@ -85,9 +89,10 @@
             // 
             // GoToFilialAddFormBtn
             // 
-            GoToFilialAddFormBtn.Location = new Point(12, 396);
+            GoToFilialAddFormBtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            GoToFilialAddFormBtn.Location = new Point(6, 238);
             GoToFilialAddFormBtn.Name = "GoToFilialAddFormBtn";
-            GoToFilialAddFormBtn.Size = new Size(220, 90);
+            GoToFilialAddFormBtn.Size = new Size(270, 40);
             GoToFilialAddFormBtn.TabIndex = 4;
             GoToFilialAddFormBtn.Text = "Добавить филиал";
             GoToFilialAddFormBtn.UseVisualStyleBackColor = true;
@@ -126,14 +131,6 @@
             ShowMeRentForTodayBtn.UseVisualStyleBackColor = true;
             ShowMeRentForTodayBtn.Click += ShowMeRentForTodayBtn_Click;
             // 
-            // dgvAdminForm
-            // 
-            dgvAdminForm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAdminForm.Location = new Point(256, 12);
-            dgvAdminForm.Name = "dgvAdminForm";
-            dgvAdminForm.Size = new Size(1081, 637);
-            dgvAdminForm.TabIndex = 8;
-            // 
             // ShowMeFilialsBtn
             // 
             ShowMeFilialsBtn.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -156,29 +153,50 @@
             ShowMeWorkersBtn.UseVisualStyleBackColor = true;
             ShowMeWorkersBtn.Click += ShowMeWorkersBtn_Click;
             // 
+            // btnAddPrice
+            // 
+            btnAddPrice.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnAddPrice.Location = new Point(6, 284);
+            btnAddPrice.Name = "btnAddPrice";
+            btnAddPrice.Size = new Size(270, 40);
+            btnAddPrice.TabIndex = 11;
+            btnAddPrice.Text = "Добавить тариф";
+            btnAddPrice.UseVisualStyleBackColor = true;
+            btnAddPrice.Click += btnAddPrice_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(GoToInventoryAddFormBtn);
+            groupBox1.Controls.Add(btnAddPrice);
+            groupBox1.Controls.Add(GoToUserAddFormBtn);
+            groupBox1.Controls.Add(GoToDepositAddFormAdd);
+            groupBox1.Controls.Add(GoToInventoryTypeAddFormBtn);
+            groupBox1.Controls.Add(GoToFilialAddFormBtn);
+            groupBox1.Location = new Point(12, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(289, 342);
+            groupBox1.TabIndex = 12;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Добавление";
+            // 
             // AdminForm
             // 
             AutoScaleDimensions = new SizeF(16F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1684, 661);
+            ClientSize = new Size(1674, 1011);
+            Controls.Add(groupBox1);
             Controls.Add(ShowMeWorkersBtn);
             Controls.Add(ShowMeFilialsBtn);
-            Controls.Add(dgvAdminForm);
             Controls.Add(ShowMeRentForTodayBtn);
             Controls.Add(ShowMeClientsBtn);
             Controls.Add(ShowMeInventoryBtn);
-            Controls.Add(GoToFilialAddFormBtn);
-            Controls.Add(GoToInventoryTypeAddFormBtn);
-            Controls.Add(GoToDepositAddFormAdd);
-            Controls.Add(GoToUserAddFormBtn);
-            Controls.Add(GoToInventoryAddFormBtn);
             Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             Margin = new Padding(6, 7, 6, 7);
             MinimizeBox = false;
             Name = "AdminForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Администрирование";
-            ((System.ComponentModel.ISupportInitialize)dgvAdminForm).EndInit();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -192,8 +210,9 @@
         private Button ShowMeInventoryBtn;
         private Button ShowMeClientsBtn;
         private Button ShowMeRentForTodayBtn;
-        private DataGridView dgvAdminForm;
         private Button ShowMeFilialsBtn;
         private Button ShowMeWorkersBtn;
+        private Button btnAddPrice;
+        private GroupBox groupBox1;
     }
 }

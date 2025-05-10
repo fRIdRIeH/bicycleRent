@@ -12,15 +12,20 @@ using bicycleRent.Forms.Filial;
 using bicycleRent.Forms.Inventory;
 using bicycleRent.Forms.InventoryType;
 using bicycleRent.Forms.User;
+using MySql.Data.MySqlClient;
 
 namespace bicycleRent.Forms.Admin
 {
     public partial class AdminForm : Form
     {
-        public AdminForm()
+        private readonly MySqlConnection _connection;
+        public AdminForm(MySqlConnection connection)
         {
             InitializeComponent();
             this.TopMost = true;
+
+            _connection = connection;
+
             //this.WindowState = FormWindowState.Maximized;
         }
 
@@ -54,6 +59,11 @@ namespace bicycleRent.Forms.Admin
             filialAddForm.ShowDialog();
         }
 
+        private void btnAddPrice_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ShowMeInventoryBtn_Click(object sender, EventArgs e)
         {
 
@@ -78,5 +88,6 @@ namespace bicycleRent.Forms.Admin
         {
 
         }
+
     }
 }

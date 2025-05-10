@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            dgvInventory = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvInventory).BeginInit();
+            flpInventory = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // label1
@@ -42,28 +41,28 @@
             label1.TabIndex = 0;
             label1.Text = "Список инвентаря";
             // 
-            // dgvInventory
+            // flpInventory
             // 
-            dgvInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInventory.Location = new Point(12, 49);
-            dgvInventory.Name = "dgvInventory";
-            dgvInventory.Size = new Size(1560, 800);
-            dgvInventory.TabIndex = 1;
+            flpInventory.FlowDirection = FlowDirection.TopDown;
+            flpInventory.Location = new Point(12, 49);
+            flpInventory.Name = "flpInventory";
+            flpInventory.Size = new Size(1560, 800);
+            flpInventory.TabIndex = 1;
+            flpInventory.WrapContents = false;
             // 
             // InventoryListForm
             // 
             AutoScaleDimensions = new SizeF(16F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
-            Controls.Add(dgvInventory);
+            Controls.Add(flpInventory);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            Margin = new Padding(7, 7, 7, 7);
+            Margin = new Padding(7);
             MaximizeBox = false;
             Name = "InventoryListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Инвентарь";
-            ((System.ComponentModel.ISupportInitialize)dgvInventory).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -71,6 +70,6 @@
         #endregion
 
         private Label label1;
-        private DataGridView dgvInventory;
+        private FlowLayoutPanel flpInventory;
     }
 }

@@ -28,18 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvClients = new DataGridView();
             label1 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
+            flpClients = new FlowLayoutPanel();
+            btnAddClient = new Button();
             SuspendLayout();
-            // 
-            // dgvClients
-            // 
-            dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClients.Location = new Point(12, 49);
-            dgvClients.Name = "dgvClients";
-            dgvClients.Size = new Size(1560, 800);
-            dgvClients.TabIndex = 3;
             // 
             // label1
             // 
@@ -50,27 +42,50 @@
             label1.TabIndex = 2;
             label1.Text = "Список клиентов";
             // 
+            // flpClients
+            // 
+            flpClients.AutoScroll = true;
+            flpClients.FlowDirection = FlowDirection.TopDown;
+            flpClients.Location = new Point(12, 49);
+            flpClients.Name = "flpClients";
+            flpClients.Size = new Size(1560, 800);
+            flpClients.TabIndex = 3;
+            flpClients.WrapContents = false;
+            // 
+            // btnAddClient
+            // 
+            btnAddClient.BackColor = Color.LimeGreen;
+            btnAddClient.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            btnAddClient.Location = new Point(1303, 6);
+            btnAddClient.Margin = new Padding(4);
+            btnAddClient.Name = "btnAddClient";
+            btnAddClient.Size = new Size(269, 40);
+            btnAddClient.TabIndex = 6;
+            btnAddClient.Text = "Добавить клиента";
+            btnAddClient.UseVisualStyleBackColor = false;
+            btnAddClient.Click += btnAddClient_Click;
+            // 
             // ClientListForm
             // 
             AutoScaleDimensions = new SizeF(16F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
-            Controls.Add(dgvClients);
+            Controls.Add(btnAddClient);
+            Controls.Add(flpClients);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            Margin = new Padding(7, 7, 7, 7);
+            Margin = new Padding(7);
             MaximizeBox = false;
             Name = "ClientListForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ClientListForm";
-            ((System.ComponentModel.ISupportInitialize)dgvClients).EndInit();
+            Text = "Список клиентов";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dgvClients;
         private Label label1;
+        private FlowLayoutPanel flpClients;
+        private Button btnAddClient;
     }
 }

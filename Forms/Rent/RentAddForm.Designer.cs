@@ -45,11 +45,11 @@
             label6 = new Label();
             flpSelectedInventory = new FlowLayoutPanel();
             btnChooseInventory = new Button();
-            cbClients = new ComboBox();
             btnCount = new Button();
             btnCreateRent = new Button();
             groupBox2 = new GroupBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            cbClients = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -210,16 +210,6 @@
             btnChooseInventory.UseVisualStyleBackColor = true;
             btnChooseInventory.Click += btnChooseInventory_Click;
             // 
-            // cbClients
-            // 
-            cbClients.FormattingEnabled = true;
-            cbClients.Location = new Point(95, 13);
-            cbClients.Name = "cbClients";
-            cbClients.Size = new Size(1177, 33);
-            cbClients.TabIndex = 16;
-            cbClients.DropDown += cbClients_DropDown;
-            cbClients.SelectedIndexChanged += cbClients_SelectedIndexChanged;
-            // 
             // btnCount
             // 
             btnCount.Location = new Point(1354, 731);
@@ -257,15 +247,24 @@
             flowLayoutPanel1.Size = new Size(298, 260);
             flowLayoutPanel1.TabIndex = 0;
             // 
+            // cbClients
+            // 
+            cbClients.FormattingEnabled = true;
+            cbClients.Location = new Point(95, 12);
+            cbClients.Name = "cbClients";
+            cbClients.Size = new Size(1177, 33);
+            cbClients.TabIndex = 35;
+            cbClients.SelectedIndexChanged += cbClients_SelectedIndexChanged;
+            // 
             // RentAddForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(cbClients);
             Controls.Add(groupBox2);
             Controls.Add(btnCreateRent);
             Controls.Add(btnCount);
-            Controls.Add(cbClients);
             Controls.Add(btnChooseInventory);
             Controls.Add(flpSelectedInventory);
             Controls.Add(groupBox1);
@@ -308,12 +307,12 @@
         private Label label6;
         private FlowLayoutPanel flpSelectedInventory;
         private Button btnChooseInventory;
-        private ComboBox cbClients;
         private Label lblForPrice;
         private Label lblForTimePeriod;
         private Button btnCount;
         private Button btnCreateRent;
         private GroupBox groupBox2;
         private FlowLayoutPanel flowLayoutPanel1;
+        private ComboBox cbClients;
     }
 }

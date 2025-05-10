@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -99,6 +100,59 @@ namespace bicycleRent.Repositories
                 }
             }
             return clients;
+        }
+
+        public bool Add(Client client)
+        {
+            string query = "INSERT INTO Client " +
+                "(Client_Surname, Client_Name, Client_Patronymic, Client_Telephone, Client_Address, Client_Features) " +
+                "VALUES " +
+                "(@Client_Surname, @Client_Name, @Client_Patronymic, @Client_Telephone, @Client_Address, @Client_Features)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection)) 
+            {
+                cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
+                cmd.Parameters.AddWithValue("@Client_Name", client.Name);
+                cmd.Parameters.AddWithValue("@Client_Patronymic", client.Patronymic);
+                cmd.Parameters.AddWithValue("@Client_Telephone", client.Telephone);
+                cmd.Parameters.AddWithValue("@Client_Address", client.Address);
+                cmd.Parameters.AddWithValue("@Client_Features", client.Features);
+
+                int rowsInserted = cmd.ExecuteNonQuery();
+
+                if(rowsInserted > 0 )
+                    return true;
+                return false;
+            }
+        }
+
+        public bool Update(Client client, int id) 
+        {
+            string query = "UPDATE Client SET " +
+                "Client_Surname = @Client_Surname, " +
+                "Client_Name = @Client_Name, " +
+                "Client_Patronymic = @Client_Patronymic, " +
+                "Client_Telephone = @Client_Telephone, " +
+                "Client_Address = @Client_Address, " +
+                "Client_Features = @Client_Features " +
+                "WHERE Client_Id = @Client_Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@Client_Id", id);
+                cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
+                cmd.Parameters.AddWithValue("@Client_Name", client.Name);
+                cmd.Parameters.AddWithValue("@Client_Patronymic", client.Patronymic);
+                cmd.Parameters.AddWithValue("@Client_Telephone", client.Telephone);
+                cmd.Parameters.AddWithValue("@Client_Address", client.Address);
+                cmd.Parameters.AddWithValue("@Client_Features", client.Features);
+
+                int rowsUpdated = cmd.ExecuteNonQuery();
+
+                if (rowsUpdated > 0)
+                    return true;
+                return false;
+            }
         }
     }
 }

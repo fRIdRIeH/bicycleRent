@@ -63,7 +63,7 @@ namespace bicycleRent
         private void GoToClientsListBtn_Click(object sender, EventArgs e)
         {
             ClientRepository _clientRepository = new(_connection);
-            ClientListForm clientListForm = new ClientListForm(_clientRepository);
+            ClientListForm clientListForm = new ClientListForm(_clientRepository, _user, _connection);
             clientListForm.ShowDialog();
         }
         private void GoToInventoryListBtn_Click(object sender, EventArgs e)

@@ -84,5 +84,39 @@ namespace bicycleRent.Repositories
             return null;
         }
 
+        public bool Add(InventoryPrice inventoryPrice) 
+        {
+            string query = "INSERT INTO Inventory_Price (Price_Id, Time_Id, Inventory_Id) VALUES (@Price_Id, @Time_Id, @Inventory_Id)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection)) 
+            {
+                cmd.Parameters.AddWithValue("@Price_Id", inventoryPrice.PriceId);
+                cmd.Parameters.AddWithValue("@Time_Id", inventoryPrice.TimeId);
+                cmd.Parameters.AddWithValue("@Inventory_Id", inventoryPrice.InventoryId);
+
+                int rowsInserted = cmd.ExecuteNonQuery();
+
+                if(rowsInserted > 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public bool Delete(int inventoryPriceId) 
+        {
+            string query = "DELETE FROM Inventory_Price WHERE Inventory_Price_Id = @Inventory_Price_Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@Price_Id", inventoryPriceId);
+
+                int rowsDeleted = cmd.ExecuteNonQuery();
+
+                if (rowsDeleted > 0)
+                    return true;
+                return false;
+            }
+        }
+
     }
 }

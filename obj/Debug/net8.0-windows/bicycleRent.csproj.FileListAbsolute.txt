@@ -98,3 +98,4 @@ C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-w
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Rent.RentEditForm.resources
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Inventory.InventorySelectForm.resources
 C:\Users\fRIdRIeH\Desktop\Labs\4 курс\с# ИСРПО\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Rent.RentEditForm.resources
+C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.InventoryPrice.AddInventoryPrice.resources

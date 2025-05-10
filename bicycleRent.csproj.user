@@ -4,6 +4,9 @@
     <Compile Update="Forms\Admin\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\InventoryPrice\AddInventoryPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Inventory\InventoryListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -13,10 +16,16 @@
     <Compile Update="Forms\Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Price\PriceAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Rent\RentAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Rent\RentEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Time\TimeAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="MainForm.cs">

@@ -13,8 +13,17 @@ namespace bicycleRent.Models
         public decimal Price { get; set; }
         public int TimeId { get; set; }
         public string TimeName { get; set; }
+        public int InventoryId { get; set; }
 
         public InventoryPrice() { }
+
+        // Для добавления
+        public InventoryPrice(int priceId, int timeId, int inventoryId)
+        {
+            PriceId = priceId;
+            TimeId = timeId;
+            InventoryId = inventoryId;
+        }
 
         public InventoryPrice(int id, int priceId, decimal price, int timeId, string timeName)
         {

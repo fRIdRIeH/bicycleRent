@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using bicycleRent.Forms.Deposit;
 using bicycleRent.Forms.Filial;
 using bicycleRent.Forms.Inventory;
+using bicycleRent.Forms.InventoryPrice;
 using bicycleRent.Forms.InventoryType;
 using bicycleRent.Forms.User;
 using MySql.Data.MySqlClient;
@@ -61,7 +62,8 @@ namespace bicycleRent.Forms.Admin
 
         private void btnAddPrice_Click(object sender, EventArgs e)
         {
-
+            AddInventoryPrice addInventoryPrice = new AddInventoryPrice(_connection);
+            addInventoryPrice.ShowDialog();
         }
 
         private void ShowMeInventoryBtn_Click(object sender, EventArgs e)

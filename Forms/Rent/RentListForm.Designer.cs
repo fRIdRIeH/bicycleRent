@@ -30,6 +30,7 @@
         {
             label1 = new Label();
             flpRents = new FlowLayoutPanel();
+            GoToAddRentBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -51,11 +52,25 @@
             flpRents.Size = new Size(1556, 797);
             flpRents.TabIndex = 2;
             // 
+            // GoToAddRentBtn
+            // 
+            GoToAddRentBtn.BackColor = Color.LimeGreen;
+            GoToAddRentBtn.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            GoToAddRentBtn.Location = new Point(1303, 9);
+            GoToAddRentBtn.Margin = new Padding(4);
+            GoToAddRentBtn.Name = "GoToAddRentBtn";
+            GoToAddRentBtn.Size = new Size(269, 40);
+            GoToAddRentBtn.TabIndex = 5;
+            GoToAddRentBtn.Text = "Создать аренду";
+            GoToAddRentBtn.UseVisualStyleBackColor = false;
+            GoToAddRentBtn.Click += GoToAddRentBtn_Click;
+            // 
             // RentListForm
             // 
             AutoScaleDimensions = new SizeF(17F, 40F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(GoToAddRentBtn);
             Controls.Add(flpRents);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -71,5 +86,6 @@
         #endregion
         private Label label1;
         private FlowLayoutPanel flpRents;
+        private Button GoToAddRentBtn;
     }
 }

@@ -360,11 +360,11 @@ namespace bicycleRent.Forms.Rent
             rentPanel.Controls.Add(lblClientTelephoneData);
 
             //добавление в панель кнопок управления
-            rentPanel.Controls.Add(btnEdit);
 
             if (_user.Role == "Администратор")
             {
                 rentPanel.Controls.Add(btnDelete);
+                rentPanel.Controls.Add(btnEdit);
             }
 
             flpRents.Controls.Add(rentPanel);
@@ -403,6 +403,13 @@ namespace bicycleRent.Forms.Rent
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
+        }
+
+        private void GoToAddRentBtn_Click(object sender, EventArgs e)
+        {
+            RentRepository _rentRepository = new RentRepository(_connection);
+            RentAddForm rentAddForm = new RentAddForm(_rentRepository, _user, _connection, 0, "addRent");
+            rentAddForm.ShowDialog();
         }
     }
 }

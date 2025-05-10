@@ -217,6 +217,7 @@
             cbClients.Name = "cbClients";
             cbClients.Size = new Size(1177, 33);
             cbClients.TabIndex = 16;
+            cbClients.DropDown += cbClients_DropDown;
             cbClients.SelectedIndexChanged += cbClients_SelectedIndexChanged;
             // 
             // btnCount

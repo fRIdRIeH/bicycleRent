@@ -30,5 +30,8 @@ namespace bicycleRent.Models
             Features = features;
             VisitCount = visitCount;
         }
+
+        public string Display => $"{Surname} {Name} {Patronymic} т. {Telephone}";
+
     }
 }

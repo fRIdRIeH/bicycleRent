@@ -11,6 +11,7 @@ using bicycleRent.Forms.Inventory;
 using bicycleRent.Models;
 using bicycleRent.Repositories;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 
 namespace bicycleRent.Forms.Rent
 {
@@ -30,6 +31,7 @@ namespace bicycleRent.Forms.Rent
         private List<int> oldInventoryIds = new();
         private Dictionary<int, int> _selectedPrices = new(); // key = InventoryId, value = InventoryPriceId
         private readonly PaymentRepository _paymentRepository;
+        List<Models.Client> clients;
 
         public RentEditForm(RentRepository rentRepository, Models.User user, MySqlConnection connection, int idFormMain, string key)
         {
@@ -202,15 +204,22 @@ namespace bicycleRent.Forms.Rent
             //заполнение combobox клиентов
 
             ClientRepository _clientRepository = new ClientRepository(_connection);
-            var clients = _clientRepository.GetAll();
+            clients = _clientRepository.GetAll();
 
+            // Отображение в ComboBox
             cbClients.DataSource = null;
             cbClients.DataSource = clients;
-            cbClients.DisplayMember = "Telephone";
+            cbClients.DisplayMember = "Display";
             cbClients.ValueMember = "Id";
+            cbClients.DropDownStyle = ComboBoxStyle.DropDown; // чтобы можно было вводить
 
-            cbClients.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cbClients.AutoCompleteSource = AutoCompleteSource.ListItems;
+            // Подсказки с поиском по вхождению
+            AutoCompleteStringCollection autoSource = new AutoCompleteStringCollection();
+            autoSource.AddRange(clients.Select(c => c.Display).ToArray());
+
+            cbClients.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbClients.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cbClients.AutoCompleteCustomSource = autoSource;
 
             //заполнение combobox залогов
 
@@ -283,6 +292,27 @@ namespace bicycleRent.Forms.Rent
             flpSelectedInventory.FlowDirection = FlowDirection.TopDown;
             flpSelectedInventory.WrapContents = false;
             flpSelectedInventory.AutoScroll = true;
+        }
+
+        private void cbClients_Leave(object sender, EventArgs e)
+        {
+            var text = cbClients.Text.ToLower();
+
+            var matchedClient = clients
+                .FirstOrDefault(c => c.Display.ToLower().Contains(text));
+
+            if (matchedClient != null)
+            {
+                cbClients.SelectedItem = matchedClient;
+
+                lblForClient.Text = $"{matchedClient.Surname} {matchedClient.Name[0]}. {matchedClient.Patronymic[0]}.";
+                clientId = matchedClient.Id;
+            }
+            else
+            {
+                MessageBox.Show("Клиент не найден");
+                cbClients.SelectedItem = null;
+            }
         }
 
         private void btnChooseInventory_Click(object sender, EventArgs e)

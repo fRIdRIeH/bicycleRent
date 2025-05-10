@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using bicycleRent.Forms.Inventory;
 using Google.Protobuf.WellKnownTypes;
+using MySqlX.XDevAPI;
 
 namespace bicycleRent.Forms.Rent
 {
@@ -27,6 +28,7 @@ namespace bicycleRent.Forms.Rent
         int clientId = 0;
         int _idFromMainForm;
         string _key;
+        List<Models.Client> clients;
 
         public RentAddForm(RentRepository rentRepository, Models.User user, MySqlConnection connection, int idFormMain, string key)
         {
@@ -149,7 +151,7 @@ namespace bicycleRent.Forms.Rent
                 ForeColor = Color.DarkRed,
                 Cursor = Cursors.Hand,
                 Size = new Size(30, 30),
-                Location = new Point(1180, 10), 
+                Location = new Point(1180, 10),
             };
 
             // Подписка на событие нажатия
@@ -185,13 +187,22 @@ namespace bicycleRent.Forms.Rent
             ClientRepository _clientRepository = new ClientRepository(_connection);
             var clients = _clientRepository.GetAll();
 
+            // Отображение в ComboBox
             cbClients.DataSource = null;
             cbClients.DataSource = clients;
-            cbClients.DisplayMember = "Telephone";
+            cbClients.DisplayMember = "Display";
             cbClients.ValueMember = "Id";
+            cbClients.DropDownStyle = ComboBoxStyle.DropDown; // чтобы можно было вводить
 
-            cbClients.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cbClients.AutoCompleteSource = AutoCompleteSource.ListItems;
+            // Подсказки с поиском по вхождению
+            AutoCompleteStringCollection autoSource = new AutoCompleteStringCollection();
+            autoSource.AddRange(clients.Select(c => c.Display).ToArray());
+
+            cbClients.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbClients.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cbClients.AutoCompleteCustomSource = autoSource;
+
+
 
             //заполнение combobox залогов
 
@@ -240,6 +251,28 @@ namespace bicycleRent.Forms.Rent
 
             clientId = selectedClient.Id;
         }
+
+        private void cbClients_Leave(object sender, EventArgs e)
+        {
+            var text = cbClients.Text.ToLower();
+
+            var matchedClient = clients
+                .FirstOrDefault(c => c.Display.ToLower().Contains(text));
+
+            if (matchedClient != null)
+            {
+                cbClients.SelectedItem = matchedClient;
+
+                lblForClient.Text = $"{matchedClient.Surname} {matchedClient.Name[0]}. {matchedClient.Patronymic[0]}.";
+                clientId = matchedClient.Id;
+            }
+            else
+            {
+                MessageBox.Show("Клиент не найден");
+                cbClients.SelectedItem = null;
+            }
+        }
+
 
         private void btnCount_Click(object sender, EventArgs e)
         {
@@ -317,12 +350,12 @@ namespace bicycleRent.Forms.Rent
         {
             string rentStatus = "";
             string inventoryStatus = "";
-            if(dtpStart.Value > DateTime.Now)
+            if (dtpStart.Value > DateTime.Now)
             {
                 rentStatus = "Забронирована";
                 inventoryStatus = "Забронирован";
             }
-            if(dtpStart.Value <= DateTime.Now)
+            if (dtpStart.Value <= DateTime.Now)
             {
                 rentStatus = "В процессе";
                 inventoryStatus = "В аренде";
@@ -357,7 +390,7 @@ namespace bicycleRent.Forms.Rent
                     Total = total,
                     Status = rentStatus,
                     UserId = _user.Id,
-                    DepositId = (int)cbDeposit.SelectedValue,   
+                    DepositId = (int)cbDeposit.SelectedValue,
                 };
 
                 _rentRepository.Add(rent);
@@ -398,6 +431,11 @@ namespace bicycleRent.Forms.Rent
                 MessageBox.Show($"Ошибка: {ex.Message}");
                 return;
             }
+        }
+
+        private void cbClients_DropDown(object sender, EventArgs e)
+        {
+            ((ComboBox)sender).DroppedDown = false;
         }
     }
 }

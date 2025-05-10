@@ -154,5 +154,34 @@ namespace bicycleRent.Repositories
                 return false;
             }
         }
+
+        public Client? GetFullClientInfo(int id)
+        {
+            string query = "SELECT * FROM Client WHERE Client_Id = @Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Client client = new Client()
+                        {
+                            Id = reader.GetInt32("Client_Id"),
+                            Surname = reader.GetString("Client_Surname"),
+                            Name = reader.GetString("Client_Name"),
+                            Patronymic = reader.GetString("Client_Patronymic"),
+                            Telephone = reader.GetString("Client_Telephone"),
+                            Address = reader.GetString("Client_Address"),
+                            Features = reader.GetString("Client_Features")
+                        };
+                        return client;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace bicycleRent.Forms.Client
             {
                 Text = "Фамилия:",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(50, lblYpos),
+                Location = new Point(100, lblYpos),
                 AutoSize = true,
             };
             // Имя клиента
@@ -69,7 +69,7 @@ namespace bicycleRent.Forms.Client
             {
                 Text = "Имя:",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(210, lblYpos),
+                Location = new Point(260, lblYpos),
                 AutoSize = true,
             };
             // Отчетство клиента
@@ -77,7 +77,7 @@ namespace bicycleRent.Forms.Client
             {
                 Text = "Отчество:",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(360, lblYpos),
+                Location = new Point(410, lblYpos),
                 AutoSize = true,
             };
             // Номер телефона
@@ -85,7 +85,7 @@ namespace bicycleRent.Forms.Client
             {
                 Text = "Телефон:",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(560, lblYpos),
+                Location = new Point(610, lblYpos),
                 AutoSize = true,
             };
 
@@ -113,7 +113,7 @@ namespace bicycleRent.Forms.Client
             {
                 Text = $"{client.Surname}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(50, lblYpos + 25),
+                Location = new Point(100, lblYpos + 25),
                 AutoSize = true,
             };
             // Имя клиента
@@ -121,7 +121,7 @@ namespace bicycleRent.Forms.Client
             {
                 Text = $"{client.Name}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(210, lblYpos + 25),
+                Location = new Point(260, lblYpos + 25),
                 AutoSize = true,
             };
             // Отчетство клиента
@@ -129,7 +129,7 @@ namespace bicycleRent.Forms.Client
             {
                 Text = $"{client.Patronymic}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(360, lblYpos + 25),
+                Location = new Point(410, lblYpos + 25),
                 AutoSize = true,
             };
             // Номер телефона
@@ -137,7 +137,7 @@ namespace bicycleRent.Forms.Client
             {
                 Text = $"{client.Telephone}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(560, lblYpos + 25),
+                Location = new Point(610, lblYpos + 25),
                 AutoSize = true,
             };
 

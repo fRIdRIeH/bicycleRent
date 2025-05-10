@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace bicycleRent.Forms.Client
 
         public void LoadData()
         {
-            var clientToFill = _clientRepository.Get(_clientId);
+            var clientToFill = _clientRepository.GetFullClientInfo(_clientId);
 
             txtSurname.Text = clientToFill.Surname;
             txtName.Text = clientToFill.Name;
@@ -55,12 +56,18 @@ namespace bicycleRent.Forms.Client
 
         private void btnAddOrEdit_Click(object sender, EventArgs e)
         {
-            if (txtSurname.Text == "") { MessageBox.Show("Поле '' не должно быть пустым!"); return; }
-            if (txtName.Text == "") { MessageBox.Show("Поле '' не должно быть пустым!"); return; }
-            if (txtPatronymic.Text == "") { MessageBox.Show("Поле '' не должно быть пустым!"); return; }
-            if (txtTelephone.Text == "") { MessageBox.Show("Поле '' не должно быть пустым!"); return; }
-            if (txtAddress.Text == "") { MessageBox.Show("Поле '' не должно быть пустым!"); return; }
-            if (txtFeatures.Text == "") { MessageBox.Show("Поле '' не должно быть пустым!"); return; }
+            //Недовалидация
+            if (txtSurname.Text == "") { MessageBox.Show("Поле 'Фамилия' не должно быть пустым!"); return; }
+            if (txtName.Text == "") { MessageBox.Show("Поле 'Имя' не должно быть пустым!"); return; }
+            if (txtPatronymic.Text == "") { MessageBox.Show("Поле 'Отчество' не должно быть пустым!"); return; }
+            if (txtTelephone.Text == "") { MessageBox.Show("Поле 'Телефон' не должно быть пустым!"); return; }
+            if (txtAddress.Text == "") { MessageBox.Show("Поле 'Адрес' не должно быть пустым!"); return; }
+            if (txtFeatures.Text == "") { MessageBox.Show("Поле 'Особые черты' не должно быть пустым!"); return; }
+
+            if (txtSurname.Text.Length >= 15) { MessageBox.Show("Длина поля 'Фамилия' не должна превышать 15 символов!"); return; }
+            if (txtName.Text.Length >= 15) { MessageBox.Show("Длина поля 'Имя' не должна превышать 15 символов!"); return; }
+            if (txtPatronymic.Text.Length >= 15) { MessageBox.Show("Длина поля 'Отчество' не должна превышать 15 символов!"); return; }
+            if (txtTelephone.Text.Length >= 15) { MessageBox.Show("Длина поля 'Телефон' не должна превышать 15 символов!"); return; }
 
             try
             {

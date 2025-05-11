@@ -38,7 +38,7 @@ namespace bicycleRent.Forms.Admin
 
         private void GoToUserAddFormBtn_Click(object sender, EventArgs e)
         {
-            UserAddForm userAddForm = new UserAddForm();
+            UserAddForm userAddForm = new UserAddForm(_connection, 0, "add");
             userAddForm.ShowDialog();
         }
 

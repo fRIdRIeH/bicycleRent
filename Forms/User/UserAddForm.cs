@@ -29,6 +29,8 @@ namespace bicycleRent.Forms.User
 
             _connection = connection;
 
+            _repository = new UserRepository(connection);
+
             _id = id;
             _key = key;
 
@@ -42,7 +44,8 @@ namespace bicycleRent.Forms.User
                 btnAddOrEdit.Text = "Добавить";
             }
 
-
+            cbRole.Items.Add("Администратор");
+            cbRole.Items.Add("Менеджер");
         }
 
         public void LoadData()
@@ -51,10 +54,10 @@ namespace bicycleRent.Forms.User
 
             txtSurname.Text = userToFill.Surname;
             txtName.Text = userToFill.Name;
-            txtPatronymic = userToFill.Patronymic;
-            txtTelephone = userToFill.Telephone;
+            txtPatronymic.Text = userToFill.Patronymic;
+            txtTelephone.Text = userToFill.Telephone;
             txtAddress.Text = userToFill.Address;
-            cbRole.SelectedValue = userToFill.Role;
+            cbRole.Text = userToFill.Role;
             txtLogin.Text = userToFill.Login;
             txtPassword.Text = userToFill.Password;
 
@@ -71,7 +74,7 @@ namespace bicycleRent.Forms.User
             if (txtPatronymic.Text == "") { MessageBox.Show("Поле 'Отчество' не должно быть пустым!"); return; }
             if (txtTelephone.Text == "") { MessageBox.Show("Поле 'Телефон' не должно быть пустым!"); return; }
             if (txtAddress.Text == "") { MessageBox.Show("Поле 'Адрес' не должно быть пустым!"); return; }
-            if (cbRole.SelectedValue == null) { MessageBox.Show("Поле 'Роль' не должно быть пустым! Выбери роль из выпадающего списка"); return; }
+            if (cbRole.Text == "") { MessageBox.Show("Поле 'Роль' не должно быть пустым! Выбери роль из выпадающего списка"); return; }
             if (txtLogin.Text == "") { MessageBox.Show("Поле 'Логин' не должно быть пустым!"); return; }
             if (txtPassword.Text == "") { MessageBox.Show("Поле 'Пароль' не должно быть пустым!"); return; }
 
@@ -87,7 +90,7 @@ namespace bicycleRent.Forms.User
                         Patronymic = txtPatronymic.Text,
                         Telephone = txtTelephone.Text,
                         Address = txtAddress.Text,
-                        Role = (string)cbRole.SelectedValue,
+                        Role = cbRole.Text,
                         Login = txtLogin.Text,
                         Password = txtPassword.Text,
                     };
@@ -105,7 +108,7 @@ namespace bicycleRent.Forms.User
                         Patronymic = txtPatronymic.Text,
                         Telephone = txtTelephone.Text,
                         Address = txtAddress.Text,
-                        Role = (string)cbRole.SelectedValue,
+                        Role = cbRole.Text,
                         Login = txtLogin.Text,
                         Password = txtPassword.Text,
                     };

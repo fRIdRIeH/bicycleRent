@@ -44,7 +44,7 @@ namespace bicycleRent.Forms.Admin
 
         private void GoToDepositAddFormAdd_Click(object sender, EventArgs e)
         {
-            DepositAddForm depositAddForm = new DepositAddForm();
+            DepositAddForm depositAddForm = new DepositAddForm(_connection, 0, "add");
             depositAddForm.ShowDialog();
         }
 

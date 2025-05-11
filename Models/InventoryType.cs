@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace bicycleRent.Models
 {
-    internal class InventoryType
+    public class InventoryType
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public InventoryType() { }
+
+        public InventoryType(int id, string name) 
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

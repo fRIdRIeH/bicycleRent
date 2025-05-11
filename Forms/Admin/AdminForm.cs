@@ -32,7 +32,7 @@ namespace bicycleRent.Forms.Admin
 
         private void GoToInventoryAddFormBtn_Click(object sender, EventArgs e)
         {
-            InventoryAddForm inventoryAddForm = new InventoryAddForm();
+            InventoryAddForm inventoryAddForm = new InventoryAddForm(_connection);
             inventoryAddForm.ShowDialog();
         }
 
@@ -50,13 +50,13 @@ namespace bicycleRent.Forms.Admin
 
         private void GoToInventoryTypeAddFormBtn_Click(object sender, EventArgs e)
         {
-            InventoryTypeAddForm inventoryTypeAddForm = new InventoryTypeAddForm();
+            InventoryTypeAddForm inventoryTypeAddForm = new InventoryTypeAddForm(_connection, 0, "add");
             inventoryTypeAddForm.ShowDialog();
         }
 
         private void GoToFilialAddFormBtn_Click(object sender, EventArgs e)
         {
-            FilialAddForm filialAddForm = new FilialAddForm();
+            FilialAddForm filialAddForm = new FilialAddForm(_connection, 0 , "add");
             filialAddForm.ShowDialog();
         }
 

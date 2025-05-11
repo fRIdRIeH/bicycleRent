@@ -28,12 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "InventoryTypeAddForm";
+            label1 = new Label();
+            btnAddOrEdit = new Button();
+            txtInventoryTypeName = new TextBox();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 96);
+            label1.Name = "label1";
+            label1.Size = new Size(296, 25);
+            label1.TabIndex = 0;
+            label1.Text = "Введи название типа инвентаря:";
+            // 
+            // btnAddOrEdit
+            // 
+            btnAddOrEdit.Location = new Point(99, 304);
+            btnAddOrEdit.Name = "btnAddOrEdit";
+            btnAddOrEdit.Size = new Size(443, 45);
+            btnAddOrEdit.TabIndex = 1;
+            btnAddOrEdit.Text = "button1";
+            btnAddOrEdit.UseVisualStyleBackColor = true;
+            btnAddOrEdit.Click += btnAddOrEdit_Click;
+            // 
+            // txtInventoryTypeName
+            // 
+            txtInventoryTypeName.Location = new Point(314, 93);
+            txtInventoryTypeName.Name = "txtInventoryTypeName";
+            txtInventoryTypeName.Size = new Size(328, 33);
+            txtInventoryTypeName.TabIndex = 2;
+            // 
+            // InventoryTypeAddForm
+            // 
+            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(654, 361);
+            Controls.Add(txtInventoryTypeName);
+            Controls.Add(btnAddOrEdit);
+            Controls.Add(label1);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Margin = new Padding(5, 5, 5, 5);
+            Name = "InventoryTypeAddForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "InventoryTypeAddForm";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private Button btnAddOrEdit;
+        private TextBox txtInventoryTypeName;
     }
 }

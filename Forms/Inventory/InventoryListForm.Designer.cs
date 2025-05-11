@@ -43,6 +43,7 @@
             // 
             // flpInventory
             // 
+            flpInventory.AutoScroll = true;
             flpInventory.FlowDirection = FlowDirection.TopDown;
             flpInventory.Location = new Point(12, 49);
             flpInventory.Name = "flpInventory";

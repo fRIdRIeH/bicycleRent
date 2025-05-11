@@ -38,11 +38,19 @@
             groupBox2 = new GroupBox();
             groupBox4 = new GroupBox();
             groupBox3 = new GroupBox();
+            groupBox5 = new GroupBox();
+            btnRefresh = new Button();
+            btnAddFilial = new Button();
+            btnAddInventoryType = new Button();
+            groupBox6 = new GroupBox();
+            btnAddInventory = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numInventoryNumber).BeginInit();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox6.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -99,6 +107,7 @@
             // 
             numInventoryNumber.Location = new Point(6, 143);
             numInventoryNumber.Margin = new Padding(5);
+            numInventoryNumber.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
             numInventoryNumber.Name = "numInventoryNumber";
             numInventoryNumber.Size = new Size(338, 33);
             numInventoryNumber.TabIndex = 5;
@@ -141,11 +150,76 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Выбери тип инвентаря";
             // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(btnRefresh);
+            groupBox5.Controls.Add(btnAddFilial);
+            groupBox5.Controls.Add(btnAddInventoryType);
+            groupBox5.Location = new Point(12, 400);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(352, 245);
+            groupBox5.TabIndex = 5;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Если нет нужного типа инвентаря или филиала, то их можно добавить:";
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(6, 204);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(338, 35);
+            btnRefresh.TabIndex = 8;
+            btnRefresh.Text = "Обновить данные";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // btnAddFilial
+            // 
+            btnAddFilial.Location = new Point(6, 100);
+            btnAddFilial.Name = "btnAddFilial";
+            btnAddFilial.Size = new Size(338, 35);
+            btnAddFilial.TabIndex = 7;
+            btnAddFilial.Text = "Добавить филиал";
+            btnAddFilial.UseVisualStyleBackColor = true;
+            btnAddFilial.Click += btnAddFilial_Click;
+            // 
+            // btnAddInventoryType
+            // 
+            btnAddInventoryType.Location = new Point(6, 59);
+            btnAddInventoryType.Name = "btnAddInventoryType";
+            btnAddInventoryType.Size = new Size(338, 35);
+            btnAddInventoryType.TabIndex = 6;
+            btnAddInventoryType.Text = "Добавить тип инвентаря";
+            btnAddInventoryType.UseVisualStyleBackColor = true;
+            btnAddInventoryType.Click += btnAddInventoryType_Click;
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(btnAddInventory);
+            groupBox6.Location = new Point(1228, 867);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(424, 132);
+            groupBox6.TabIndex = 6;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Если все выбрано, то можно добавлять инвентарь:";
+            // 
+            // btnAddInventory
+            // 
+            btnAddInventory.BackColor = Color.LimeGreen;
+            btnAddInventory.Location = new Point(6, 91);
+            btnAddInventory.Name = "btnAddInventory";
+            btnAddInventory.Size = new Size(412, 35);
+            btnAddInventory.TabIndex = 9;
+            btnAddInventory.Text = "Добавить инвентарь";
+            btnAddInventory.UseVisualStyleBackColor = false;
+            btnAddInventory.Click += btnAddInventory_Click;
+            // 
             // InventoryAddForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1664, 1011);
+            Controls.Add(groupBox6);
+            Controls.Add(groupBox5);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
@@ -159,6 +233,8 @@
             groupBox2.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -174,5 +250,11 @@
         private GroupBox groupBox2;
         private GroupBox groupBox4;
         private GroupBox groupBox3;
+        private GroupBox groupBox5;
+        private Button btnRefresh;
+        private Button btnAddFilial;
+        private Button btnAddInventoryType;
+        private GroupBox groupBox6;
+        private Button btnAddInventory;
     }
 }

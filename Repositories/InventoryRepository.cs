@@ -217,5 +217,27 @@ namespace bicycleRent.Repositories
                 return false;
             }
         }
+
+        public bool Add(Inventory inventory)
+        {
+            string query = "INSERT INTO Inventory " +
+                "(Inventory_Name, Inventory_Type_Id, Inventory_Number, Filial_Id) " +
+                "VALUES " +
+                "(@Inventory_Name, @Inventory_Type_Id, @Inventory_Number, @Filial_Id)";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection)) 
+            {
+                cmd.Parameters.AddWithValue("@Inventory_Name", inventory.InventoryName);
+                cmd.Parameters.AddWithValue("@Inventory_Type_Id", inventory.InventoryTypeId);
+                cmd.Parameters.AddWithValue("@Inventory_Number", inventory.InventoryNumber);
+                cmd.Parameters.AddWithValue("@Filial_Id", inventory.FilialId);
+
+                int rowsInserted = cmd.ExecuteNonQuery();
+
+                if (rowsInserted > 0) 
+                    return true;
+                return false;
+            }
+        }
     }
 }

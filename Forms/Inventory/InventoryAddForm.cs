@@ -23,7 +23,7 @@ namespace bicycleRent.Forms.Inventory
         InventoryTypeRepository _inventoryTypeRepository;
         FilialRepository _filialRepository;
 
-        int filialId, inventoryTypeId;
+        int filialId = 0, inventoryTypeId = 0;
 
         private Panel _selectedInventoryTypePanel = null;
         private Panel _selectedfilialPanel = null;
@@ -42,7 +42,7 @@ namespace bicycleRent.Forms.Inventory
 
             LoadData();
         }
-        
+
         public void LoadData()
         {
             // Для начала очищаем
@@ -57,7 +57,7 @@ namespace bicycleRent.Forms.Inventory
 
             // Записываем в flp
 
-            foreach (var type in types) 
+            foreach (var type in types)
             {
                 AddInventoryTypeCard(type);
             }
@@ -73,7 +73,7 @@ namespace bicycleRent.Forms.Inventory
         //
         private void AddInventoryTypeCard(Models.InventoryType inventoryType)
         {
-            Panel inventoryTypePanel = new Panel() 
+            Panel inventoryTypePanel = new Panel()
             {
                 Tag = inventoryType.Id,
                 BorderStyle = BorderStyle.FixedSingle,
@@ -85,7 +85,7 @@ namespace bicycleRent.Forms.Inventory
             inventoryTypePanel.Click += InventoryTypePanel_Click;
 
             // Ярлыки
-            Label lblinventoryTypeId = new Label() 
+            Label lblinventoryTypeId = new Label()
             {
                 Text = "#:",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
@@ -151,7 +151,7 @@ namespace bicycleRent.Forms.Inventory
         {
             Panel filialPanel = new Panel()
             {
-                Tag= filial.Id,
+                Tag = filial.Id,
                 Size = new Size(670, 55),
                 Margin = new Padding(10),
                 BackColor = Color.LightGray,
@@ -234,13 +234,13 @@ namespace bicycleRent.Forms.Inventory
         //
         // События нажатия на панели
         //
-        private void InventoryTypePanel_Click(object sender, EventArgs e) 
+        private void InventoryTypePanel_Click(object sender, EventArgs e)
         {
             Panel inventoryTypePanel = sender as Panel;
 
-            if (inventoryTypePanel != null && inventoryTypePanel.Tag is int itId) 
+            if (inventoryTypePanel != null && inventoryTypePanel.Tag is int itId)
             {
-                if(_selectedInventoryTypePanel != null)
+                if (_selectedInventoryTypePanel != null)
                 {
                     _selectedInventoryTypePanel.BackColor = Color.LightGray;
                 }
@@ -255,9 +255,9 @@ namespace bicycleRent.Forms.Inventory
         {
             Panel filialPanel = sender as Panel;
 
-            if(filialPanel != null &&  filialPanel.Tag is int fId)
+            if (filialPanel != null && filialPanel.Tag is int fId)
             {
-                if(_selectedfilialPanel != null)
+                if (_selectedfilialPanel != null)
                 {
                     _selectedfilialPanel.BackColor = Color.LightGray;
                 }
@@ -280,13 +280,59 @@ namespace bicycleRent.Forms.Inventory
                 inventoryTypeAddForm.ShowDialog();
             }
         }
-        private void BtnEditFilial_Click(object sender, EventArgs e) 
+        private void BtnEditFilial_Click(object sender, EventArgs e)
         {
             if (sender is Button btn && btn.Tag is Panel filialPanel && filialPanel.Tag is int fId)
             {
                 //Открываем форму редактирования данных о филиале
                 FilialAddForm filialAddForm = new FilialAddForm(_connection, fId, "edit");
                 filialAddForm.ShowDialog();
+            }
+        }
+
+        private void btnAddInventoryType_Click(object sender, EventArgs e)
+        {
+            InventoryTypeAddForm inventoryTypeAddForm = new InventoryTypeAddForm(_connection, 0, "add");
+            inventoryTypeAddForm.ShowDialog();
+        }
+
+        private void btnAddFilial_Click(object sender, EventArgs e)
+        {
+            FilialAddForm filialAddForm = new FilialAddForm(_connection, 0, "add");
+            filialAddForm.ShowDialog();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void btnAddInventory_Click(object sender, EventArgs e)
+        {
+            if (txtInventoryName.Text == "") { MessageBox.Show("Поле 'Название инвентаря' должно быть заполнено."); return; }
+            if (numInventoryNumber.Value == 0) { MessageBox.Show("Поле 'Инвнтарный номер' должно быть заполнено."); return; }
+
+            if (txtInventoryName.Text.Length > 20) { MessageBox.Show("Поле 'Название инвентаря' не должно быть длиннее 20 символов"); return; }
+
+            if (filialId == 0) { MessageBox.Show("Не выбран филиал."); return; }
+            if (inventoryTypeId == 0) { MessageBox.Show("Не выбран тип инвентаря."); return; }
+
+            try
+            {
+                Models.Inventory inventory = new Models.Inventory() 
+                {
+                    InventoryName = txtInventoryName.Text,
+                    InventoryTypeId = inventoryTypeId,
+                    InventoryNumber = (int)numInventoryNumber.Value,
+                    FilialId = filialId,
+                };
+
+                _inventoryRepository.Add(inventory);
+                MessageBox.Show("Инвентарь успешно добавлен!");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Возникла ошибка! {ex.Message}");
             }
         }
     }

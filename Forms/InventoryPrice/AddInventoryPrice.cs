@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using bicycleRent.Repositories;
 using bicycleRent.Models;
 using MySql.Data.MySqlClient;
+using bicycleRent.Forms.Price;
+using bicycleRent.Forms.Time;
 
 namespace bicycleRent.Forms.InventoryPrice
 {
@@ -239,7 +241,7 @@ namespace bicycleRent.Forms.InventoryPrice
         //
         // Функция для заполнения flpTimes
         //
-        private void AddTimeCard(Time time)
+        private void AddTimeCard(Models.Time time)
         {
             Panel timePanel = new Panel()
             {
@@ -296,7 +298,7 @@ namespace bicycleRent.Forms.InventoryPrice
         //
         // Функция для заполнения flpPrice
         //
-        private void AddPriceCard(Price price)
+        private void AddPriceCard(Models.Price price)
         {
             Panel pricePanel = new Panel()
             {
@@ -362,12 +364,14 @@ namespace bicycleRent.Forms.InventoryPrice
 
         private void btnAddPrice_Click(object sender, EventArgs e)
         {
-
+            PriceAddForm priceAddForm = new PriceAddForm(_connection);
+            priceAddForm.ShowDialog();
         }
 
         private void btnAddTime_Click(object sender, EventArgs e)
         {
-
+            TimeAddForm timeAddForm = new TimeAddForm(_connection);
+            timeAddForm.ShowDialog();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

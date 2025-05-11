@@ -33,9 +33,14 @@ namespace bicycleRent.Forms.Deposit
 
             _repository = new DepositRepository(_connection);
 
-            if(_key == "edit")
+            if (_key == "edit")
             {
                 LoadData();
+            }
+            if( _key == "add")
+            {
+                this.Text = "Добавление залога";
+                btnAddOrEdit.Text = "Добавить";
             }
         }
 

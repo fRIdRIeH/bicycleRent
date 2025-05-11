@@ -32,7 +32,7 @@ namespace bicycleRent.Forms.Admin
 
         private void GoToInventoryAddFormBtn_Click(object sender, EventArgs e)
         {
-            InventoryAddForm inventoryAddForm = new InventoryAddForm();
+            InventoryAddForm inventoryAddForm = new InventoryAddForm(_connection);
             inventoryAddForm.ShowDialog();
         }
 

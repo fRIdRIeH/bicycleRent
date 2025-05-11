@@ -20,6 +20,10 @@ namespace bicycleRent.Forms.Inventory
             _inventoryRepository = inventoryRepository;
 
             LoadData();
+
+            flpInventory.AutoScroll = true;
+            flpInventory.WrapContents = false;
+            flpInventory.FlowDirection = FlowDirection.TopDown;
         }
 
         private void AddInventoryCard(Models.Inventory inventory)

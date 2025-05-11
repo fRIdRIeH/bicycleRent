@@ -122,7 +122,7 @@
             flowLayoutPanel1.BackColor = SystemColors.ControlDarkDark;
             flowLayoutPanel1.Location = new Point(296, 116);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1354, 913);
+            flowLayoutPanel1.Size = new Size(1371, 913);
             flowLayoutPanel1.TabIndex = 10;
             // 
             // btnRefresh
@@ -139,7 +139,7 @@
             // 
             btnClose.BackColor = Color.IndianRed;
             btnClose.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnClose.Location = new Point(1656, 985);
+            btnClose.Location = new Point(12, 985);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(236, 44);
             btnClose.TabIndex = 12;

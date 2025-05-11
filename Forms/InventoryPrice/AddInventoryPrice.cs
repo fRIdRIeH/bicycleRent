@@ -12,6 +12,7 @@ using bicycleRent.Models;
 using MySql.Data.MySqlClient;
 using bicycleRent.Forms.Price;
 using bicycleRent.Forms.Time;
+using bicycleRent.Forms.Inventory;
 
 namespace bicycleRent.Forms.InventoryPrice
 {
@@ -359,7 +360,8 @@ namespace bicycleRent.Forms.InventoryPrice
 
         private void addInventory_Click(object sender, EventArgs e)
         {
-
+            InventoryAddForm inventoryAddForm = new InventoryAddForm(_connection);
+            inventoryAddForm.ShowDialog();
         }
 
         private void btnAddPrice_Click(object sender, EventArgs e)

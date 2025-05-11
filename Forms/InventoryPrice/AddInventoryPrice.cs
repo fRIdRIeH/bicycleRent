@@ -382,7 +382,7 @@ namespace bicycleRent.Forms.InventoryPrice
         }
 
         //
-        // События на нажатия на каждоый панели
+        // События на нажатия на каждой панели
         //
 
         private void inventoryPanel_Click(object sender, EventArgs e)

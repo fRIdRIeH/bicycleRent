@@ -32,17 +32,17 @@
             flpInventoryType = new FlowLayoutPanel();
             flpFilial = new FlowLayoutPanel();
             groupBox1 = new GroupBox();
-            txtInventoryName = new TextBox();
-            numInventoryNumber = new NumericUpDown();
             label2 = new Label();
+            numInventoryNumber = new NumericUpDown();
+            txtInventoryName = new TextBox();
             groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
             groupBox4 = new GroupBox();
+            groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numInventoryNumber).BeginInit();
             groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -56,16 +56,21 @@
             // 
             // flpInventoryType
             // 
+            flpInventoryType.AutoScroll = true;
+            flpInventoryType.BackColor = Color.White;
+            flpInventoryType.FlowDirection = FlowDirection.TopDown;
             flpInventoryType.Location = new Point(6, 44);
             flpInventoryType.Name = "flpInventoryType";
-            flpInventoryType.Size = new Size(283, 294);
+            flpInventoryType.Size = new Size(526, 294);
             flpInventoryType.TabIndex = 1;
+            flpInventoryType.WrapContents = false;
             // 
             // flpFilial
             // 
+            flpFilial.BackColor = Color.White;
             flpFilial.Location = new Point(6, 44);
             flpFilial.Name = "flpFilial";
-            flpFilial.Size = new Size(556, 294);
+            flpFilial.Size = new Size(714, 294);
             flpFilial.TabIndex = 2;
             // 
             // groupBox1
@@ -81,21 +86,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Введите данные о инвентаре";
             // 
-            // txtInventoryName
-            // 
-            txtInventoryName.Location = new Point(6, 76);
-            txtInventoryName.Name = "txtInventoryName";
-            txtInventoryName.Size = new Size(338, 33);
-            txtInventoryName.TabIndex = 4;
-            // 
-            // numInventoryNumber
-            // 
-            numInventoryNumber.Location = new Point(6, 143);
-            numInventoryNumber.Margin = new Padding(5, 5, 5, 5);
-            numInventoryNumber.Name = "numInventoryNumber";
-            numInventoryNumber.Size = new Size(338, 33);
-            numInventoryNumber.TabIndex = 5;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -105,46 +95,61 @@
             label2.TabIndex = 6;
             label2.Text = "Введи инвентарный номер";
             // 
+            // numInventoryNumber
+            // 
+            numInventoryNumber.Location = new Point(6, 143);
+            numInventoryNumber.Margin = new Padding(5);
+            numInventoryNumber.Name = "numInventoryNumber";
+            numInventoryNumber.Size = new Size(338, 33);
+            numInventoryNumber.TabIndex = 5;
+            // 
+            // txtInventoryName
+            // 
+            txtInventoryName.Location = new Point(6, 76);
+            txtInventoryName.Name = "txtInventoryName";
+            txtInventoryName.Size = new Size(338, 33);
+            txtInventoryName.TabIndex = 4;
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(groupBox4);
             groupBox2.Controls.Add(groupBox3);
             groupBox2.Location = new Point(370, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(875, 382);
+            groupBox2.Size = new Size(1282, 382);
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Выбери тип инвентаря и филиал, в котором он будет находиться";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(flpFilial);
+            groupBox4.Location = new Point(550, 32);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(726, 344);
+            groupBox4.TabIndex = 1;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Выбери филиал";
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(flpInventoryType);
             groupBox3.Location = new Point(6, 32);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(295, 344);
+            groupBox3.Size = new Size(538, 344);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Выбери тип инвентаря";
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(flpFilial);
-            groupBox4.Location = new Point(307, 32);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(562, 344);
-            groupBox4.TabIndex = 1;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Выбери филиал";
             // 
             // InventoryAddForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1257, 750);
+            ClientSize = new Size(1664, 1011);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "InventoryAddForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Добавление инвентаря";
@@ -152,8 +157,8 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numInventoryNumber).EndInit();
             groupBox2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
         }
 

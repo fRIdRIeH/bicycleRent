@@ -43,7 +43,12 @@
             btnAddFilial = new Button();
             btnAddInventoryType = new Button();
             groupBox6 = new GroupBox();
-            btnAddInventory = new Button();
+            btnAddOrEditInventory = new Button();
+            groupBox7 = new GroupBox();
+            label3 = new Label();
+            numRentsCount = new NumericUpDown();
+            label4 = new Label();
+            numTotal = new NumericUpDown();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numInventoryNumber).BeginInit();
             groupBox2.SuspendLayout();
@@ -51,6 +56,9 @@
             groupBox3.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
+            groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numRentsCount).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numTotal).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -155,7 +163,7 @@
             groupBox5.Controls.Add(btnRefresh);
             groupBox5.Controls.Add(btnAddFilial);
             groupBox5.Controls.Add(btnAddInventoryType);
-            groupBox5.Location = new Point(12, 400);
+            groupBox5.Location = new Point(1300, 400);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(352, 245);
             groupBox5.TabIndex = 5;
@@ -194,7 +202,7 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(btnAddInventory);
+            groupBox6.Controls.Add(btnAddOrEditInventory);
             groupBox6.Location = new Point(1228, 867);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(424, 132);
@@ -202,22 +210,72 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "Если все выбрано, то можно добавлять инвентарь:";
             // 
-            // btnAddInventory
+            // btnAddOrEditInventory
             // 
-            btnAddInventory.BackColor = Color.LimeGreen;
-            btnAddInventory.Location = new Point(6, 91);
-            btnAddInventory.Name = "btnAddInventory";
-            btnAddInventory.Size = new Size(412, 35);
-            btnAddInventory.TabIndex = 9;
-            btnAddInventory.Text = "Добавить инвентарь";
-            btnAddInventory.UseVisualStyleBackColor = false;
-            btnAddInventory.Click += btnAddInventory_Click;
+            btnAddOrEditInventory.BackColor = Color.LimeGreen;
+            btnAddOrEditInventory.Location = new Point(6, 91);
+            btnAddOrEditInventory.Name = "btnAddOrEditInventory";
+            btnAddOrEditInventory.Size = new Size(412, 35);
+            btnAddOrEditInventory.TabIndex = 9;
+            btnAddOrEditInventory.Text = "Добавить инвентарь";
+            btnAddOrEditInventory.UseVisualStyleBackColor = false;
+            btnAddOrEditInventory.Click += btnAddInventory_Click;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(label4);
+            groupBox7.Controls.Add(numTotal);
+            groupBox7.Controls.Add(label3);
+            groupBox7.Controls.Add(numRentsCount);
+            groupBox7.Location = new Point(12, 400);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(352, 188);
+            groupBox7.TabIndex = 7;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Данные из аренд";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(175, 25);
+            label3.TabIndex = 8;
+            label3.Text = "Количество аренд:";
+            // 
+            // numRentsCount
+            // 
+            numRentsCount.Location = new Point(6, 60);
+            numRentsCount.Margin = new Padding(5);
+            numRentsCount.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numRentsCount.Name = "numRentsCount";
+            numRentsCount.Size = new Size(338, 33);
+            numRentsCount.TabIndex = 7;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(6, 105);
+            label4.Name = "label4";
+            label4.Size = new Size(253, 25);
+            label4.TabIndex = 10;
+            label4.Text = "Сколько инвентарь принес:";
+            // 
+            // numTotal
+            // 
+            numTotal.Location = new Point(6, 136);
+            numTotal.Margin = new Padding(5);
+            numTotal.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numTotal.Name = "numTotal";
+            numTotal.Size = new Size(338, 33);
+            numTotal.TabIndex = 9;
             // 
             // InventoryAddForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1664, 1011);
+            Controls.Add(groupBox7);
             Controls.Add(groupBox6);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
@@ -235,6 +293,10 @@
             groupBox3.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numRentsCount).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numTotal).EndInit();
             ResumeLayout(false);
         }
 
@@ -255,6 +317,11 @@
         private Button btnAddFilial;
         private Button btnAddInventoryType;
         private GroupBox groupBox6;
-        private Button btnAddInventory;
+        private Button btnAddOrEditInventory;
+        private GroupBox groupBox7;
+        private Label label3;
+        private NumericUpDown numRentsCount;
+        private Label label4;
+        private NumericUpDown numTotal;
     }
 }

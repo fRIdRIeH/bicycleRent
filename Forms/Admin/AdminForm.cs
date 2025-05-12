@@ -13,6 +13,7 @@ using bicycleRent.Forms.Inventory;
 using bicycleRent.Forms.InventoryPrice;
 using bicycleRent.Forms.InventoryType;
 using bicycleRent.Forms.User;
+using bicycleRent.Models;
 using bicycleRent.Repositories;
 using MySql.Data.MySqlClient;
 
@@ -33,7 +34,7 @@ namespace bicycleRent.Forms.Admin
 
         private void GoToInventoryAddFormBtn_Click(object sender, EventArgs e)
         {
-            InventoryAddForm inventoryAddForm = new InventoryAddForm(_connection);
+            InventoryAddForm inventoryAddForm = new InventoryAddForm(_connection, 0, "add");
             inventoryAddForm.ShowDialog();
         }
 
@@ -110,7 +111,7 @@ namespace bicycleRent.Forms.Admin
             {
                 Tag = inventory.InventoryId,
                 BorderStyle = BorderStyle.FixedSingle,
-                Size = new Size(1220, 60),
+                Size = new Size(1260, 60),
                 Margin = new Padding(10),
                 BackColor = Color.LightGray,
             };
@@ -271,9 +272,57 @@ namespace bicycleRent.Forms.Admin
             inventoryPanel.Controls.Add(lblRentsCountData);
             inventoryPanel.Controls.Add(lblTotalData);
 
+            // Кнопка на редактирование
+
+            Button btnEditInventory = new Button()
+            {
+                Text = "✎",
+                Font = new Font("Segue UI", 20, FontStyle.Bold),
+                Location = new Point(1200, 5),
+                Cursor = Cursors.Hand,
+                Size = new Size(50, 50),
+                Tag = inventoryPanel
+            };
+
+            btnEditInventory.Click += btnEditInventory_Click;
+
+            inventoryPanel.Controls.Add(btnEditInventory);
+
             //Добавляем панель в flpInventory
             flp.Controls.Add(inventoryPanel);
         }
 
+        private void AddClientCard(Models.Client client)
+        {
+
+        }
+
+        private void AddUserCard(Models.User user)
+        {
+
+        }
+
+        private void AddRentCard(Models.Rent rent)
+        {
+
+        }
+
+        private void AddFilialCard(Models.Filial filial) 
+        {
+        
+        }
+
+        // События на кнопках
+
+        private void btnEditInventory_Click(object sender, EventArgs e) 
+        {
+            if (sender is Button btn && btn.Tag is Panel inventoryPanel && inventoryPanel.Tag is int iId) 
+            {
+                //MessageBox.Show($"{iId}");
+
+                InventoryAddForm inventoryAddForm = new InventoryAddForm(_connection, iId, "edit");
+                inventoryAddForm.ShowDialog();
+            }
+        }
     }
 }

@@ -140,7 +140,8 @@ namespace bicycleRent.Forms.Client
                 Location = new Point(610, lblYpos + 25),
                 AutoSize = true,
             };
-
+            
+            //Кнопки
             Button btnEdit = new Button()
             {
                 Text = "✎",

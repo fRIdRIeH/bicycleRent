@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using bicycleRent.Models;
 using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Bcpg.Sig;
 
 namespace bicycleRent.Repositories
 {
@@ -33,7 +32,7 @@ namespace bicycleRent.Repositories
                 {
                     if (reader.Read())
                     {
-                        Client client = new Client() 
+                        Client client = new Client()
                         {
                             Id = reader.GetInt32("Client_Id"),
                             Surname = reader.GetString("Client_Surname"),
@@ -84,7 +83,7 @@ namespace bicycleRent.Repositories
                 {
                     while (reader.Read())
                     {
-                        Client client = new Client() 
+                        Client client = new Client()
                         {
                             Id = reader.GetInt32("Client_Id"),
                             Surname = reader.GetString("Client_Surname"),
@@ -109,7 +108,7 @@ namespace bicycleRent.Repositories
                 "VALUES " +
                 "(@Client_Surname, @Client_Name, @Client_Patronymic, @Client_Telephone, @Client_Address, @Client_Features)";
 
-            using (MySqlCommand cmd = new MySqlCommand(query, _connection)) 
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
             {
                 cmd.Parameters.AddWithValue("@Client_Surname", client.Surname);
                 cmd.Parameters.AddWithValue("@Client_Name", client.Name);
@@ -120,13 +119,13 @@ namespace bicycleRent.Repositories
 
                 int rowsInserted = cmd.ExecuteNonQuery();
 
-                if(rowsInserted > 0 )
+                if (rowsInserted > 0)
                     return true;
                 return false;
             }
         }
 
-        public bool Update(Client client, int id) 
+        public bool Update(Client client, int id)
         {
             string query = "UPDATE Client SET " +
                 "Client_Surname = @Client_Surname, " +
@@ -182,6 +181,24 @@ namespace bicycleRent.Repositories
                 }
             }
             return null;
+        }
+
+        public bool UpdateClientVisitCount(int clientId, int counter)
+        {
+            string query = "UPDATE Client SET Client_Visit_Count = Client_Visit_Count + @counter WHERE Client_Id = @Client_Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
+            {
+                cmd.Parameters.AddWithValue("@counter", counter);
+                cmd.Parameters.AddWithValue("@Client_Id", clientId);
+                
+                int rowsUpdated = cmd.ExecuteNonQuery();
+
+                if(rowsUpdated > 0) 
+                    return true;
+                return false;
+            }
+
         }
     }
 }

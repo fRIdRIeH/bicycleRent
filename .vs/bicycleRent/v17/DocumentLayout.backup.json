@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\forms\\inventory\\inventoryaddform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\inventory\\inventoryaddform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\inventoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\inventoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\forms\\inventory\\inventoryaddform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\inventory\\inventoryaddform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\forms\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\models\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:models\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\forms\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\forms\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\admin\\adminform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\repositories\\clientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:repositories\\clientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\forms\\client\\clientlistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\client\\clientlistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|c:\\users\\wladw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\bicyclerent\\forms\\client\\clientaddform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{814DBD61-C758-47C7-B9A2-9D88008D0930}|bicycleRent.csproj|solutionrelative:forms\\client\\clientaddform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,70 +39,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "InventoryAddForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Inventory\\InventoryAddForm.cs",
-              "RelativeDocumentMoniker": "Forms\\Inventory\\InventoryAddForm.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Inventory\\InventoryAddForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Forms\\Inventory\\InventoryAddForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Title": "ClientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\ClientRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ClientRepository.cs",
+              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\ClientRepository.cs",
+              "RelativeToolTip": "Repositories\\ClientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T12:08:33.063Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InventoryAddForm.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Inventory\\InventoryAddForm.cs",
-              "RelativeDocumentMoniker": "Forms\\Inventory\\InventoryAddForm.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Inventory\\InventoryAddForm.cs",
-              "RelativeToolTip": "Forms\\Inventory\\InventoryAddForm.cs",
-              "ViewState": "AgIAAHABAAAAAAAAAAAmwIQBAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T12:00:23.266Z",
+              "WhenOpened": "2025-05-12T13:49:42.444Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Inventory.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Models\\Inventory.cs",
-              "RelativeDocumentMoniker": "Models\\Inventory.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Models\\Inventory.cs",
-              "RelativeToolTip": "Models\\Inventory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAiAAAAAAAAAA==",
+              "Title": "ClientAddForm.cs",
+              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Client\\ClientAddForm.cs",
+              "RelativeDocumentMoniker": "Forms\\Client\\ClientAddForm.cs",
+              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Client\\ClientAddForm.cs",
+              "RelativeToolTip": "Forms\\Client\\ClientAddForm.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T11:49:52.759Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InventoryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\InventoryRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\InventoryRepository.cs",
-              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Repositories\\InventoryRepository.cs",
-              "RelativeToolTip": "Repositories\\InventoryRepository.cs",
-              "ViewState": "AgIAACwBAAAAAAAAAAAIwE0BAABdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T11:47:52.005Z",
+              "WhenOpened": "2025-05-12T13:44:19.292Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "ClientListForm.cs",
+              "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Client\\ClientListForm.cs",
+              "RelativeDocumentMoniker": "Forms\\Client\\ClientListForm.cs",
+              "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Client\\ClientListForm.cs",
+              "RelativeToolTip": "Forms\\Client\\ClientListForm.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAowI8AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T13:40:04.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AdminForm.cs",
               "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Admin\\AdminForm.cs",
               "RelativeDocumentMoniker": "Forms\\Admin\\AdminForm.cs",
               "ToolTip": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Admin\\AdminForm.cs",
               "RelativeToolTip": "Forms\\Admin\\AdminForm.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAmwEABAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAJ8CAAAAAAAAAAAIwMMCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T11:40:04.742Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "AdminForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\wladw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\bicycleRent\\Forms\\Admin\\AdminForm.cs",
               "RelativeDocumentMoniker": "Forms\\Admin\\AdminForm.cs",

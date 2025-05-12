@@ -239,5 +239,48 @@ namespace bicycleRent.Repositories
                 return false;
             }
         }
+
+        public List<Inventory> GetAllInventoryForAdmin()
+        {
+            List<Inventory> list = new List<Inventory>();
+
+            string query = "SELECT " +
+                "i.Inventory_Id, " +
+                "i.Inventory_Name, " +
+                "it.Inventory_Type_Name, " +
+                "i.Inventory_Number, " +
+                "i.Status, " +
+                "f.Filial_Name, " +
+                "i.Inventory_Rents_Count, " +
+                "i.Inventory_Total " +
+                "FROM Inventory i " +
+                "JOIN Inventory_Type it ON i.Inventory_Type_Id = it.Inventory_Type_Id " +
+                "JOIN Filial f ON i.Filial_Id = f.Filial_Id";
+
+
+            using (MySqlCommand cmd = new MySqlCommand(query, _Connection))
+            {
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Inventory inventory = new Inventory()
+                        {
+                            InventoryId = reader.GetInt32("Inventory_Id"),
+                            InventoryName = reader.GetString("Inventory_Name"),
+                            InventoryTypeName = reader.GetString("Inventory_Type_Name"),
+                            InventoryNumber = reader.GetInt32("Inventory_Number"),
+                            Status = reader.GetString("Status"),
+                            FilialName = reader.GetString("Filial_Name"),
+                            InventoryRentsCount = reader.GetInt32("Inventory_Rents_Count"),
+                            InventoryTotal = reader.GetInt32("Inventory_Total"),
+                        };
+                        list.Add(inventory);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

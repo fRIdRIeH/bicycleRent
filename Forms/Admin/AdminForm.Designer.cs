@@ -188,7 +188,7 @@
             flp.FlowDirection = FlowDirection.TopDown;
             flp.Location = new Point(375, 92);
             flp.Name = "flp";
-            flp.Size = new Size(1287, 907);
+            flp.Size = new Size(1350, 873);
             flp.TabIndex = 13;
             flp.WrapContents = false;
             // 
@@ -210,7 +210,7 @@
             // 
             AutoScaleDimensions = new SizeF(16F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1674, 1011);
+            ClientSize = new Size(1737, 979);
             Controls.Add(groupBox2);
             Controls.Add(flp);
             Controls.Add(groupBox1);

@@ -75,7 +75,7 @@ namespace bicycleRent
 
         private void GoToAdminPanelBtn_Click(object sender, EventArgs e)
         {
-            AdminForm adminForm = new AdminForm(_connection);
+            AdminForm adminForm = new AdminForm(_connection, _user);
             adminForm.ShowDialog();
         }
 
@@ -119,7 +119,7 @@ namespace bicycleRent
             {
                 Text = "#",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(10, 10),
+                Location = new Point(10, 5),
                 AutoSize = true
             };
             //Для id филиала
@@ -127,7 +127,7 @@ namespace bicycleRent
             {
                 Text = "Филиал:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(50, 10),
+                Location = new Point(50, 5),
                 AutoSize = true
             };
             //Для фамилии клиента
@@ -135,7 +135,7 @@ namespace bicycleRent
             {
                 Text = "Клиент:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(210, 10),
+                Location = new Point(210, 5),
                 AutoSize = true
             };
             //Для инвентаря
@@ -143,7 +143,7 @@ namespace bicycleRent
             {
                 Text = "Инвентарь:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(350, 10),
+                Location = new Point(350, 5),
                 AutoSize = true
             };
             //Для периода аренды
@@ -151,7 +151,7 @@ namespace bicycleRent
             {
                 Text = "Период:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(600, 10),
+                Location = new Point(740, 5),
                 AutoSize = true
             };
             //Для суммы за аренду
@@ -159,7 +159,7 @@ namespace bicycleRent
             {
                 Text = "К оплате:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(770, 10),
+                Location = new Point(740, 80),
                 AutoSize = true
             };
             //Для статуса
@@ -167,7 +167,7 @@ namespace bicycleRent
             {
                 Text = "Статус:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(900, 10),
+                Location = new Point(900, 5),
                 AutoSize = true
             };
             //Для фамилии И.О. сотрудника
@@ -175,7 +175,7 @@ namespace bicycleRent
             {
                 Text = "Сотрудник:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(1050, 10),
+                Location = new Point(1050, 5),
                 AutoSize = true
             };
             //Для залога
@@ -183,7 +183,7 @@ namespace bicycleRent
             {
                 Text = "Залог:",
                 Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                Location = new Point(1200, 10),
+                Location = new Point(1200, 5),
                 AutoSize = true
             };
 
@@ -196,7 +196,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.RentId}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(10, 50),
+                Location = new Point(10, 35),
                 AutoSize = true
             };
             //Для id филиала
@@ -204,7 +204,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.FilialName}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(50, 50),
+                Location = new Point(50, 35),
                 AutoSize = true
             };
             //Для фамилии клиента
@@ -212,7 +212,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.ClientSurname}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(210, 50),
+                Location = new Point(210, 35),
                 AutoSize = true
             };
             //Для телефона клиента
@@ -228,7 +228,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.TimeStart}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(600, 50),
+                Location = new Point(740, 35),
                 AutoSize = true
             };
             //Для времени конца
@@ -236,7 +236,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.TimeEnd}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(600, 70),
+                Location = new Point(740, 55),
                 AutoSize = true
             };
             //Для суммы за аренду
@@ -244,7 +244,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.Total}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(770, 50),
+                Location = new Point(740, 100),
                 AutoSize = true
             };
             //Для статуса
@@ -252,7 +252,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.Status}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(900, 50),
+                Location = new Point(900, 35),
                 AutoSize = true
             };
             //Для фамилии И.О. сотрудника
@@ -260,7 +260,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.UserSurname}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(1050, 50),
+                Location = new Point(1050, 35),
                 AutoSize = true
             };
             //Для залога
@@ -268,7 +268,7 @@ namespace bicycleRent
             {
                 Text = $"{rent.DepositName}",
                 Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Location = new Point(1200, 50),
+                Location = new Point(1200, 35),
                 AutoSize = true
             };
 
@@ -334,7 +334,7 @@ namespace bicycleRent
             var inventoryList = _inventoryRepository.GetInventoryForRent(rent.RentId);
 
             //Обьявление переменной для Y положения наименований инвентаря
-            int InventoriesPosY = 50;
+            int InventoriesPosY = 35;
 
             foreach (var inventory in inventoryList)
             {

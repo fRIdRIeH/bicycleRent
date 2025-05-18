@@ -45,10 +45,10 @@
             groupBox6 = new GroupBox();
             btnAddOrEditInventory = new Button();
             groupBox7 = new GroupBox();
-            label3 = new Label();
-            numRentsCount = new NumericUpDown();
             label4 = new Label();
             numTotal = new NumericUpDown();
+            label3 = new Label();
+            numRentsCount = new NumericUpDown();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numInventoryNumber).BeginInit();
             groupBox2.SuspendLayout();
@@ -57,8 +57,8 @@
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numRentsCount).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numTotal).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numRentsCount).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -77,7 +77,7 @@
             flpInventoryType.FlowDirection = FlowDirection.TopDown;
             flpInventoryType.Location = new Point(6, 44);
             flpInventoryType.Name = "flpInventoryType";
-            flpInventoryType.Size = new Size(526, 294);
+            flpInventoryType.Size = new Size(526, 481);
             flpInventoryType.TabIndex = 1;
             flpInventoryType.WrapContents = false;
             // 
@@ -86,7 +86,7 @@
             flpFilial.BackColor = Color.White;
             flpFilial.Location = new Point(6, 44);
             flpFilial.Name = "flpFilial";
-            flpFilial.Size = new Size(714, 294);
+            flpFilial.Size = new Size(714, 481);
             flpFilial.TabIndex = 2;
             // 
             // groupBox1
@@ -133,7 +133,7 @@
             groupBox2.Controls.Add(groupBox3);
             groupBox2.Location = new Point(370, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1282, 382);
+            groupBox2.Size = new Size(1282, 576);
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Выбери тип инвентаря и филиал, в котором он будет находиться";
@@ -143,7 +143,7 @@
             groupBox4.Controls.Add(flpFilial);
             groupBox4.Location = new Point(550, 32);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(726, 344);
+            groupBox4.Size = new Size(726, 538);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "Выбери филиал";
@@ -153,7 +153,7 @@
             groupBox3.Controls.Add(flpInventoryType);
             groupBox3.Location = new Point(6, 32);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(538, 344);
+            groupBox3.Size = new Size(538, 538);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Выбери тип инвентаря";
@@ -163,7 +163,7 @@
             groupBox5.Controls.Add(btnRefresh);
             groupBox5.Controls.Add(btnAddFilial);
             groupBox5.Controls.Add(btnAddInventoryType);
-            groupBox5.Location = new Point(1300, 400);
+            groupBox5.Location = new Point(12, 594);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(352, 245);
             groupBox5.TabIndex = 5;
@@ -213,9 +213,10 @@
             // btnAddOrEditInventory
             // 
             btnAddOrEditInventory.BackColor = Color.LimeGreen;
-            btnAddOrEditInventory.Location = new Point(6, 91);
+            btnAddOrEditInventory.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnAddOrEditInventory.Location = new Point(6, 87);
             btnAddOrEditInventory.Name = "btnAddOrEditInventory";
-            btnAddOrEditInventory.Size = new Size(412, 35);
+            btnAddOrEditInventory.Size = new Size(412, 39);
             btnAddOrEditInventory.TabIndex = 9;
             btnAddOrEditInventory.Text = "Добавить инвентарь";
             btnAddOrEditInventory.UseVisualStyleBackColor = false;
@@ -234,24 +235,6 @@
             groupBox7.TabStop = false;
             groupBox7.Text = "Данные из аренд";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 29);
-            label3.Name = "label3";
-            label3.Size = new Size(175, 25);
-            label3.TabIndex = 8;
-            label3.Text = "Количество аренд:";
-            // 
-            // numRentsCount
-            // 
-            numRentsCount.Location = new Point(6, 60);
-            numRentsCount.Margin = new Padding(5);
-            numRentsCount.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
-            numRentsCount.Name = "numRentsCount";
-            numRentsCount.Size = new Size(338, 33);
-            numRentsCount.TabIndex = 7;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -269,6 +252,24 @@
             numTotal.Name = "numTotal";
             numTotal.Size = new Size(338, 33);
             numTotal.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(175, 25);
+            label3.TabIndex = 8;
+            label3.Text = "Количество аренд:";
+            // 
+            // numRentsCount
+            // 
+            numRentsCount.Location = new Point(6, 60);
+            numRentsCount.Margin = new Padding(5);
+            numRentsCount.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numRentsCount.Name = "numRentsCount";
+            numRentsCount.Size = new Size(338, 33);
+            numRentsCount.TabIndex = 7;
             // 
             // InventoryAddForm
             // 
@@ -295,8 +296,8 @@
             groupBox6.ResumeLayout(false);
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numRentsCount).EndInit();
             ((System.ComponentModel.ISupportInitialize)numTotal).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numRentsCount).EndInit();
             ResumeLayout(false);
         }
 

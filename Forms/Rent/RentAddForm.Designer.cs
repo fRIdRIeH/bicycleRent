@@ -50,6 +50,7 @@
             groupBox2 = new GroupBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             cbClients = new ComboBox();
+            btnAddClient = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -133,7 +134,7 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Location = new Point(1278, 16);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(310, 121);
+            groupBox1.Size = new Size(304, 121);
             groupBox1.TabIndex = 13;
             groupBox1.TabStop = false;
             groupBox1.Text = "Информация о аренде:";
@@ -195,6 +196,7 @@
             // flpSelectedInventory
             // 
             flpSelectedInventory.AutoScroll = true;
+            flpSelectedInventory.BackColor = Color.LightGray;
             flpSelectedInventory.Location = new Point(12, 108);
             flpSelectedInventory.Name = "flpSelectedInventory";
             flpSelectedInventory.Size = new Size(1260, 333);
@@ -202,12 +204,13 @@
             // 
             // btnChooseInventory
             // 
-            btnChooseInventory.Location = new Point(1170, 72);
+            btnChooseInventory.BackColor = Color.LimeGreen;
+            btnChooseInventory.Location = new Point(1137, 72);
             btnChooseInventory.Name = "btnChooseInventory";
-            btnChooseInventory.Size = new Size(102, 30);
+            btnChooseInventory.Size = new Size(137, 34);
             btnChooseInventory.TabIndex = 15;
             btnChooseInventory.Text = "Выбрать";
-            btnChooseInventory.UseVisualStyleBackColor = true;
+            btnChooseInventory.UseVisualStyleBackColor = false;
             btnChooseInventory.Click += btnChooseInventory_Click;
             // 
             // btnCount
@@ -252,15 +255,27 @@
             cbClients.FormattingEnabled = true;
             cbClients.Location = new Point(95, 12);
             cbClients.Name = "cbClients";
-            cbClients.Size = new Size(1177, 33);
+            cbClients.Size = new Size(1036, 33);
             cbClients.TabIndex = 35;
             cbClients.SelectedIndexChanged += cbClients_SelectedIndexChanged;
+            // 
+            // btnAddClient
+            // 
+            btnAddClient.BackColor = Color.LimeGreen;
+            btnAddClient.Location = new Point(1137, 11);
+            btnAddClient.Name = "btnAddClient";
+            btnAddClient.Size = new Size(137, 34);
+            btnAddClient.TabIndex = 36;
+            btnAddClient.Text = "Добавить";
+            btnAddClient.UseVisualStyleBackColor = false;
+            btnAddClient.Click += btnAddClient_Click;
             // 
             // RentAddForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1584, 861);
+            Controls.Add(btnAddClient);
             Controls.Add(cbClients);
             Controls.Add(groupBox2);
             Controls.Add(btnCreateRent);
@@ -314,5 +329,6 @@
         private GroupBox groupBox2;
         private FlowLayoutPanel flowLayoutPanel1;
         private ComboBox cbClients;
+        private Button btnAddClient;
     }
 }

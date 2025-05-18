@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using bicycleRent.Forms.Inventory;
 using Google.Protobuf.WellKnownTypes;
 using MySqlX.XDevAPI;
+using bicycleRent.Forms.Client;
 
 namespace bicycleRent.Forms.Rent
 {
@@ -21,6 +22,7 @@ namespace bicycleRent.Forms.Rent
         private readonly RentRepository _rentRepository;
         private readonly Models.User _user;
         private readonly MySqlConnection _connection;
+        private readonly ClientRepository _clientRepository;
         Models.Client selectedClient;
         List<int> inventoryIds = new List<int>();
         TimeSpan duration;
@@ -35,6 +37,7 @@ namespace bicycleRent.Forms.Rent
             InitializeComponent();
             this.TopMost = true;
             this._rentRepository = rentRepository;
+            this._clientRepository = new ClientRepository(_connection);
             this._user = user;
             this._connection = connection;
             this._idFromMainForm = idFormMain;
@@ -58,6 +61,7 @@ namespace bicycleRent.Forms.Rent
             {
                 Tag = inventory.InventoryId,
                 BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
                 Size = new Size(1220, 130),
             };
 
@@ -280,8 +284,6 @@ namespace bicycleRent.Forms.Rent
             int totalMinutes = (int)(dtpEnd.Value - dtpStart.Value).TotalMinutes;
             totalMinutes += 1;
 
-            MessageBox.Show($"totalMinutes: {totalMinutes}");
-
             InventoryPriceRepository _inventoryPriceRepository = new InventoryPriceRepository(_connection);
 
             foreach (Panel inventoryPanel in flpSelectedInventory.Controls)
@@ -304,8 +306,6 @@ namespace bicycleRent.Forms.Rent
                 }
             }
 
-            MessageBox.Show($"Total: {total}");
-
             lblForPrice.Text = $"{total} ₽";
 
             // Подсчёт времени
@@ -313,6 +313,7 @@ namespace bicycleRent.Forms.Rent
             lblForTimePeriod.Text = $"{totalMinutes} минут";
 
             btnCreateRent.Enabled = true;
+            btnCreateRent.BackColor = Color.LimeGreen;
         }
 
         public void Count()
@@ -436,6 +437,13 @@ namespace bicycleRent.Forms.Rent
         private void cbClients_DropDown(object sender, EventArgs e)
         {
             ((ComboBox)sender).DroppedDown = false;
+        }
+
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            
+            ClientAddForm clientAddForm = new ClientAddForm(_clientRepository, 0, "add");
+            clientAddForm.ShowDialog();
         }
     }
 }

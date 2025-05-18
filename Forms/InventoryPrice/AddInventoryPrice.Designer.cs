@@ -50,21 +50,21 @@
             // 
             flpTimes.Location = new Point(6, 32);
             flpTimes.Name = "flpTimes";
-            flpTimes.Size = new Size(648, 250);
+            flpTimes.Size = new Size(648, 340);
             flpTimes.TabIndex = 0;
             // 
             // flpPrices
             // 
             flpPrices.Location = new Point(6, 32);
             flpPrices.Name = "flpPrices";
-            flpPrices.Size = new Size(648, 250);
+            flpPrices.Size = new Size(648, 340);
             flpPrices.TabIndex = 1;
             // 
             // flpInventory
             // 
             flpInventory.Location = new Point(6, 32);
             flpInventory.Name = "flpInventory";
-            flpInventory.Size = new Size(1328, 262);
+            flpInventory.Size = new Size(1328, 433);
             flpInventory.TabIndex = 2;
             // 
             // groupBox1
@@ -73,7 +73,7 @@
             groupBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1340, 300);
+            groupBox1.Size = new Size(1340, 471);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Выбери инвентарь";
@@ -82,9 +82,9 @@
             // 
             groupBox2.Controls.Add(flpTimes);
             groupBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            groupBox2.Location = new Point(678, 318);
+            groupBox2.Location = new Point(686, 489);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(660, 300);
+            groupBox2.Size = new Size(660, 378);
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Выбери время";
@@ -93,9 +93,9 @@
             // 
             groupBox3.Controls.Add(flpPrices);
             groupBox3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            groupBox3.Location = new Point(12, 318);
+            groupBox3.Location = new Point(20, 489);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(660, 300);
+            groupBox3.Size = new Size(660, 378);
             groupBox3.TabIndex = 5;
             groupBox3.TabStop = false;
             groupBox3.Text = "Выбери цену";

@@ -118,7 +118,16 @@ namespace bicycleRent.Forms.Admin
 
         private void ShowMeFilialsBtn_Click(object sender, EventArgs e)
         {
+            flp.Controls.Clear();
 
+            FilialRepository filialRepository = new FilialRepository(_connection);
+
+            var filials = filialRepository.GetAll();
+
+            foreach( var filial in filials)
+            {
+                AddFilialCard(filial);
+            }
         }
 
         private void ShowMeWorkersBtn_Click(object sender, EventArgs e)
@@ -993,7 +1002,116 @@ namespace bicycleRent.Forms.Admin
 
         private void AddFilialCard(Models.Filial filial) 
         {
-        
+            Panel filialPanel = new Panel()
+            {
+                Tag = filial.Id,
+                BorderStyle = BorderStyle.FixedSingle,
+                Size = new Size(1330, 55),
+                Margin = new Padding(10),
+                BackColor = Color.LightGray,
+            };
+
+
+
+            //
+            // ярлыки
+            //
+            Label lblId = new Label()
+            {
+                Text = "#",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(10, 5),
+                AutoSize = true,
+            };
+
+            Label lblName = new Label()
+            {
+                Text = "Название филиала:",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(200, 5),
+                AutoSize = true
+            };
+
+            Label lblAddress = new Label()
+            {
+                Text = "Адрес филиала:",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(400, 5),
+                AutoSize = true
+            };
+
+            Label lblTotal = new Label()
+            {
+                Text = "Адрес филиала:",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(600, 5),
+                AutoSize = true
+            };
+
+            // Добавлячем в панель
+            filialPanel.Controls.Add(lblId);
+            filialPanel.Controls.Add(lblName);
+            filialPanel.Controls.Add(lblAddress);
+            filialPanel.Controls.Add(lblTotal);
+
+            //
+            // Данные
+            //
+
+            Label lblIdData = new Label()
+            {
+                Text = $"{filial.Id}",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(10, 30),
+                AutoSize = true,
+            };
+
+            Label lblNameData = new Label()
+            {
+                Text = $"{filial.Name}",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(200, 30),
+                AutoSize = true
+            };
+
+            Label lblAddressData = new Label()
+            {
+                Text = $"{filial.Address}",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(400, 30),
+                AutoSize = true
+            };
+
+            Label lblTotalData = new Label()
+            {
+                Text = $"{filial.Total}",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(600, 30),
+                AutoSize = true
+            };
+
+            filialPanel.Controls.Add(lblIdData);
+            filialPanel.Controls.Add(lblNameData);
+            filialPanel.Controls.Add(lblAddressData);
+            filialPanel.Controls.Add(lblTotalData);
+
+            // Кнопка на редакт
+
+            Button btnEditFilial = new Button()
+            {
+                Text = "✎",
+                Font = new Font("Segue UI", 20, FontStyle.Bold),
+                Location = new Point(1270, 2),
+                Cursor = Cursors.Hand,
+                Size = new Size(50, 50),
+                Tag = filialPanel
+            };
+
+            btnEditFilial.Click += btnEditFilial_Click;
+
+            filialPanel.Controls.Add(btnEditFilial);
+
+            flp.Controls.Add(filialPanel);
         }
 
         // События на кнопках
@@ -1079,6 +1197,17 @@ namespace bicycleRent.Forms.Admin
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private void btnEditFilial_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is Panel filialPanel && filialPanel.Tag is int fId)
+            {
+                FilialRepository filialRepository = new FilialRepository(_connection);
+
+                FilialAddForm filialAddForm = new FilialAddForm(_connection, fId, "edit");
+                filialAddForm.ShowDialog();
             }
         }
     }

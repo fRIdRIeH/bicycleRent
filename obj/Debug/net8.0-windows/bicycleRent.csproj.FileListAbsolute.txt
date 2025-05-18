@@ -73,7 +73,6 @@ C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-w
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Client.ClientListForm.resources
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Deposit.DepositAddForm.resources
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Filial.FilialAddForm.resources
-C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Filial.FilialListForm.resources
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.InventoryType.InventoryTypeAddForm.resources
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Inventory.InventoryAddForm.resources
 C:\Users\wladw\OneDrive\Документы\GitHub\bicycleRent\obj\Debug\net8.0-windows\bicycleRent.Forms.Inventory.InventoryListForm.resources

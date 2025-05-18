@@ -43,7 +43,12 @@
             btnAddFilial = new Button();
             btnAddInventoryType = new Button();
             groupBox6 = new GroupBox();
-            btnAddInventory = new Button();
+            btnAddOrEditInventory = new Button();
+            groupBox7 = new GroupBox();
+            label4 = new Label();
+            numTotal = new NumericUpDown();
+            label3 = new Label();
+            numRentsCount = new NumericUpDown();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numInventoryNumber).BeginInit();
             groupBox2.SuspendLayout();
@@ -51,6 +56,9 @@
             groupBox3.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
+            groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numTotal).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numRentsCount).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -69,7 +77,7 @@
             flpInventoryType.FlowDirection = FlowDirection.TopDown;
             flpInventoryType.Location = new Point(6, 44);
             flpInventoryType.Name = "flpInventoryType";
-            flpInventoryType.Size = new Size(526, 294);
+            flpInventoryType.Size = new Size(526, 481);
             flpInventoryType.TabIndex = 1;
             flpInventoryType.WrapContents = false;
             // 
@@ -78,7 +86,7 @@
             flpFilial.BackColor = Color.White;
             flpFilial.Location = new Point(6, 44);
             flpFilial.Name = "flpFilial";
-            flpFilial.Size = new Size(714, 294);
+            flpFilial.Size = new Size(714, 481);
             flpFilial.TabIndex = 2;
             // 
             // groupBox1
@@ -125,7 +133,7 @@
             groupBox2.Controls.Add(groupBox3);
             groupBox2.Location = new Point(370, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1282, 382);
+            groupBox2.Size = new Size(1282, 576);
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Выбери тип инвентаря и филиал, в котором он будет находиться";
@@ -135,7 +143,7 @@
             groupBox4.Controls.Add(flpFilial);
             groupBox4.Location = new Point(550, 32);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(726, 344);
+            groupBox4.Size = new Size(726, 538);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "Выбери филиал";
@@ -145,7 +153,7 @@
             groupBox3.Controls.Add(flpInventoryType);
             groupBox3.Location = new Point(6, 32);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(538, 344);
+            groupBox3.Size = new Size(538, 538);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Выбери тип инвентаря";
@@ -155,7 +163,7 @@
             groupBox5.Controls.Add(btnRefresh);
             groupBox5.Controls.Add(btnAddFilial);
             groupBox5.Controls.Add(btnAddInventoryType);
-            groupBox5.Location = new Point(12, 400);
+            groupBox5.Location = new Point(12, 594);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(352, 245);
             groupBox5.TabIndex = 5;
@@ -194,7 +202,7 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(btnAddInventory);
+            groupBox6.Controls.Add(btnAddOrEditInventory);
             groupBox6.Location = new Point(1228, 867);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(424, 132);
@@ -202,22 +210,73 @@
             groupBox6.TabStop = false;
             groupBox6.Text = "Если все выбрано, то можно добавлять инвентарь:";
             // 
-            // btnAddInventory
+            // btnAddOrEditInventory
             // 
-            btnAddInventory.BackColor = Color.LimeGreen;
-            btnAddInventory.Location = new Point(6, 91);
-            btnAddInventory.Name = "btnAddInventory";
-            btnAddInventory.Size = new Size(412, 35);
-            btnAddInventory.TabIndex = 9;
-            btnAddInventory.Text = "Добавить инвентарь";
-            btnAddInventory.UseVisualStyleBackColor = false;
-            btnAddInventory.Click += btnAddInventory_Click;
+            btnAddOrEditInventory.BackColor = Color.LimeGreen;
+            btnAddOrEditInventory.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnAddOrEditInventory.Location = new Point(6, 87);
+            btnAddOrEditInventory.Name = "btnAddOrEditInventory";
+            btnAddOrEditInventory.Size = new Size(412, 39);
+            btnAddOrEditInventory.TabIndex = 9;
+            btnAddOrEditInventory.Text = "Добавить инвентарь";
+            btnAddOrEditInventory.UseVisualStyleBackColor = false;
+            btnAddOrEditInventory.Click += btnAddInventory_Click;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(label4);
+            groupBox7.Controls.Add(numTotal);
+            groupBox7.Controls.Add(label3);
+            groupBox7.Controls.Add(numRentsCount);
+            groupBox7.Location = new Point(12, 400);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(352, 188);
+            groupBox7.TabIndex = 7;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Данные из аренд";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(6, 105);
+            label4.Name = "label4";
+            label4.Size = new Size(253, 25);
+            label4.TabIndex = 10;
+            label4.Text = "Сколько инвентарь принес:";
+            // 
+            // numTotal
+            // 
+            numTotal.Location = new Point(6, 136);
+            numTotal.Margin = new Padding(5);
+            numTotal.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numTotal.Name = "numTotal";
+            numTotal.Size = new Size(338, 33);
+            numTotal.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 29);
+            label3.Name = "label3";
+            label3.Size = new Size(175, 25);
+            label3.TabIndex = 8;
+            label3.Text = "Количество аренд:";
+            // 
+            // numRentsCount
+            // 
+            numRentsCount.Location = new Point(6, 60);
+            numRentsCount.Margin = new Padding(5);
+            numRentsCount.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numRentsCount.Name = "numRentsCount";
+            numRentsCount.Size = new Size(338, 33);
+            numRentsCount.TabIndex = 7;
             // 
             // InventoryAddForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1664, 1011);
+            Controls.Add(groupBox7);
             Controls.Add(groupBox6);
             Controls.Add(groupBox5);
             Controls.Add(groupBox2);
@@ -235,6 +294,10 @@
             groupBox3.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numTotal).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numRentsCount).EndInit();
             ResumeLayout(false);
         }
 
@@ -255,6 +318,11 @@
         private Button btnAddFilial;
         private Button btnAddInventoryType;
         private GroupBox groupBox6;
-        private Button btnAddInventory;
+        private Button btnAddOrEditInventory;
+        private GroupBox groupBox7;
+        private Label label3;
+        private NumericUpDown numRentsCount;
+        private Label label4;
+        private NumericUpDown numTotal;
     }
 }

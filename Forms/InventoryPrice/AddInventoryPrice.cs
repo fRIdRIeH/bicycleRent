@@ -360,7 +360,7 @@ namespace bicycleRent.Forms.InventoryPrice
 
         private void addInventory_Click(object sender, EventArgs e)
         {
-            InventoryAddForm inventoryAddForm = new InventoryAddForm(_connection);
+            InventoryAddForm inventoryAddForm = new InventoryAddForm(_connection, 0, "add");
             inventoryAddForm.ShowDialog();
         }
 

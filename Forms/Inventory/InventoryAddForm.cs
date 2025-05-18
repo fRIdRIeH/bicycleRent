@@ -28,7 +28,10 @@ namespace bicycleRent.Forms.Inventory
         private Panel _selectedInventoryTypePanel = null;
         private Panel _selectedfilialPanel = null;
 
-        public InventoryAddForm(MySqlConnection connection)
+        int _id;
+        string _key;
+
+        public InventoryAddForm(MySqlConnection connection, int id, string key)
         {
             InitializeComponent();
 
@@ -39,6 +42,9 @@ namespace bicycleRent.Forms.Inventory
             _inventoryRepository = new InventoryRepository(_connection);
             _inventoryTypeRepository = new InventoryTypeRepository(_connection);
             _filialRepository = new FilialRepository(_connection);
+
+            _id = id;
+            _key = key;
 
             LoadData();
         }
@@ -65,6 +71,56 @@ namespace bicycleRent.Forms.Inventory
             foreach (var filial in filials)
             {
                 AddFilialCard(filial);
+            }
+
+            if(_key == "edit")
+            {
+                this.Text = "Редактирование инвентаря";
+                btnAddOrEditInventory.Text = "Редактировать инвентарь";
+
+                var inventoryToFill = _inventoryRepository.Get(_id);
+
+                txtInventoryName.Text = inventoryToFill.InventoryName;
+                numInventoryNumber.Value = inventoryToFill.InventoryNumber;
+                numRentsCount.Value = inventoryToFill.InventoryRentsCount;
+                numTotal.Value = inventoryToFill.InventoryTotal;
+
+                // Выделяем нужный филиал
+                foreach (Panel filialPanel in flpFilial.Controls)
+                {
+                    if (filialPanel.Tag is int fId && fId == inventoryToFill.FilialId)
+                    {
+                        filialPanel.BackColor = Color.DarkGreen;
+                        filialId = fId;
+                        _selectedfilialPanel = filialPanel;
+                    }
+                    else
+                    {
+                        filialPanel.BackColor = Color.LightGray;
+                    }
+                }
+
+                // Выделяем нужный тип инвентаря
+                foreach (Panel typePanel in flpInventoryType.Controls)
+                {
+                    if (typePanel.Tag is int tId && tId == inventoryToFill.InventoryTypeId)
+                    {
+                        typePanel.BackColor = Color.DarkGreen;
+                        inventoryTypeId = tId;
+                        _selectedInventoryTypePanel = typePanel;
+                    }
+                    else
+                    {
+                        typePanel.BackColor = Color.LightGray;
+                    }
+                }
+            }
+            if( _key == "add")
+            {
+                this.Text = "Добавление инвентаря";
+                btnAddOrEditInventory.Text = "Добавить инвентарь";
+
+                groupBox7.Visible = false;
             }
         }
 
@@ -268,6 +324,7 @@ namespace bicycleRent.Forms.Inventory
                 filialId = fId;
             }
         }
+
         //
         // События нажатия на кнопки редактирования
         //
@@ -319,16 +376,35 @@ namespace bicycleRent.Forms.Inventory
 
             try
             {
-                Models.Inventory inventory = new Models.Inventory() 
+                if(_key == "add")
                 {
-                    InventoryName = txtInventoryName.Text,
-                    InventoryTypeId = inventoryTypeId,
-                    InventoryNumber = (int)numInventoryNumber.Value,
-                    FilialId = filialId,
-                };
+                    Models.Inventory inventory = new Models.Inventory()
+                    {
+                        InventoryName = txtInventoryName.Text,
+                        InventoryTypeId = inventoryTypeId,
+                        InventoryNumber = (int)numInventoryNumber.Value,
+                        FilialId = filialId,
+                    };
 
-                _inventoryRepository.Add(inventory);
-                MessageBox.Show("Инвентарь успешно добавлен!");
+                    _inventoryRepository.Add(inventory);
+                    MessageBox.Show("Инвентарь успешно добавлен!");
+                }
+                if(_key == "edit")
+                {
+                    Models.Inventory inventory = new Models.Inventory()
+                    {
+                        InventoryId = _id,
+                        InventoryName = txtInventoryName.Text,
+                        InventoryTypeId = inventoryTypeId,
+                        InventoryNumber = (int)numInventoryNumber.Value,
+                        InventoryRentsCount = (int)numRentsCount.Value,
+                        InventoryTotal = (int)numTotal.Value,
+                        FilialId = filialId,
+                    };
+
+                    _inventoryRepository.Update(inventory);
+                    MessageBox.Show("Инвентарь успешно обновлен!");
+                }
             }
             catch(Exception ex)
             {

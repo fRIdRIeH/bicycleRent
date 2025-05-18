@@ -766,6 +766,10 @@ namespace bicycleRent.Forms.Rent
             //Меняем статус аренды на "закрыта"
             _rentRepository.ChangeRentStatus(_rentIdFromMainForm, "Закрыта");
 
+            //Плюсуем +1 к выбранному клиенту в кол-во посещений
+            ClientRepository clientRepository = new ClientRepository(_connection);
+            clientRepository.UpdateClientVisitCount(clientId, +1);
+
             //Меняем статусы привязанных инвентарей на "Свободен"
             InventoryRepository inventoryRepository = new InventoryRepository(_connection);
             var inventoryIds = inventoryRepository.GetInventoryIdsForRent(_rentIdFromMainForm);
@@ -816,6 +820,11 @@ namespace bicycleRent.Forms.Rent
         {
             //Меняем статус аренды на "В процессе
             _rentRepository.ChangeRentStatus(_rentIdFromMainForm, "В процессе");
+
+            //Вычитаем -1 из количества посещений у клиента
+            //Плюсуем +1 к выбранному клиенту в кол-во посещений
+            ClientRepository clientRepository = new ClientRepository(_connection);
+            clientRepository.UpdateClientVisitCount(clientId, -1);
 
             //Меняем статусы привязанных инвентарей на "В аренде
             InventoryRepository inventoryRepository = new InventoryRepository(_connection);

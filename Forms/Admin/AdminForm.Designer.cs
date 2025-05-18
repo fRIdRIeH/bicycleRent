@@ -40,7 +40,10 @@
             ShowMeWorkersBtn = new Button();
             btnAddPrice = new Button();
             groupBox1 = new GroupBox();
+            flp = new FlowLayoutPanel();
+            groupBox2 = new GroupBox();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // GoToInventoryAddFormBtn
@@ -100,10 +103,10 @@
             // 
             // ShowMeInventoryBtn
             // 
-            ShowMeInventoryBtn.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            ShowMeInventoryBtn.Location = new Point(1362, 12);
+            ShowMeInventoryBtn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            ShowMeInventoryBtn.Location = new Point(6, 42);
             ShowMeInventoryBtn.Name = "ShowMeInventoryBtn";
-            ShowMeInventoryBtn.Size = new Size(310, 90);
+            ShowMeInventoryBtn.Size = new Size(330, 40);
             ShowMeInventoryBtn.TabIndex = 5;
             ShowMeInventoryBtn.Text = "Отобразить список инвентаря";
             ShowMeInventoryBtn.UseVisualStyleBackColor = true;
@@ -111,10 +114,10 @@
             // 
             // ShowMeClientsBtn
             // 
-            ShowMeClientsBtn.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            ShowMeClientsBtn.Location = new Point(1362, 108);
+            ShowMeClientsBtn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            ShowMeClientsBtn.Location = new Point(6, 88);
             ShowMeClientsBtn.Name = "ShowMeClientsBtn";
-            ShowMeClientsBtn.Size = new Size(310, 90);
+            ShowMeClientsBtn.Size = new Size(330, 40);
             ShowMeClientsBtn.TabIndex = 6;
             ShowMeClientsBtn.Text = "Отобразить список клиентов";
             ShowMeClientsBtn.UseVisualStyleBackColor = true;
@@ -122,10 +125,10 @@
             // 
             // ShowMeRentForTodayBtn
             // 
-            ShowMeRentForTodayBtn.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            ShowMeRentForTodayBtn.Location = new Point(1362, 204);
+            ShowMeRentForTodayBtn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            ShowMeRentForTodayBtn.Location = new Point(6, 180);
             ShowMeRentForTodayBtn.Name = "ShowMeRentForTodayBtn";
-            ShowMeRentForTodayBtn.Size = new Size(310, 90);
+            ShowMeRentForTodayBtn.Size = new Size(330, 40);
             ShowMeRentForTodayBtn.TabIndex = 7;
             ShowMeRentForTodayBtn.Text = "Отобразить аренды за сегодня";
             ShowMeRentForTodayBtn.UseVisualStyleBackColor = true;
@@ -133,10 +136,10 @@
             // 
             // ShowMeFilialsBtn
             // 
-            ShowMeFilialsBtn.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            ShowMeFilialsBtn.Location = new Point(1362, 300);
+            ShowMeFilialsBtn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            ShowMeFilialsBtn.Location = new Point(6, 226);
             ShowMeFilialsBtn.Name = "ShowMeFilialsBtn";
-            ShowMeFilialsBtn.Size = new Size(310, 90);
+            ShowMeFilialsBtn.Size = new Size(330, 40);
             ShowMeFilialsBtn.TabIndex = 9;
             ShowMeFilialsBtn.Text = "Отобразить все точки";
             ShowMeFilialsBtn.UseVisualStyleBackColor = true;
@@ -144,10 +147,10 @@
             // 
             // ShowMeWorkersBtn
             // 
-            ShowMeWorkersBtn.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            ShowMeWorkersBtn.Location = new Point(1362, 396);
+            ShowMeWorkersBtn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            ShowMeWorkersBtn.Location = new Point(6, 134);
             ShowMeWorkersBtn.Name = "ShowMeWorkersBtn";
-            ShowMeWorkersBtn.Size = new Size(310, 90);
+            ShowMeWorkersBtn.Size = new Size(330, 40);
             ShowMeWorkersBtn.TabIndex = 10;
             ShowMeWorkersBtn.Text = "Отобразить список работников";
             ShowMeWorkersBtn.UseVisualStyleBackColor = true;
@@ -172,24 +175,45 @@
             groupBox1.Controls.Add(GoToDepositAddFormAdd);
             groupBox1.Controls.Add(GoToInventoryTypeAddFormBtn);
             groupBox1.Controls.Add(GoToFilialAddFormBtn);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(12, 299);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(289, 342);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Добавление";
             // 
+            // flp
+            // 
+            flp.AutoScroll = true;
+            flp.FlowDirection = FlowDirection.TopDown;
+            flp.Location = new Point(375, 92);
+            flp.Name = "flp";
+            flp.Size = new Size(1350, 873);
+            flp.TabIndex = 13;
+            flp.WrapContents = false;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(ShowMeWorkersBtn);
+            groupBox2.Controls.Add(ShowMeInventoryBtn);
+            groupBox2.Controls.Add(ShowMeClientsBtn);
+            groupBox2.Controls.Add(ShowMeRentForTodayBtn);
+            groupBox2.Controls.Add(ShowMeFilialsBtn);
+            groupBox2.Location = new Point(12, 12);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(346, 281);
+            groupBox2.TabIndex = 14;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Списки";
+            // 
             // AdminForm
             // 
             AutoScaleDimensions = new SizeF(16F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1674, 1011);
+            ClientSize = new Size(1737, 979);
+            Controls.Add(groupBox2);
+            Controls.Add(flp);
             Controls.Add(groupBox1);
-            Controls.Add(ShowMeWorkersBtn);
-            Controls.Add(ShowMeFilialsBtn);
-            Controls.Add(ShowMeRentForTodayBtn);
-            Controls.Add(ShowMeClientsBtn);
-            Controls.Add(ShowMeInventoryBtn);
             Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             Margin = new Padding(6, 7, 6, 7);
             MinimizeBox = false;
@@ -197,6 +221,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Администрирование";
             groupBox1.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -214,5 +239,7 @@
         private Button ShowMeWorkersBtn;
         private Button btnAddPrice;
         private GroupBox groupBox1;
+        private FlowLayoutPanel flp;
+        private GroupBox groupBox2;
     }
 }

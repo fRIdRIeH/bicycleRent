@@ -393,3 +393,5 @@ InteropTests/NativeTests/out
 .vs/bicycleRent/v17/.suo
 .vs/bicycleRent/v17/DocumentLayout.backup.json
 .vs/bicycleRent/v17/DocumentLayout.backup.json
+obj/Debug/net8.0-windows/bicycleRent.AssemblyInfo.cs
+obj/Debug/net8.0-windows/bicycleRent.AssemblyInfoInputs.cache

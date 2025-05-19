@@ -11,8 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using bicycleRent.Forms.Inventory;
-using Google.Protobuf.WellKnownTypes;
-using MySqlX.XDevAPI;
 using bicycleRent.Forms.Client;
 
 namespace bicycleRent.Forms.Rent
@@ -37,11 +35,13 @@ namespace bicycleRent.Forms.Rent
             InitializeComponent();
             this.TopMost = true;
             this._rentRepository = rentRepository;
-            this._clientRepository = new ClientRepository(_connection);
+            
             this._user = user;
             this._connection = connection;
             this._idFromMainForm = idFormMain;
             this._key = key;
+
+            this._clientRepository = new ClientRepository(_connection);
 
             btnCreateRent.Enabled = false;
 

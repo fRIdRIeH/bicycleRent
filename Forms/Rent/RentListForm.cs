@@ -388,15 +388,8 @@ namespace bicycleRent.Forms.Rent
             {
                 if (sender is Button btn && btn.Tag is Panel rentPanel && rentPanel.Tag is int rId)
                 {
-                    //удаляем связанные аренды
-                    _rentRepository.DeleteAllRentHasInventory(rId);
-
-                    //удаляем оплаты
-                    PaymentRepository _paymentRepository = new PaymentRepository(_connection);
-                    _paymentRepository.DeleteAllPaymentsForRent(rId);
-
-                    //удаляем саму аренду
-                    _rentRepository.DeleteRent(rId);
+                    //в архив
+                    _rentRepository.ChangeRentStatus(rId, "Архив");
                 }
             }
             catch (Exception ex)

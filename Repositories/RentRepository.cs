@@ -297,22 +297,6 @@ namespace bicycleRent.Repositories
             }
         }
 
-        public bool DeleteRentHasInventory(int rentId, int inventoryId)
-        {
-            string query = "DELETE FROM Rent_Has_Inventory WHERE Rent_Rent_Id = @rentId AND Inventory_Inventory_Id = @inventoryId";
-
-            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
-            {
-                cmd.Parameters.AddWithValue("@rentId", rentId);
-                cmd.Parameters.AddWithValue("@inventoryId", inventoryId);
-
-                int rowsDeleted = cmd.ExecuteNonQuery();
-
-                if(rowsDeleted > 0) 
-                    return true;
-                return false;
-            }
-        }
 
         public bool UpdateRеntHasInventory(int rentId, int inventoryId, int priceId) 
         {
@@ -349,37 +333,6 @@ namespace bicycleRent.Repositories
             }
         }
 
-        public bool DeleteRent(int rentId) 
-        {
-            string query = "DELETE FROM Rent WHERE Rent_Id = @Rent_Id";
-
-            using(MySqlCommand cmd = new MySqlCommand(query, _connection))
-            {
-                cmd.Parameters.AddWithValue("@Rent_Id", rentId);
-
-                int rowsDeleted = cmd.ExecuteNonQuery();
-
-                if(rowsDeleted > 0)
-                    return true;
-                return false;
-            }
-        }
-
-        public bool DeleteAllRentHasInventory(int rentId)
-        {
-            string query = "DELETE FROM Rent_Has_Inventory WHERE Rent_Rent_Id = @rentId";
-
-            using (MySqlCommand cmd = new MySqlCommand(query, _connection))
-            {
-                cmd.Parameters.AddWithValue("@rentId", rentId);
-
-                int rowsDeleted = cmd.ExecuteNonQuery();
-
-                if (rowsDeleted > 0)
-                    return true;
-                return false;
-            }
-        }
 
         public List<Rent> GetAllByToday()
         {

@@ -631,12 +631,6 @@ namespace bicycleRent.Forms.Rent
                 //Получение списка инвентаря на добавление в Rent_Has_Inventory
                 List<int> idToAdd = newInventoryId.Except(oldInventoryIds).ToList();
 
-                //Удаление старых привязанных единиц инвентаря
-                foreach (var id in idToRemove)
-                {
-                    _rentRepository.DeleteRentHasInventory(_rentIdFromMainForm, id);
-                }
-
                 //Добавление новых единиц инвентаря
                 foreach (Panel inventoryPanel in flpSelectedInventory.Controls)
                 {

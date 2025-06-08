@@ -447,14 +447,7 @@ namespace bicycleRent
                     RentRepository _rentRepository = new RentRepository(_connection);
 
                     //удаляем связанные аренды
-                    _rentRepository.DeleteAllRentHasInventory(rId);
-
-                    //удаляем оплаты
-                    PaymentRepository _paymentRepository = new PaymentRepository(_connection);
-                    _paymentRepository.DeleteAllPaymentsForRent(rId);
-
-                    //удаляем саму аренду
-                    _rentRepository.DeleteRent(rId);
+                    _rentRepository.ChangeRentStatus(rId, "Архив");
 
                 }
             }
